@@ -33,9 +33,36 @@ UI Design Systems, Translated for AI.
 
 ## 📁 目录结构
 
-- `src/app/` - Next.js 页面与全局样式 (`globals.css` 中包含 Tailwind v4 配置)
-- `src/components/` - 核心交互组件 (搜索框、多维筛选器、瀑布流卡片)
-- `library/` (外部) - 存放核心的 `.md` 风格文件
+```text
+vibe-ui-web/
+├── content/                    # Git submodule 挂载点（见 content/README.md）
+│   ├── vibe-ui/
+│   └── vibe-motion-md/
+├── scripts/
+│   └── build-catalog.ts        # 扫描 md frontmatter → catalog.json
+├── src/
+│   ├── app/                    # Next.js 页面与全局样式
+│   ├── components/             # 搜索框、筛选器、StyleGrid
+│   ├── data/catalog.json       # build 产物（UI + Motion 元数据索引）
+│   ├── lib/get-catalog.ts      # 读取 catalog 的 helper
+│   └── types/catalog.ts        # Catalog schema 类型定义
+```
+
+## 🔗 与内容仓库联动
+
+1. 将 `vibe-ui` 与 `vibe-motion-md` 以 submodule 或 sibling 目录方式接入（详见 `content/README.md`）。
+2. 运行 `npm run catalog:build` 生成 `src/data/catalog.json`。
+3. `StyleGrid` 从 catalog 驱动卡片渲染；`dev` / `build` 前会自动执行 catalog 构建。
+
+### Catalog Item Schema（摘要）
+
+| 字段 | 说明 |
+|------|------|
+| `id` / `name` | 来自 md frontmatter |
+| `type` | `ui` \| `motion` |
+| `domains` / `aesthetics` | 多维筛选标签 |
+| `preview` | 卡片背景色 / 文字色（从 Primary 或 palette 推导） |
+| `source` | 指向内容仓库中的 reference 与 SKILL 路径 |
 
 ## 🎨 Tailwind v4 说明
 

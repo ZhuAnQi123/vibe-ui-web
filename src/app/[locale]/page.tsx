@@ -4,6 +4,7 @@ import { ElasticFilter } from "../../components/ElasticFilter";
 import { StyleGrid } from "../../components/StyleGrid";
 import { LanguageToggle } from "../../components/LanguageToggle";
 import { getDictionary } from "../../i18n/get-dictionary";
+import { getCatalogItems } from "../../lib/get-catalog";
 import { isValidLocale, type Locale } from "../../i18n/config";
 import { notFound } from "next/navigation";
 
@@ -19,6 +20,7 @@ export default async function Home({
   }
 
   const t = await getDictionary(locale as Locale);
+  const catalogItems = getCatalogItems();
 
   return (
     <main className="min-h-screen bg-[#FAFAFA] font-sans selection:bg-neutral-900 selection:text-white">
@@ -66,7 +68,7 @@ export default async function Home({
         <HeroSearch />
       </section>
 
-      <StyleGrid />
+      <StyleGrid items={catalogItems} />
     </main>
   );
 }

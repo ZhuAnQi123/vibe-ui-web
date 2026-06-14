@@ -1,8 +1,3 @@
-export type StyleTranslation = {
-  domain: string;
-  aesthetic: string;
-};
-
 export type Dictionary = {
   meta: {
     title: string;
@@ -31,6 +26,8 @@ export type Dictionary = {
   grid: {
     viewPrompt: string;
     copySkill: string;
-    styles: Record<string, StyleTranslation>;
+    typeUi: string;
+    typeMotion: string;
+    empty: string;
   };
 };

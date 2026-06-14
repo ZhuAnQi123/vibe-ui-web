@@ -1,0 +1,477 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-06-14T14:13:49.884Z",
+  "sources": {
+    "vibeUi": {
+      "path": "../vibe-ui",
+      "resolvedFrom": "sibling"
+    },
+    "vibeMotionMd": {
+      "path": "../vibe-motion-md",
+      "resolvedFrom": "sibling"
+    }
+  },
+  "items": [
+    {
+      "id": "copula-neo-brutalism",
+      "type": "ui",
+      "name": "Copula Agency Bold Neo-Brutalism",
+      "description": "这是一种充满活力、高冲击力的创意代理商风格（Neo-Brutalism 的现代变体）。它通过极具视觉侵略性的高饱和度朱红与群青蓝，搭配温和的米白色进行大块面的色彩撞击。排版极具杂志感与街头感，采用超粗、紧凑的无衬线压缩字体作为视觉核心。整体情绪基调自信、张扬、具有现代创意的先锋感，打破了传统扁平化设计的沉闷，适合需要强烈品牌个性和情感连接的创意机构、数字化工作室或潮流品牌。 触发词：Copula、高饱和撞色、新粗野主义、先锋创意",
+      "domains": [
+        "Agency",
+        "Portfolio",
+        "Creative"
+      ],
+      "aesthetics": [
+        "Neo-Brutalism",
+        "High Contrast",
+        "Bold"
+      ],
+      "interactionTypes": [],
+      "colorScheme": "Light",
+      "website": "https://copula.agency/contact",
+      "preview": {
+        "backgroundColor": "#FF4500",
+        "textColor": "#FFFFFF"
+      },
+      "source": {
+        "repo": "vibe-ui",
+        "referencePath": "skills/ui-style-library/references/copula-neo-brutalism.md",
+        "skillPath": "skills/ui-style-library/SKILL.md"
+      },
+      "assets": [],
+      "triggers": [
+        "Copula",
+        "高饱和撞色",
+        "新粗野主义",
+        "先锋创意"
+      ]
+    },
+    {
+      "id": "corner-elastic-curtain-expand",
+      "type": "motion",
+      "name": "corner-elastic-curtain-expand",
+      "description": "这是一种极具戏剧张力与空间延伸感的右上角圆角幕布展开（全屏菜单）动效。通过将一个微小的胶囊按钮作为动效发生源，以非对称的物理弹簧速度向左下方急速膨胀展开，转化为饱满的全屏白幕，并联动内部文本的物理擦除显现。 触发词：角落幕布展开, 胶囊源点膨胀, 视差边界流转, 异步排版显现, 物理弹性形变",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [],
+      "preview": {
+        "backgroundColor": "#0d0d0d",
+        "textColor": "#FFFFFF"
+      },
+      "source": {
+        "repo": "vibe-motion-md",
+        "referencePath": "skills/interaction-library/references/corner-elastic-curtain-expand.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "skills/interaction-library/assets/corner-elastic-curtain-expand.mp4"
+      ],
+      "triggers": [
+        "角落幕布展开",
+        "胶囊源点膨胀",
+        "视差边界流转",
+        "异步排版显现",
+        "物理弹性形变"
+      ]
+    },
+    {
+      "id": "elastic-sidebar-menu-reveal",
+      "type": "motion",
+      "name": "elastic-sidebar-menu-reveal",
+      "description": "一种高动态反馈的侧边栏/菜单抽屉展开与导航项动感交互。菜单面板展开时具备平滑的果冻物理回弹，内部导航项在悬停时采用自适应高亮块移动，适用于创意先锋、极简主义风格的网站全局导航。 触发词：菜单展开、侧边栏抽屉、弹性回弹、导航悬停、高亮跟随",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [
+        "Navigations"
+      ],
+      "preview": {
+        "backgroundColor": "#2A2C2E",
+        "textColor": "#FFFFFF"
+      },
+      "source": {
+        "repo": "vibe-motion-md",
+        "referencePath": "skills/interaction-library/references/elastic-sidebar-menu-reveal.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "skills/interaction-library/assets/menu-drawer-elastic-reveal.gif"
+      ],
+      "triggers": [
+        "菜单展开",
+        "侧边栏抽屉",
+        "弹性回弹",
+        "导航悬停",
+        "高亮跟随"
+      ]
+    },
+    {
+      "id": "fluid-elastic-button-hover",
+      "type": "motion",
+      "name": "fluid-elastic-button-hover",
+      "description": "一种高动态反馈的微交互按钮。鼠标悬停时，按钮通过带有强烈Q弹感和物理惯性的缩放进行反馈，迅速吸引视觉焦点并提升点击欲，适用于行动呼吁（CTA）按钮。 触发词：按钮悬停、弹性缩放、微动效、Q弹反馈、CTA按钮",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [
+        "Micro-interactions"
+      ],
+      "preview": {
+        "backgroundColor": "#8E44AD",
+        "textColor": "#FFFFFF"
+      },
+      "source": {
+        "repo": "vibe-motion-md",
+        "referencePath": "skills/interaction-library/references/fluid-elastic-button-hover.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "skills/interaction-library/assets/book-unit-button-hover.gif"
+      ],
+      "triggers": [
+        "按钮悬停",
+        "弹性缩放",
+        "微动效",
+        "Q弹反馈",
+        "CTA按钮"
+      ]
+    },
+    {
+      "id": "kinetic-scroll-typography-reveal",
+      "type": "motion",
+      "name": "kinetic-scroll-typography-reveal",
+      "description": "这是一种带有明显物理阻尼感与动态遮罩擦除的卡片切换与文字启幕动效。适用于高端作品集、创意工作室官网或画廊展示等强调排版美感与视觉叙事的场景。 触发词：视差擦除, 物理滚动切换, 动态遮罩, 文字启幕, 阻尼滑块",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [],
+      "preview": {
+        "backgroundColor": "#0a0a0a",
+        "textColor": "#FFFFFF"
+      },
+      "source": {
+        "repo": "vibe-motion-md",
+        "referencePath": "skills/interaction-library/references/kinetic-scroll-typography-reveal.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "skills/interaction-library/assets/kinetic-scroll-typography-reveal.mp4"
+      ],
+      "triggers": [
+        "视差擦除",
+        "物理滚动切换",
+        "动态遮罩",
+        "文字启幕",
+        "阻尼滑块"
+      ]
+    },
+    {
+      "id": "list-item-inverse-stretch-reveal",
+      "type": "motion",
+      "name": "list-item-inverse-stretch-reveal",
+      "description": "这是一种带有明显物理拉伸感与反色遮罩效果的列表项切换动效。当鼠标在列表间穿梭时，黑色高亮背景块在不同项之间以一种动态拉伸、挤压并伴随错位擦除的方式流转，营造出极强的果冻般物理弹性。 触发词：弹性反色块, 纵向拉伸切换, 错位遮罩擦除, 液体弹性高亮, 列表果冻流转",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [],
+      "preview": {
+        "backgroundColor": "#ffffff",
+        "textColor": "#171717"
+      },
+      "source": {
+        "repo": "vibe-motion-md",
+        "referencePath": "skills/interaction-library/references/list-item-inverse-stretch-reveal.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "skills/interaction-library/assets/list-item-inverse-stretch-reveal.mp4"
+      ],
+      "triggers": [
+        "弹性反色块",
+        "纵向拉伸切换",
+        "错位遮罩擦除",
+        "液体弹性高亮",
+        "列表果冻流转"
+      ]
+    },
+    {
+      "id": "magnetic-button-magnetic-arrow",
+      "type": "motion",
+      "name": "magnetic-button-magnetic-arrow",
+      "description": "这是一种带有微弱磁性吸附（Magnetic Effect）与动态拉伸的回弹胶囊按钮动效。当鼠标悬停在其核心操作区（如右侧圆形箭头）时，内部元素产生非对称的吸引和膨胀，营造出一种高级的物理张力与引力感。 触发词：磁性吸附按钮, 动态胶囊拉伸, 引力反馈, 异步回弹, 物理边缘磁吸",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [
+        "Micro-interactions"
+      ],
+      "preview": {
+        "backgroundColor": "#0f1115",
+        "textColor": "#FFFFFF"
+      },
+      "source": {
+        "repo": "vibe-motion-md",
+        "referencePath": "skills/interaction-library/references/magnetic-button-magnetic-arrow.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "skills/interaction-library/assets/magnetic-button-magnetic-arrow.mp4"
+      ],
+      "triggers": [
+        "磁性吸附按钮",
+        "动态胶囊拉伸",
+        "引力反馈",
+        "异步回弹",
+        "物理边缘磁吸"
+      ]
+    },
+    {
+      "id": "minimalist-text-menu-hover",
+      "type": "motion",
+      "name": "minimalist-text-menu-hover",
+      "description": "这是一种极简主义的通栏式文本导航菜单悬停动效。通过反色背景条块的平滑纵向位移（或淡入淡出）以及隐藏箭头的平移显现，为经典列表注入高级的、具有物理质感的交互反馈。 触发词：极简菜单高亮, 反色背景跟随, 箭头平移显现, 通栏导航, 瞬时阻尼反馈",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [
+        "Micro-interactions",
+        "Navigations"
+      ],
+      "preview": {
+        "backgroundColor": "#0a0a0a",
+        "textColor": "#FFFFFF"
+      },
+      "source": {
+        "repo": "vibe-motion-md",
+        "referencePath": "skills/interaction-library/references/minimalist-text-menu-hover.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "skills/interaction-library/assets/minimalist-text-menu-hover.mp4"
+      ],
+      "triggers": [
+        "极简菜单高亮",
+        "反色背景跟随",
+        "箭头平移显现",
+        "通栏导航",
+        "瞬时阻尼反馈"
+      ]
+    },
+    {
+      "id": "multi-column-accordion-reveal",
+      "type": "motion",
+      "name": "multi-column-accordion-reveal",
+      "description": "一种基于多列卡片展开与文字渐进式排版呈现的交互。通过平滑的缩放和延迟文字淡入，将大量信息在有限空间内进行优雅的切换与展示，适用于官网落地页、产品特性介绍及卡片式风琴折叠菜单。 触发词：卡片折叠、风琴式展开、多列交替、文本渐进淡入、网格布局切换",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [],
+      "preview": {
+        "backgroundColor": "#FFE600",
+        "textColor": "#171717"
+      },
+      "source": {
+        "repo": "vibe-motion-md",
+        "referencePath": "skills/interaction-library/references/multi-column-accordion-reveal.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "skills/interaction-library/assets/screen-recording-2026-06-14.gif"
+      ],
+      "triggers": [
+        "卡片折叠",
+        "风琴式展开",
+        "多列交替",
+        "文本渐进淡入",
+        "网格布局切换"
+      ]
+    },
+    {
+      "id": "multi-section-sticky-overlap",
+      "type": "motion",
+      "name": "multi-section-sticky-overlap",
+      "description": "一种基于大屏滚动的多层卡片堆叠与视差覆盖交互。当页面向下滚动时，当前全屏板块会被下一个板块向上推开并直接覆盖，呈现出极具空间纵深感的高级转场，适用于创意工作室、品牌官网及服务介绍页。 触发词：页面堆叠、视差覆盖、粘性滚动、全屏卡片推开、多层级错开",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [],
+      "preview": {
+        "backgroundColor": "#111111",
+        "textColor": "#FFFFFF"
+      },
+      "source": {
+        "repo": "vibe-motion-md",
+        "referencePath": "skills/interaction-library/references/multi-section-sticky-overlap.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "skills/interaction-library/assets/brand-services-sticky-overlap.gif"
+      ],
+      "triggers": [
+        "页面堆叠",
+        "视差覆盖",
+        "粘性滚动",
+        "全屏卡片推开",
+        "多层级错开"
+      ]
+    },
+    {
+      "id": "tiimo-organic-minimalism",
+      "type": "ui",
+      "name": "Tiimo Organic Minimalism",
+      "description": "这是一种温和、安抚、无压迫感的有机极简主义风格。大量使用低饱和水彩/粉彩渐变、柔和的手绘感边缘和纸质便利贴般的立体感，营造出治愈、减压的氛围。特别适合 ADHD 友好、日程管理、专注计时、心理健康辅助等需要降低用户认知负荷的产品。 触发词：Tiimo、有机极简、治愈系、低饱和、粉彩、ADHD 友好、纸质便利贴",
+      "domains": [
+        "Healthcare",
+        "Productivity",
+        "Mental Health"
+      ],
+      "aesthetics": [
+        "Organic",
+        "Soft Minimalism",
+        "Pastel"
+      ],
+      "interactionTypes": [],
+      "colorScheme": "Light",
+      "website": "https://www.tiimoapp.com/",
+      "preview": {
+        "backgroundColor": "#5BA8A0",
+        "textColor": "#FFFFFF"
+      },
+      "source": {
+        "repo": "vibe-ui",
+        "referencePath": "skills/ui-style-library/references/tiimo-organic-minimalism.md",
+        "skillPath": "skills/ui-style-library/SKILL.md"
+      },
+      "assets": [],
+      "triggers": [
+        "Tiimo",
+        "有机极简",
+        "治愈系",
+        "低饱和",
+        "粉彩",
+        "ADHD 友好",
+        "纸质便利贴"
+      ]
+    },
+    {
+      "id": "typographic-carousel-slide",
+      "type": "motion",
+      "name": "typographic-carousel-slide",
+      "description": "这是一种极具视觉冲击力的巨型排版视差无缝滚动（轮播）切换动效。通过巨型背景文字、段落文本以非对称的物理速度进行纵向视差推移，创造出一种宛如巨幕拉开、层级分明的空间穿梭体感。 触发词：巨幕视差滚动, 纵向无缝轮播, 排版层级推移, 丝滑物理非对称, 空间穿梭感",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [
+        "Navigations"
+      ],
+      "preview": {
+        "backgroundColor": "#0d0d0d",
+        "textColor": "#FFFFFF"
+      },
+      "source": {
+        "repo": "vibe-motion-md",
+        "referencePath": "skills/interaction-library/references/typographic-carousel-slide.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "skills/interaction-library/assets/typographic-carousel-slide.mp4"
+      ],
+      "triggers": [
+        "巨幕视差滚动",
+        "纵向无缝轮播",
+        "排版层级推移",
+        "丝滑物理非对称",
+        "空间穿梭感"
+      ]
+    },
+    {
+      "id": "typographic-menu-preview-card",
+      "type": "motion",
+      "name": "typographic-menu-preview-card",
+      "description": "这是一种大字报风格的文本菜单悬停联动媒体预览的动效。当鼠标划过排版字块时，文字颜色高亮，同时右侧的跟随预览卡片通过微弱的惯性位移与平滑的图片淡入淡出进行内容切换，展现极佳的丝滑体感。 触发词：大字报菜单, 悬停联动预览, 遮罩渐变切换, 排版高亮, 视差缩放",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [
+        "Navigations"
+      ],
+      "preview": {
+        "backgroundColor": "#0f0f0f",
+        "textColor": "#FFFFFF"
+      },
+      "source": {
+        "repo": "vibe-motion-md",
+        "referencePath": "skills/interaction-library/references/typographic-menu-preview-card.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "skills/interaction-library/assets/typographic-menu-preview-card.mp4"
+      ],
+      "triggers": [
+        "大字报菜单",
+        "悬停联动预览",
+        "遮罩渐变切换",
+        "排版高亮",
+        "视差缩放"
+      ]
+    },
+    {
+      "id": "units-playful-brutalism",
+      "type": "ui",
+      "name": "Units Student Housing Playful Brutalism",
+      "description": "这是一种充满朝气、玩味十足且极具互动感的新粗野主义（Neo-Brutalism）风格。专为现代学生公寓设计，它巧妙地在报纸质感的米色画布上，通过高饱和度的电网蓝、活力黄、热烈红和香芋紫等大块纯色进行拼贴。设计融合了像素风网格、加粗的黑描边、独特的几何ICON和趣味错位动画。整体情绪基调充满活力、包容性、安全感以及社区的归属感，非常适合面向 Z 世代的青年社区、创意住宿或互动生活平台。 触发词：Units、像素网格、大色块拼接、青春玩味、新粗野",
+      "domains": [
+        "Real Estate",
+        "Community",
+        "Youth"
+      ],
+      "aesthetics": [
+        "Neo-Brutalism",
+        "Playful",
+        "Grid"
+      ],
+      "interactionTypes": [],
+      "colorScheme": "Light",
+      "website": "https://units.gr/en/homepage/",
+      "preview": {
+        "backgroundColor": "#0066FF",
+        "textColor": "#FFFFFF"
+      },
+      "source": {
+        "repo": "vibe-ui",
+        "referencePath": "skills/ui-style-library/references/units-playful-brutalism.md",
+        "skillPath": "skills/ui-style-library/SKILL.md"
+      },
+      "assets": [],
+      "triggers": [
+        "Units",
+        "像素网格",
+        "大色块拼接",
+        "青春玩味",
+        "新粗野"
+      ]
+    }
+  ],
+  "filters": {
+    "domains": [
+      "Agency",
+      "Community",
+      "Creative",
+      "Healthcare",
+      "Mental Health",
+      "Portfolio",
+      "Productivity",
+      "Real Estate",
+      "Youth"
+    ],
+    "aesthetics": [
+      "Bold",
+      "Grid",
+      "High Contrast",
+      "Neo-Brutalism",
+      "Organic",
+      "Pastel",
+      "Playful",
+      "Soft Minimalism"
+    ],
+    "interactionTypes": [
+      "Micro-interactions",
+      "Navigations"
+    ],
+    "types": [
+      "ui",
+      "motion"
+    ]
+  }
+}

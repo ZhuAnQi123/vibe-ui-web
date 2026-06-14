@@ -30,32 +30,9 @@ const en: Dictionary = {
   grid: {
     viewPrompt: "View Prompt",
     copySkill: "Copy Skill",
-    styles: {
-      copula: {
-        domain: "Creative Agency",
-        aesthetic: "Neo-Brutalism",
-      },
-      tiimo: {
-        domain: "Healthcare",
-        aesthetic: "Soft Minimalism",
-      },
-      units: {
-        domain: "Real Estate",
-        aesthetic: "Playful Brutalism",
-      },
-      vercel: {
-        domain: "Developer Tools",
-        aesthetic: "Terminal / AI-First",
-      },
-      linear: {
-        domain: "SaaS",
-        aesthetic: "Spatial / Glass",
-      },
-      stripe: {
-        domain: "Finance",
-        aesthetic: "Swiss Design",
-      },
-    },
+    typeUi: "UI Style",
+    typeMotion: "Motion",
+    empty: "No catalog data yet. Run npm run catalog:build first.",
   },
 };
 
