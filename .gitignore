@@ -1,0 +1,24 @@
+
+# 依赖包（绝对不要提交）
+node_modules/
+
+# Next.js 编译输出和缓存（这个就是你要加的）
+.next/
+out/
+
+# 生产环境构建日志
+build/
+
+# 环境变量本地文件（顺便也加上，防止你的密钥泄露到 GitHub）
+.env*.local
+
+# 各种日志文件
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 系统文件
+.DS_Store
+
+requirement.md
