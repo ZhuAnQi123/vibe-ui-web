@@ -7,7 +7,7 @@
 ```bash
 # 在 vibe-ui-web 根目录执行
 git submodule add <your-vibe-ui-repo-url> content/vibe-ui
-git submodule add <your-vibe-motion-md-repo-url> content/vibe-motion-md
+git submodule add <your-vibe-motion-repo-url> content/vibe-motion
 
 git submodule update --init --recursive
 ```
@@ -19,7 +19,7 @@ vibe-ui-web/
 └── content/
     ├── vibe-ui/              # submodule → UI 风格 skill
     │   └── skills/ui-style-library/
-    └── vibe-motion-md/       # submodule → 动效 skill
+    └── vibe-motion/       # submodule → 动效 skill
         └── skills/interaction-library/
 ```
 
@@ -30,7 +30,7 @@ vibe-ui-web/
 ```text
 code/
 ├── vibe-ui/
-├── vibe-motion-md/
+├── vibe-motion/
 └── vibe-ui-web/
 ```
 

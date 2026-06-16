@@ -23,10 +23,10 @@ const CONTENT_SOURCES = {
     type: "ui" as const,
   },
   vibeMotionMd: {
-    repo: "vibe-motion-md" as const,
+    repo: "vibe-motion" as const,
     candidates: [
-      path.join(ROOT, "content/vibe-motion-md"),
-      path.join(ROOT, "../vibe-motion-md"),
+      path.join(ROOT, "content/vibe-motion"),
+      path.join(ROOT, "../vibe-motion"),
     ],
     referencesDir: "skills/interaction-library/references",
     skillPath: "skills/interaction-library/SKILL.md",
@@ -136,7 +136,8 @@ function derivePreview(
   if (preview?.backgroundColor) {
     return {
       backgroundColor: preview.backgroundColor,
-      textColor: preview.textColor ?? contrastTextColor(preview.backgroundColor),
+      textColor:
+        preview.textColor ?? contrastTextColor(preview.backgroundColor),
     };
   }
 
@@ -195,7 +196,7 @@ function buildItem(
   filePath: string,
   fileName: string,
   repoRoot: string,
-  repo: "vibe-ui" | "vibe-motion-md",
+  repo: "vibe-ui" | "vibe-motion",
   type: CatalogItemType,
   skillPath: string,
 ): CatalogItem {
@@ -206,8 +207,7 @@ function buildItem(
     (typeof data.name === "string" && data.name) ||
     fileName.replace(/\.md$/, "");
   const name =
-    (typeof data.name === "string" && data.name) ||
-    id.replace(/-/g, " ");
+    (typeof data.name === "string" && data.name) || id.replace(/-/g, " ");
   const description =
     typeof data.description === "string" ? data.description.trim() : "";
 
@@ -217,10 +217,42 @@ function buildItem(
     .join("/");
 
   const assetsMatch = body.match(/`\.\.\/assets\/[^`]+`/g) ?? [];
-  const assets = assetsMatch.map((item) =>
-    item
+  const assets = assetsMatch.map((item) => {
+    let cleanPath = item
       .replace(/`/g, "")
-      .replace(/^\.\.\//, "skills/interaction-library/"),
+      .replace(/^\.\.\//, "skills/interaction-library/");
+    // Replace .mp4 or .gif with .mov if that's what actually exists in the source repo
+    // (A temporary fix for the mismatch between MD references and actual files)
+    if (cleanPath.endsWith(".mp4") || cleanPath.endsWith(".gif")) {
+      const movPath = cleanPath.replace(/\.(mp4|gif)$/, ".mov");
+      if (fs.existsSync(path.join(repoRoot, movPath))) {
+        cleanPath = movPath;
+      }
+    }
+    return cleanPath;
+  });
+
+  // Copy assets to public directory
+  const publicAssetsDir = path.join(ROOT, "public/content-assets");
+  if (!fs.existsSync(publicAssetsDir)) {
+    fs.mkdirSync(publicAssetsDir, { recursive: true });
+  }
+
+  assets.forEach((assetPath) => {
+    const sourceAssetPath = path.join(repoRoot, assetPath);
+    const targetAssetPath = path.join(
+      publicAssetsDir,
+      path.basename(assetPath),
+    );
+    if (fs.existsSync(sourceAssetPath)) {
+      fs.copyFileSync(sourceAssetPath, targetAssetPath);
+    } else {
+      console.warn(`Warning: Asset not found at ${sourceAssetPath}`);
+    }
+  });
+
+  const publicAssetsUrls = assets.map(
+    (assetPath) => `/content-assets/${path.basename(assetPath)}`,
   );
 
   return {
@@ -246,15 +278,16 @@ function buildItem(
       referencePath,
       skillPath,
     },
-    assets: [...new Set(assets)],
+    assets: publicAssetsUrls,
     triggers: extractTriggers(data.description),
+    content: raw,
   };
 }
 
 function scanReferences(
   repoRoot: string,
   referencesDir: string,
-  repo: "vibe-ui" | "vibe-motion-md",
+  repo: "vibe-ui" | "vibe-motion",
   type: CatalogItemType,
   skillPath: string,
 ): CatalogItem[] {
@@ -268,14 +301,7 @@ function scanReferences(
     .filter((file) => file.endsWith(".md") && !file.startsWith("_"))
     .sort()
     .map((file) =>
-      buildItem(
-        path.join(dir, file),
-        file,
-        repoRoot,
-        repo,
-        type,
-        skillPath,
-      ),
+      buildItem(path.join(dir, file), file, repoRoot, repo, type, skillPath),
     );
 }
 

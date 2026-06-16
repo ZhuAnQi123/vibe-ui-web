@@ -6,7 +6,7 @@ export type CatalogPreview = {
 };
 
 export type CatalogSource = {
-  repo: "vibe-ui" | "vibe-motion-md";
+  repo: "vibe-ui" | "vibe-motion";
   referencePath: string;
   skillPath: string;
 };
@@ -25,6 +25,7 @@ export type CatalogItem = {
   source: CatalogSource;
   assets: string[];
   triggers: string[];
+  content: string;
 };
 
 export type CatalogFilters = {

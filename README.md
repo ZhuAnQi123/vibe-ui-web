@@ -1,6 +1,6 @@
 # Vibe UI Web
 
-UI Design Systems, Translated for AI. 
+UI Design Systems, Translated for AI.
 这是一个专为 Vibe Coder 打造的开源设计风格库展示网站。它将顶级产品的视觉风格转换为 AI（Cursor, Windsurf, Claude 等）能直接读懂并完美执行的纯文本设计说明书（Prompt/Skill）。
 
 ## 🚀 核心特性
@@ -11,7 +11,7 @@ UI Design Systems, Translated for AI.
 
 ## 🛠️ 技术栈
 
-- **框架**: Next.js 
+- **框架**: Next.js
 - **UI 库**: React
 - **样式**: Tailwind CSS v4 (CSS-first 架构)
 - **动效**: Framer Motion
@@ -19,11 +19,13 @@ UI Design Systems, Translated for AI.
 ## 💻 本地启动指南
 
 1. **安装依赖**
+
    ```bash
    npm install
    ```
 
 2. **启动开发服务器**
+
    ```bash
    npm run dev
    ```
@@ -37,7 +39,7 @@ UI Design Systems, Translated for AI.
 vibe-ui-web/
 ├── content/                    # Git submodule 挂载点（见 content/README.md）
 │   ├── vibe-ui/
-│   └── vibe-motion-md/
+│   └── vibe-motion/
 ├── scripts/
 │   └── build-catalog.ts        # 扫描 md frontmatter → catalog.json
 ├── src/
@@ -50,22 +52,42 @@ vibe-ui-web/
 
 ## 🔗 与内容仓库联动
 
-1. 将 `vibe-ui` 与 `vibe-motion-md` 以 submodule 或 sibling 目录方式接入（详见 `content/README.md`）。
-2. 运行 `npm run catalog:build` 生成 `src/data/catalog.json`。
-3. `StyleGrid` 从 catalog 驱动卡片渲染；`dev` / `build` 前会自动执行 catalog 构建。
+`vibe-ui-web` 本身不存储任何 Markdown 规范或视频资产，所有内容均在构建时（Build Time）从 `vibe-ui` 和 `vibe-motion` 这两个内容仓库中动态拉取。
+
+### 自动化同步机制
+1. **本地开发时**：运行 `npm run dev` 会自动触发 `predev` 钩子，执行 `npm run catalog:build`。
+2. **生产构建时**：运行 `npm run build` 会自动触发 `prebuild` 钩子，执行 `npm run catalog:build`。
+
+### `npm run catalog:build` 做了什么？
+- **扫描解析**：它会扫描 `content/` 或同级目录下的 `vibe-ui` 和 `vibe-motion` 仓库，解析所有 `.md` 文件的 Frontmatter 元数据。
+- **生成索引**：将解析结果汇总，生成 `src/data/catalog.json`，供前端 `StyleGrid` 和 `ElasticFilter` 组件驱动渲染。
+- **拷贝资产**：自动将 `vibe-motion` 仓库中的视频/GIF 文件（如 `.mov`, `.mp4`）拷贝到 `public/content-assets/` 目录下，以便前端可以作为静态资源直接加载播放。
+
+### 当内容库更新后，我该怎么做？
+
+如果你在 `vibe-ui` 或 `vibe-motion` 中添加了新的风格或动效：
+
+**如果在本地开发：**
+只需重新运行 `npm run dev`（或者手动跑一次 `npm run catalog:build`），新卡片就会立刻出现在页面上。
+
+**如果是在 Vercel 等线上环境：**
+1. 在 `vibe-ui-web` 目录下，拉取最新的子模块代码：`git submodule update --remote`
+2. 提交并推送：`git commit -am "update content submodules" && git push`
+3. Vercel 会自动触发重新部署，并在部署前执行 `catalog:build`，线上网站即刻更新。
 
 ### Catalog Item Schema（摘要）
 
-| 字段 | 说明 |
-|------|------|
-| `id` / `name` | 来自 md frontmatter |
-| `type` | `ui` \| `motion` |
-| `domains` / `aesthetics` | 多维筛选标签 |
-| `preview` | 卡片背景色 / 文字色（从 Primary 或 palette 推导） |
-| `source` | 指向内容仓库中的 reference 与 SKILL 路径 |
+| 字段                     | 说明                                              |
+| ------------------------ | ------------------------------------------------- |
+| `id` / `name`            | 来自 md frontmatter                               |
+| `type`                   | `ui` \| `motion`                                  |
+| `domains` / `aesthetics` | 多维筛选标签                                      |
+| `preview`                | 卡片背景色 / 文字色（从 Primary 或 palette 推导） |
+| `source`                 | 指向内容仓库中的 reference 与 SKILL 路径          |
 
 ## 🎨 Tailwind v4 说明
 
 本项目使用最新的 **Tailwind CSS v4**。
+
 - 不再需要 `tailwind.config.js`。
 - 所有主题变量和自定义工具类均在 `src/app/globals.css` 中通过 `@theme` 和 `@utility` 指令配置。

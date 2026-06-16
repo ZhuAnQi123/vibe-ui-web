@@ -11,7 +11,12 @@ const fluidSpring = {
   mass: 0.9,
 };
 
-export const HeroSearch = () => {
+type HeroSearchProps = {
+  value: string;
+  onChange: (value: string) => void;
+};
+
+export const HeroSearch = ({ value, onChange }: HeroSearchProps) => {
   const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -27,8 +32,10 @@ export const HeroSearch = () => {
       >
         <input
           type="text"
+          value={value}
           placeholder={t.search.placeholder}
           className="w-full h-full bg-transparent text-xl text-neutral-800 font-medium placeholder-neutral-400 focus:outline-none"
+          onChange={(event) => onChange(event.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
         />
@@ -45,6 +52,7 @@ export const HeroSearch = () => {
           />
 
           <motion.button
+            type="button"
             animate={{
               width: isActive ? "140px" : "96px",
             }}

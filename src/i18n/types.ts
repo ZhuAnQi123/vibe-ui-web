@@ -22,12 +22,26 @@ export type Dictionary = {
     healthcare: string;
     portfolio: string;
     terminal: string;
+    more: string;
+    aesthetics: string;
+    interactions: string;
+    clearAll: string;
   };
   grid: {
     viewPrompt: string;
-    copySkill: string;
+    viewDemo: string;
     typeUi: string;
     typeMotion: string;
     empty: string;
+    tabs: {
+      all: string;
+      ui: string;
+      motion: string;
+    };
   };
+  modal: {
+    copy: string;
+    copied: string;
+  };
+  tags: Record<string, string>;
 };
