@@ -1,0 +1,6 @@
+[submodule "vibe-ui"]
+	path = vibe-ui
+	url = https://github.com/ZhuAnQi123/vibe-ui.git
+[submodule "vibe-motion"]
+	path = vibe-motion
+	url = https://github.com/ZhuAnQi123/vibe-motion.git
