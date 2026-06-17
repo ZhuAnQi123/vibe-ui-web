@@ -119,7 +119,12 @@ const zh: Dictionary = {
     "Playful": "趣味",
     "Grid": "网格",
     "Navigations": "导航",
-    "Micro-interactions": "微交互"
+    "Micro-interactions": "微交互",
+    "Feedback": "反馈",
+    "Motion": "动效",
+    "Interaction": "交互",
+    "General": "通用",
+    "Style": "风格"
   }
 };
 

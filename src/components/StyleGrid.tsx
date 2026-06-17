@@ -25,7 +25,7 @@ const fluidSpring = {
 
 function getPrimaryTag(item: CatalogItem): string {
   if (item.type === "motion") {
-    return item.interactionTypes[0] ?? "Motion";
+    return item.components?.[0] ?? item.interactionTypes[0] ?? "Motion";
   }
 
   return item.domains[0] ?? "General";
@@ -33,7 +33,7 @@ function getPrimaryTag(item: CatalogItem): string {
 
 function getSecondaryTag(item: CatalogItem): string {
   if (item.type === "motion") {
-    return item.domains[0] ?? "Interaction";
+    return item.effects?.[0] ?? item.domains[0] ?? "Interaction";
   }
 
   return item.aesthetics[0] ?? "Style";
@@ -100,21 +100,38 @@ export const StyleGrid = ({ items, activeType, onTypeChange, typeOptions }: Styl
                 className="group relative flex flex-col gap-4 cursor-pointer"
               >
                 <div
-                  className="w-full aspect-[4/3] rounded-3xl flex items-center justify-center p-8 relative overflow-hidden transition-transform duration-500 group-hover:scale-[1.02] group-hover:shadow-2xl"
+                  className="w-full aspect-[4/3] rounded-3xl flex items-center justify-center relative overflow-hidden transition-transform duration-500 group-hover:scale-[1.02] group-hover:shadow-2xl"
                   style={{
                     backgroundColor: item.preview.backgroundColor,
                     color: item.preview.textColor,
                   }}
                 >
-                  <span className="absolute top-4 left-4 rounded-full bg-black/20 px-3 py-1 text-xs font-bold uppercase tracking-wide backdrop-blur-sm">
+                  {item.coverVideo ? (
+                    <video
+                      src={item.coverVideo}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  ) : item.coverImage ? (
+                    <img
+                      src={item.coverImage}
+                      alt={item.name}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="text-3xl font-black tracking-tight opacity-90 text-center px-6 leading-tight relative z-10">
+                      {locale === "zh" && item.nameZh ? item.nameZh : item.name}
+                    </div>
+                  )}
+
+                  <span className="absolute top-4 left-4 rounded-full bg-black/20 px-3 py-1 text-xs font-bold uppercase tracking-wide backdrop-blur-sm text-white z-20">
                     {item.type === "ui" ? t.grid.typeUi : t.grid.typeMotion}
                   </span>
 
-                  <div className="text-3xl font-black tracking-tight opacity-90 text-center px-6 leading-tight">
-                    {item.name}
-                  </div>
-
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 backdrop-blur-sm transition-opacity duration-300 flex items-center justify-center gap-4">
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 backdrop-blur-sm transition-opacity duration-300 flex items-center justify-center gap-4 z-20">
                     <button
                       type="button"
                       onClick={() => setSelectedItem(item)}
@@ -147,7 +164,7 @@ export const StyleGrid = ({ items, activeType, onTypeChange, typeOptions }: Styl
 
                 <div className="flex flex-col gap-1.5 px-2">
                   <h3 className="text-xl font-bold text-neutral-900">
-                    {item.name}
+                    {locale === "zh" && item.nameZh ? item.nameZh : item.name}
                   </h3>
                   {locale === "zh" && item.description && (
                     <p className="text-sm text-neutral-500 line-clamp-2 leading-relaxed mb-1">

@@ -120,7 +120,12 @@ const en: Dictionary = {
     "Playful": "Playful",
     "Grid": "Grid",
     "Navigations": "Navigations",
-    "Micro-interactions": "Micro-interactions"
+    "Micro-interactions": "Micro-interactions",
+    "Feedback": "Feedback",
+    "Motion": "Motion",
+    "Interaction": "Interaction",
+    "General": "General",
+    "Style": "Style"
   }
 };
 

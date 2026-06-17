@@ -179,19 +179,6 @@ function derivePreview(
     : { backgroundColor: "#F4F4F5", textColor: "#171717" };
 }
 
-function inferInteractionTypes(name: string, description: string): string[] {
-  const haystack = `${name} ${description}`.toLowerCase();
-  const rules: Array<[string, RegExp]> = [
-    ["Micro-interactions", /button|hover|click|toggle|micro/],
-    ["Navigations", /menu|nav|sidebar|tab|drawer|carousel/],
-    ["Feedback", /loading|error|success|skeleton|toast/],
-  ];
-
-  return rules
-    .filter(([, pattern]) => pattern.test(haystack))
-    .map(([label]) => label);
-}
-
 function buildItem(
   filePath: string,
   fileName: string,
@@ -208,6 +195,7 @@ function buildItem(
     fileName.replace(/\.md$/, "");
   const name =
     (typeof data.name === "string" && data.name) || id.replace(/-/g, " ");
+  const nameZh = typeof data.name_zh === "string" ? data.name_zh : undefined;
   const description =
     typeof data.description === "string" ? data.description.trim() : "";
 
@@ -216,13 +204,39 @@ function buildItem(
     .split(path.sep)
     .join("/");
 
+  // Handle new cover_image and cover_video
+  const publicAssetsDir = path.join(ROOT, "public/content-assets");
+  if (!fs.existsSync(publicAssetsDir)) {
+    fs.mkdirSync(publicAssetsDir, { recursive: true });
+  }
+
+  let coverImage: string | undefined = undefined;
+  if (typeof data.cover_image === "string" && data.cover_image) {
+    const assetRelativePath = data.cover_image.replace(/^\.\.\//, `skills/${type === "ui" ? "ui-style-library" : "interaction-library"}/`);
+    const sourceAssetPath = path.join(repoRoot, assetRelativePath);
+    const targetAssetPath = path.join(publicAssetsDir, path.basename(assetRelativePath));
+    if (fs.existsSync(sourceAssetPath)) {
+      fs.copyFileSync(sourceAssetPath, targetAssetPath);
+      coverImage = `/content-assets/${path.basename(assetRelativePath)}`;
+    }
+  }
+
+  let coverVideo: string | undefined = undefined;
+  if (typeof data.cover_video === "string" && data.cover_video) {
+    const assetRelativePath = data.cover_video.replace(/^\.\.\//, `skills/${type === "ui" ? "ui-style-library" : "interaction-library"}/`);
+    const sourceAssetPath = path.join(repoRoot, assetRelativePath);
+    const targetAssetPath = path.join(publicAssetsDir, path.basename(assetRelativePath));
+    if (fs.existsSync(sourceAssetPath)) {
+      fs.copyFileSync(sourceAssetPath, targetAssetPath);
+      coverVideo = `/content-assets/${path.basename(assetRelativePath)}`;
+    }
+  }
+
   const assetsMatch = body.match(/`\.\.\/assets\/[^`]+`/g) ?? [];
   const assets = assetsMatch.map((item) => {
     let cleanPath = item
       .replace(/`/g, "")
       .replace(/^\.\.\//, "skills/interaction-library/");
-    // Replace .mp4 or .gif with .mov if that's what actually exists in the source repo
-    // (A temporary fix for the mismatch between MD references and actual files)
     if (cleanPath.endsWith(".mp4") || cleanPath.endsWith(".gif")) {
       const movPath = cleanPath.replace(/\.(mp4|gif)$/, ".mov");
       if (fs.existsSync(path.join(repoRoot, movPath))) {
@@ -231,12 +245,6 @@ function buildItem(
     }
     return cleanPath;
   });
-
-  // Copy assets to public directory
-  const publicAssetsDir = path.join(ROOT, "public/content-assets");
-  if (!fs.existsSync(publicAssetsDir)) {
-    fs.mkdirSync(publicAssetsDir, { recursive: true });
-  }
 
   assets.forEach((assetPath) => {
     const sourceAssetPath = path.join(repoRoot, assetPath);
@@ -259,20 +267,19 @@ function buildItem(
     id,
     type,
     name,
+    nameZh,
     description,
     domains: asStringArray(data.domain ?? data.domains),
     aesthetics: asStringArray(data.aesthetic ?? data.aesthetics),
-    interactionTypes: asStringArray(
-      data.interactionTypes ?? data.interaction_types,
-    ).concat(
-      type === "motion" && !data.interactionTypes
-        ? inferInteractionTypes(name, description)
-        : [],
-    ),
+    interactionTypes: asStringArray(data.interactionTypes ?? data.interaction_types),
+    components: asStringArray(data.components),
+    effects: asStringArray(data.effects),
     colorScheme:
       typeof data.color_scheme === "string" ? data.color_scheme : undefined,
     website: typeof data.website === "string" ? data.website : undefined,
     preview: derivePreview(data, body, type),
+    coverImage,
+    coverVideo,
     source: {
       repo,
       referencePath,

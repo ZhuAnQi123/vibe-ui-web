@@ -32,16 +32,20 @@ function normalizeText(value: string): string {
   return value.trim().toLowerCase();
 }
 
+function stableSort(values: string[]): string[] {
+  return [...values].sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
+}
+
 export function buildFilterOptions(items: CatalogItem[]): FilterOptions {
-  const domains = [...new Set(items.flatMap((item) => item.domains))]
-    .filter(Boolean)
-    .sort((a, b) => a.localeCompare(b));
-  const aesthetics = [...new Set(items.flatMap((item) => item.aesthetics))]
-    .filter(Boolean)
-    .sort((a, b) => a.localeCompare(b));
-  const interactions = [...new Set(items.flatMap((item) => item.interactionTypes))]
-    .filter(Boolean)
-    .sort((a, b) => a.localeCompare(b));
+  const domains = stableSort(
+    [...new Set(items.flatMap((item) => item.domains))].filter(Boolean),
+  );
+  const aesthetics = stableSort(
+    [...new Set(items.flatMap((item) => item.aesthetics))].filter(Boolean),
+  );
+  const interactions = stableSort(
+    [...new Set(items.flatMap((item) => item.interactionTypes))].filter(Boolean),
+  );
 
   return {
     types: ["all", "ui", "motion"],

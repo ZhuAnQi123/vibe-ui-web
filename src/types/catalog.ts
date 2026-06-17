@@ -15,13 +15,18 @@ export type CatalogItem = {
   id: string;
   type: CatalogItemType;
   name: string;
+  nameZh?: string;
   description: string;
   domains: string[];
   aesthetics: string[];
   interactionTypes: string[];
+  components?: string[];
+  effects?: string[];
   colorScheme?: string;
   website?: string;
   preview: CatalogPreview;
+  coverImage?: string;
+  coverVideo?: string;
   source: CatalogSource;
   assets: string[];
   triggers: string[];
