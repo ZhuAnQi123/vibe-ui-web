@@ -85,6 +85,30 @@ vibe-ui-web/
 | `preview`                | 卡片背景色 / 文字色（从 Primary 或 palette 推导） |
 | `source`                 | 指向内容仓库中的 reference 与 SKILL 路径          |
 
+### 标签来源逻辑（筛选与展示）
+
+页面标签分成「数据值来源」和「展示文案来源」两层：
+
+1. **数据值来源（构建时）**
+   - 来自 `vibe-ui` / `vibe-motion` 的 Markdown frontmatter。
+   - 在 `scripts/build-catalog.ts` 中解析后写入 `src/data/catalog.json`：
+     - `domains`：来自 `domain` / `domains`
+     - `aesthetics`：来自 `aesthetic` / `aesthetics`
+     - `interactionTypes`：来自 `interactionTypes` / `interaction_types`
+     - `effects`：来自 `effects`
+     - `components`：来自 `components`
+
+2. **筛选选项来源（运行时）**
+   - `ElasticFilter` 的「审美风格」来自 `item.aesthetics` 聚合。
+   - `ElasticFilter` 的「交互类型」已升级为三组来源聚合：
+     - `interactionTypes`（交互类型）
+     - `effects`（效果）
+     - `components`（组件）
+
+3. **展示文案来源（i18n）**
+   - 标签显示优先走 `t.tags[key]`（`src/i18n/dictionaries/zh.ts` / `en.ts`）。
+   - 若字典里没有该 key，则回退显示原始标签值（保证新标签可直接显示）。
+
 ## 🎨 Tailwind v4 说明
 
 本项目使用最新的 **Tailwind CSS v4**。

@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { motion, LayoutGroup, AnimatePresence } from "framer-motion";
 import { useTranslation } from "../i18n/provider";
+import { decodeInteractionFacet } from "../lib/filter-utils";
 
 const fluidSpring = {
   type: "spring" as const,
@@ -63,6 +64,51 @@ export const ElasticFilter = ({
   const hasAnyMoreFilter = activeMoreCount > 0;
   const canShowMorePanel =
     aestheticOptions.length > 0 || interactionOptions.length > 0;
+
+  const groupedInteractionOptions = useMemo(() => {
+    const grouped = {
+      interaction: [] as string[],
+      effect: [] as string[],
+      component: [] as string[],
+    };
+
+    interactionOptions.forEach((option) => {
+      const decoded = decodeInteractionFacet(option);
+      if (!decoded) {
+        grouped.interaction.push(option);
+        return;
+      }
+
+      grouped[decoded.kind].push(option);
+    });
+
+    return grouped;
+  }, [interactionOptions]);
+
+  const renderInteractionOptions = (options: string[]) => (
+    <div className="flex flex-wrap gap-2.5">
+      {options.map((option) => {
+        const decoded = decodeInteractionFacet(option);
+        const value = decoded?.value ?? option;
+        const selected = selectedInteractions.includes(option);
+
+        return (
+          <button
+            key={option}
+            type="button"
+            onClick={() => onToggleInteraction(option)}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              selected
+                ? "bg-neutral-900 text-white shadow-md scale-105"
+                : "bg-white/50 text-neutral-600 border border-neutral-200/80 hover:bg-white hover:border-neutral-300 hover:shadow-sm"
+            }`}
+          >
+            {t.tags[value] || value}
+          </button>
+        );
+      })}
+    </div>
+  );
 
   return (
     <LayoutGroup id="domain-filter">
@@ -193,24 +239,33 @@ export const ElasticFilter = ({
                   </div>
 
                   {interactionOptions.length > 0 ? (
-                    <div className="flex flex-wrap gap-2.5">
-                      {interactionOptions.map((item) => {
-                        const selected = selectedInteractions.includes(item);
-                        return (
-                          <button
-                            key={item}
-                            type="button"
-                            onClick={() => onToggleInteraction(item)}
-                            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                              selected
-                                ? "bg-neutral-900 text-white shadow-md scale-105"
-                                : "bg-white/50 text-neutral-600 border border-neutral-200/80 hover:bg-white hover:border-neutral-300 hover:shadow-sm"
-                            }`}
-                          >
-                            {t.tags[item] || item}
-                          </button>
-                        );
-                      })}
+                    <div className="flex flex-col gap-5">
+                      {groupedInteractionOptions.interaction.length > 0 && (
+                        <div className="flex flex-col gap-2.5">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
+                            {t.filter.interactionTypes}
+                          </p>
+                          {renderInteractionOptions(groupedInteractionOptions.interaction)}
+                        </div>
+                      )}
+
+                      {groupedInteractionOptions.effect.length > 0 && (
+                        <div className="flex flex-col gap-2.5">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
+                            {t.filter.interactionEffects}
+                          </p>
+                          {renderInteractionOptions(groupedInteractionOptions.effect)}
+                        </div>
+                      )}
+
+                      {groupedInteractionOptions.component.length > 0 && (
+                        <div className="flex flex-col gap-2.5">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
+                            {t.filter.interactionComponents}
+                          </p>
+                          {renderInteractionOptions(groupedInteractionOptions.component)}
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <p className="text-sm text-neutral-400">

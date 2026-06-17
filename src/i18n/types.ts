@@ -25,6 +25,9 @@ export type Dictionary = {
     more: string;
     aesthetics: string;
     interactions: string;
+    interactionTypes: string;
+    interactionEffects: string;
+    interactionComponents: string;
     clearAll: string;
   };
   grid: {

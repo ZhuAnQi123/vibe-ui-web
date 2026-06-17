@@ -16,6 +16,7 @@ const CONTENT_SOURCES = {
     repo: "vibe-ui" as const,
     candidates: [
       path.join(ROOT, "content/vibe-ui"),
+      path.join(ROOT, "vibe-ui"),
       path.join(ROOT, "../vibe-ui"),
     ],
     referencesDir: "skills/ui-style-library/references",
@@ -26,6 +27,7 @@ const CONTENT_SOURCES = {
     repo: "vibe-motion" as const,
     candidates: [
       path.join(ROOT, "content/vibe-motion"),
+      path.join(ROOT, "vibe-motion"),
       path.join(ROOT, "../vibe-motion"),
     ],
     referencesDir: "skills/interaction-library/references",
