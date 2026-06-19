@@ -4,17 +4,20 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
-import type { CatalogItem } from "../types/catalog";
+import type { CatalogListItem } from "../lib/get-catalog";
+import { fetchCatalogItemContent } from "../app/actions/catalog";
 import { useTranslation } from "../i18n/provider";
 
 type PromptModalProps = {
-  item: CatalogItem | null;
+  item: CatalogListItem | null;
   onClose: () => void;
 };
 
 export const PromptModal = ({ item, onClose }: PromptModalProps) => {
   const [mounted, setMounted] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
+  const [content, setContent] = useState("");
+  const [isLoadingContent, setIsLoadingContent] = useState(false);
   const { t } = useTranslation();
 
   // Handle escape key to close
@@ -31,9 +34,31 @@ export const PromptModal = ({ item, onClose }: PromptModalProps) => {
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+    if (!item) {
+      setContent("");
+      return;
+    }
+
+    let cancelled = false;
+    setIsLoadingContent(true);
+
+    fetchCatalogItemContent(item.id, item.type)
+      .then((text) => {
+        if (!cancelled) setContent(text);
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoadingContent(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [item]);
+
   const handleCopy = async () => {
-    if (!item) return;
-    await navigator.clipboard.writeText(item.content);
+    if (!content) return;
+    await navigator.clipboard.writeText(content);
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
   };
@@ -116,31 +141,35 @@ export const PromptModal = ({ item, onClose }: PromptModalProps) => {
 
             {/* Content (White with animated code) */}
             <div className="flex-1 overflow-y-auto p-6 bg-[#1E1E1E]">
-              <SyntaxHighlighter
-                language="markdown"
-                style={vscDarkPlus}
-                customStyle={{
-                  margin: 0,
-                  padding: 0,
-                  background: "transparent",
-                  fontSize: "14px",
-                  lineHeight: "1.6",
-                }}
-                wrapLines={true}
-                lineProps={(lineNumber) => {
-                  return {
-                    style: {
-                      display: "block",
-                      animation: `fade-in-up 0.4s ease-out forwards`,
-                      animationDelay: `${Math.min(lineNumber * 0.02, 2)}s`, // Cap delay at 2s so it doesn't take forever
-                      opacity: 0,
-                      transform: "translateY(10px)",
-                    },
-                  };
-                }}
-              >
-                {item.content}
-              </SyntaxHighlighter>
+              {isLoadingContent ? (
+                <p className="text-neutral-400 text-sm font-mono">Loading...</p>
+              ) : (
+                <SyntaxHighlighter
+                  language="markdown"
+                  style={vscDarkPlus}
+                  customStyle={{
+                    margin: 0,
+                    padding: 0,
+                    background: "transparent",
+                    fontSize: "14px",
+                    lineHeight: "1.6",
+                  }}
+                  wrapLines={true}
+                  lineProps={(lineNumber) => {
+                    return {
+                      style: {
+                        display: "block",
+                        animation: `fade-in-up 0.4s ease-out forwards`,
+                        animationDelay: `${Math.min(lineNumber * 0.02, 2)}s`,
+                        opacity: 0,
+                        transform: "translateY(10px)",
+                      },
+                    };
+                  }}
+                >
+                  {content}
+                </SyntaxHighlighter>
+              )}
             </div>
           </motion.div>
         </div>

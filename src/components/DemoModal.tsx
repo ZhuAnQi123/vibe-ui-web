@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import type { CatalogItem } from "../types/catalog";
+import type { CatalogListItem } from "../lib/get-catalog";
 
 type DemoModalProps = {
-  item: CatalogItem | null;
+  item: CatalogListItem | null;
   onClose: () => void;
 };
 
@@ -25,9 +25,10 @@ export const DemoModal = ({ item, onClose }: DemoModalProps) => {
     setMounted(true);
   }, []);
 
-  if (!mounted || !item || item.assets.length === 0) return null;
+  if (!mounted || !item) return null;
 
-  const assetUrl = item.assets[0];
+  const assetUrl = item.assets[0] ?? item.coverVideo;
+  if (!assetUrl) return null;
   const isVideo = assetUrl.endsWith(".mp4") || assetUrl.endsWith(".webm") || assetUrl.endsWith(".mov");
 
   return (

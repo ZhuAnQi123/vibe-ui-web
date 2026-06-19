@@ -1,4 +1,5 @@
-import type { CatalogItem, CatalogItemType } from "../types/catalog";
+import type { CatalogItemType } from "../types/catalog";
+import type { CatalogListItem } from "./get-catalog";
 
 export type FilterType = "all" | CatalogItemType;
 export type FilterSort = "relevance" | "latest";
@@ -69,7 +70,7 @@ export function decodeInteractionFacet(encoded: string): InteractionFacet | null
   return { kind, value };
 }
 
-function getItemInteractionFacets(item: CatalogItem): string[] {
+function getItemInteractionFacets(item: CatalogListItem): string[] {
   const facets = [
     ...item.interactionTypes.map((value) =>
       encodeInteractionFacet({ kind: "interaction", value }),
@@ -85,7 +86,7 @@ function getItemInteractionFacets(item: CatalogItem): string[] {
   return [...new Set(facets)].filter(Boolean);
 }
 
-export function buildFilterOptions(items: CatalogItem[]): FilterOptions {
+export function buildFilterOptions(items: CatalogListItem[]): FilterOptions {
   const domains = stableSort(
     [...new Set(items.flatMap((item) => item.domains))].filter(Boolean),
   );
@@ -127,7 +128,7 @@ function matchesAny(selectedValues: string[], itemValues: string[]): boolean {
   return selectedValues.some((value) => itemValues.includes(value));
 }
 
-function matchesAnyInteraction(selectedValues: string[], item: CatalogItem): boolean {
+function matchesAnyInteraction(selectedValues: string[], item: CatalogListItem): boolean {
   if (selectedValues.length === 0) {
     return true;
   }
@@ -143,9 +144,9 @@ function matchesAnyInteraction(selectedValues: string[], item: CatalogItem): boo
 }
 
 export function applyFilters(
-  items: CatalogItem[],
+  items: CatalogListItem[],
   filterState: FilterState,
-): CatalogItem[] {
+): CatalogListItem[] {
   const normalizedQuery = normalizeText(filterState.q);
 
   return items.filter((item) => {

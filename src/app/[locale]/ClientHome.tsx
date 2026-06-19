@@ -2,12 +2,11 @@
 
 import React, { useMemo, useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { motion, LayoutGroup } from "framer-motion";
 import { HeroSearch } from "../../components/HeroSearch";
 import { ElasticFilter } from "../../components/ElasticFilter";
 import { StyleGrid } from "../../components/StyleGrid";
 import { LanguageToggle } from "../../components/LanguageToggle";
-import type { CatalogItem } from "../../types/catalog";
+import type { CatalogListItem } from "../../lib/get-catalog";
 import type { Dictionary } from "../../i18n/types";
 import {
   applyFilters,
@@ -17,20 +16,13 @@ import {
   type FilterState,
 } from "../../lib/filter-utils";
 
-const fluidSpring = {
-  type: "spring" as const,
-  stiffness: 450,
-  damping: 26,
-  mass: 0.8,
-};
-
 export const ClientHome = ({
   initialItems,
   locale,
   t,
   searchParams,
 }: {
-  initialItems: CatalogItem[];
+  initialItems: CatalogListItem[];
   locale: string;
   t: Dictionary;
   searchParams: { [key: string]: string | string[] | undefined };
@@ -74,7 +66,7 @@ export const ClientHome = ({
     list.includes(value) ? list.filter((item) => item !== value) : [...list, value];
 
   return (
-    <main className="min-h-screen bg-[#FAFAFA] font-sans selection:bg-neutral-900 selection:text-white">
+    <main className="min-h-screen bg-vibe-flow font-sans selection:bg-neutral-900 selection:text-white relative">
       <header className="w-full h-20 flex items-center justify-between px-8 max-w-7xl mx-auto gap-4 relative">
         <div className="text-2xl font-black tracking-tighter text-neutral-900 shrink-0">
           Vibe UI<span className="text-neutral-400">.</span>
@@ -118,11 +110,11 @@ export const ClientHome = ({
       </header>
 
       <section className="w-full pt-14 pb-12 px-4 flex flex-col items-center text-center">
-        <h1 className="text-6xl md:text-7xl font-black tracking-tighter text-neutral-900 max-w-4xl leading-[1.1]">
+        <h1 className="text-6xl md:text-7xl font-black tracking-tighter text-neutral-900 max-w-4xl leading-[1.2] flex flex-wrap justify-center items-baseline gap-y-2">
           {locale === "zh" ? (
             <>
               {t.hero.titleInject}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-400 to-neutral-800">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-400 to-neutral-800 align-baseline px-2">
                 {t.hero.titleHighlight}
               </span>
               {t.hero.titleSuffix}

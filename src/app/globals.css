@@ -22,3 +22,21 @@
     transform: translateY(0);
   }
 }
+
+@keyframes vibe-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-vibe-flow {
+  background: linear-gradient(-45deg, #ffffff, #f8f9fa, #f1f3f5, #ffffff);
+  background-size: 400% 400%;
+  animation: vibe-flow 40s ease infinite;
+}

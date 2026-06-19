@@ -37,7 +37,7 @@ const zh: Dictionary = {
     viewDemo: "查看 Demo",
     typeUi: "UI 风格",
     typeMotion: "动效",
-    empty: "暂无 catalog 数据，请先运行 npm run catalog:build",
+    empty: "暂无 catalog 数据",
     tabs: {
       all: "全部",
       ui: "UI 风格",

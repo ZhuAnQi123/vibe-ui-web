@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "../i18n/provider";
 
 const fluidSpring = {
@@ -20,6 +20,20 @@ export const HeroSearch = ({ value, onChange }: HeroSearchProps) => {
   const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [placeholderIndex, setPlaceholderIndex] = useState(0);
+
+  const placeholders = [
+    "搜索 '霓虹极简' ...",
+    "探索 '赛博朋克 动效' ...",
+    "输入 'SaaS 干净风格' ..."
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPlaceholderIndex((prev) => (prev + 1) % placeholders.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   const isActive = isHovered || isFocused;
 
@@ -30,15 +44,32 @@ export const HeroSearch = ({ value, onChange }: HeroSearchProps) => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <input
-          type="text"
-          value={value}
-          placeholder={t.search.placeholder}
-          className="w-full h-full bg-transparent text-xl text-neutral-800 font-medium placeholder-neutral-400 focus:outline-none"
-          onChange={(event) => onChange(event.target.value)}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-        />
+        <div className="relative w-full h-full flex items-center">
+          {!value && (
+            <div className="absolute inset-0 flex items-center pointer-events-none z-0">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={placeholderIndex}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="text-xl text-neutral-400 font-medium"
+                >
+                  {placeholders[placeholderIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+          )}
+          <input
+            type="text"
+            value={value}
+            className="w-full h-full bg-transparent text-xl text-neutral-800 font-medium focus:outline-none relative z-10"
+            onChange={(event) => onChange(event.target.value)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+          />
+        </div>
 
         <div className="flex items-center gap-4 relative shrink-0">
           <motion.div

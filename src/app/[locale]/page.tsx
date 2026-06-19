@@ -1,5 +1,5 @@
 import { getDictionary } from "../../i18n/get-dictionary";
-import { getCatalogItems } from "../../lib/get-catalog";
+import { getCatalogListItems } from "../../lib/get-catalog";
 import { isValidLocale, type Locale } from "../../i18n/config";
 import { notFound } from "next/navigation";
 import { ClientHome } from "./ClientHome";
@@ -19,7 +19,7 @@ export default async function Home({
   }
 
   const t = await getDictionary(locale as Locale);
-  const catalogItems = getCatalogItems();
+  const catalogItems = getCatalogListItems();
 
   return (
     <ClientHome

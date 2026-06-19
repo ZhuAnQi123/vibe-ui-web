@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generatedAt": "2026-06-17T12:18:07.580Z",
+  "generatedAt": "2026-06-19T05:56:51.205Z",
   "sources": {
     "vibeUi": {
       "path": "vibe-ui",
@@ -12,6 +12,48 @@
     }
   },
   "items": [
+    {
+      "id": "band-5051-pixel-punk",
+      "type": "ui",
+      "name": "5051 Pixel Punk",
+      "nameZh": "5051 像素朋克风",
+      "description": "该风格灵感来源于 8-bit/16-bit 像素复古游戏与朋克摇滚文化的结合。 整体视觉充斥着深夜霓虹、大漠落日、像素楼宇与复古演出的情绪基调，传递出张扬叛逆、自由不羁的独立精神。 核心策略是使用极具颗粒感的像素艺术图形，搭配硬核的纯黑粗边框、像素风字体、无渐变的纯色块，以及极具舞台感和街头感的高饱和度点缀色。 触发词：pixel-art, retro-punk, 8-bit-gaming, bold-borders, neon-accents",
+      "domains": [
+        "音乐/乐队官网",
+        "独立游戏",
+        "潮流文化",
+        "个人主页"
+      ],
+      "aesthetics": [
+        "像素艺术 (Pixel Art)",
+        "赛博朋克/复古朋克",
+        "粗野主义 (Brutalism)"
+      ],
+      "interactionTypes": [],
+      "components": [],
+      "effects": [],
+      "colorScheme": "Dark",
+      "website": "https://band5051.com/",
+      "preview": {
+        "backgroundColor": "#E63946",
+        "textColor": "#FFFFFF"
+      },
+      "coverImage": "/content-assets/band5051.webp",
+      "source": {
+        "repo": "vibe-ui",
+        "referencePath": "skills/ui-style-library/references/band-5051-pixel-punk.md",
+        "skillPath": "skills/ui-style-library/SKILL.md"
+      },
+      "assets": [],
+      "triggers": [
+        "pixel-art",
+        "retro-punk",
+        "8-bit-gaming",
+        "bold-borders",
+        "neon-accents"
+      ],
+      "content": "---\nid: band-5051-pixel-punk\nname: 5051 Pixel Punk\nname_zh: \"5051 像素朋克风\"\ncover_image: \"../assets/band5051.webp\"\ndomain: [\"音乐/乐队官网\", \"独立游戏\", \"潮流文化\", \"个人主页\"]\naesthetic: [\"像素艺术 (Pixel Art)\", \"赛博朋克/复古朋克\", \"粗野主义 (Brutalism)\"]\ncolor_scheme: \"Dark\"\nwebsite: https://band5051.com/\ndescription: >\n  该风格灵感来源于 8-bit/16-bit 像素复古游戏与朋克摇滚文化的结合。\n  整体视觉充斥着深夜霓虹、大漠落日、像素楼宇与复古演出的情绪基调，传递出张扬叛逆、自由不羁的独立精神。\n  核心策略是使用极具颗粒感的像素艺术图形，搭配硬核的纯黑粗边框、像素风字体、无渐变的纯色块，以及极具舞台感和街头感的高饱和度点缀色。\n  触发词：pixel-art, retro-punk, 8-bit-gaming, bold-borders, neon-accents\n---\n\n# 5051 Pixel Punk UI 规范说明书\n\n## 1. Overview (概览)\n\n- **核心基调**：张扬叛逆、复古极客、舞台燥热、充满故事性。\n- **视觉特征**：像素网格网画、无平滑的硬边缘（`antialiased` 的反向应用）、硬核 3D 错位投影、霓虹色块高亮。\n- **适用场景**：独立摇滚/朋克乐队官网、像素风游戏社区、潮流厂牌电商、极具个性的个人前端作品集。\n- **不适用场景**：严肃的企业级 SaaS、医疗金融等需要极高信任感与平滑现代感的 B 端系统。\n\n## 2. 具象化的 Tailwind 字典 (Tailwind Dictionary)\n\n> ⚠️ **AI 约束**：不要只使用模糊的形容词，必须明确指定 Tailwind 类名。\n\n- **圆角策略 (Rounded)**：全面禁止使用任何圆角，保持纯粹的直角以符合像素格子的物理特性。必须使用 `rounded-none`。\n- **阴影策略 (Shadow)**：禁止使用现代的弥散阴影、模糊阴影。必须使用纯色块错位实现的硬核阴影（如 `shadow-[4px_4px_0px_0px_#000000]` 或 `shadow-[2px_2px_0px_0px_#FF4500]`）。\n- **边框策略 (Border)**：使用极具存在感的大像素描边，基础边框为 `border-2 border-black` 或 `border-[3px] border-[#1A1A1A]`。\n- **间距与留白 (Spacing)**：Section 之间使用极其工整的硬性间距 `gap-8` 或 `gap-12`，横向排版多采用卷轴式横向滚动布局（Horizontal Scroll Grid）。\n\n## 3. 色彩变量映射 (Color Variables)\n\n> ⚠️ **AI 约束**：明确告诉 AI 主色、背景色、边框色的具体 Hex 值，避免 AI 自由发挥。\n\n- **Primary (主色)**：`#E63946` / `#FF4500` - 用于强烈的警告、摇滚霓虹点缀、LIVE 演出高亮状态。\n- **Secondary (次主色)**：`#FFD166` / `#FFB703` - 用于黄昏/大漠落日感文字、重要标签、像素按钮的高亮悬停。\n- **Background/Canvas (画布背景)**：`#120F1D` - 深邃的深夜星空/舞台暗场大面积底色。\n- **Surface (容器背景)**：`#1E1B29` 或 `#2A263D` - 像素卡片底色、表单输入框底色。\n- **Border/Hairline (线条/描边)**：`#000000` - 所有的元素隔离线、像素边框线。\n- **Text/Ink (主要文本)**：`#FFFFFF` - 主要高亮像素文字、标题。\n- **Muted (弱化文本)**：`#A0A0B0` - 弱化描述、乐手简介、非核心辅助信息。\n\n## 4. Typography (排版系统原则)\n\n- **展示字体 (Display)**：使用像素风等宽大标题，英文推荐使用诸如 `Press Start 2P`、`DotGothic16` 风格的字体。Tailwind 表现形式为 `font-mono uppercase tracking-widest font-black text-2xl md:text-4xl`。\n- **正文字体 (Body)**：为保障像素风格下的中文可读性，可使用干净的等宽或无衬线字体，但字号不可过小。使用 `font-mono tracking-wide leading-relaxed text-sm`。\n\n## 5. 基准组件示例 (Anchor Component)\n\n> ⚠️ **AI 约束**：请 AI 在生成其他组件时，严格参考以下基准组件的 HTML/Tailwind 结构。\n\n```html\n<button\n  class=\"bg-[#E63946] text-[#FFFFFF] px-6 py-2 rounded-none font-mono font-black border-4 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all\"\n>\n  GET TICKETS\n</button>\n\n<div\n  class=\"bg-[#1E1B29] rounded-none p-6 border-4 border-black shadow-[6px_6px_0px_0px_#000000] max-w-sm\"\n>\n  <div\n    class=\"border-4 border-black mb-4 relative overflow-hidden bg-[#2A263D] aspect-square\"\n  >\n    <img\n      src=\"../assets/ivan-pixel.png\"\n      alt=\"Ivan\"\n      class=\"w-full h-full object-cover image-render-pixel\"\n      style=\"image-rendering: pixelated;\"\n    />\n  </div>\n  <h3 class=\"text-[#FFD166] font-mono font-black text-xl tracking-wider mb-1\">\n    IVAN\n  </h3>\n  <p class=\"text-[#E63946] font-mono text-xs font-bold mb-3\">VOCALS / GUITAR</p>\n  <p class=\"text-[#A0A0B0] font-mono text-sm leading-normal\">\n    Voice of the band. Turned lovers into Belarusian punk. Started 5051.\n  </p>\n</div>\n```\n\n## 6. Layout & Spacing (布局与空间)\n\n- **留白哲学**：严谨的像素对齐与网格化。摒弃现代主义的超大呼吸感留白，采用类似复古横版通关游戏（Side-scroller）的卷轴式分层布局。模块与模块之间通过“像素砖墙”、“铁丝网”或纯黑色加粗分界线进行强行分割。\n\n## 7. Elevation & Depth (层级与深度)\n\n- 绝对不使用 Z 轴物理阴影渲染。层级的提升完全通过**黑色实体块的右下角平移**（即硬投影）来表达。投影越厚（如 `shadow-[8px_8px_0px_0px_#000]`），代表元素越靠近用户。\n\n## 8. Do's and Don'ts (设计禁忌)\n\n- **Do**：\n- 必须保持 100% 的直角 (`rounded-none`)。\n- 在大面积图像上开启 `image-rendering: pixelated;`，确保像素颗粒不被浏览器模糊化。\n- 动效采用帧动画（Step transition）效果，而非平滑的线性渐变。\n\n- **Don't**：\n- 绝对不要使用 `shadow-xl` 或 `shadow-inner` 等具有高斯模糊的现代阴影。\n- 绝对不要使用 CSS 渐变色（Gradient background），必须使用高饱和度的纯色块拼接。\n- 严禁引入任何带有圆润弧度的现代 Icon 库，所有图标必须进行像素网格化处理。\n"
+    },
     {
       "id": "bento-grid-layout",
       "type": "ui",
@@ -161,7 +203,7 @@
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/menu-drawer-elastic-reveal.gif"
+        "/content-assets/elastic-sidebar-menu-reveal.mp4"
       ],
       "triggers": [
         "菜单展开",
@@ -171,6 +213,44 @@
         "高亮跟随"
       ],
       "content": "````yaml\nversion: alpha\nname: elastic-sidebar-menu-reveal\nname_zh: \"弹性侧边栏菜单揭示\"\ncover_video: \"../assets/elastic-sidebar-menu-reveal.mp4\"\ndescription: >\n  一种高动态反馈的侧边栏/菜单抽屉展开与导航项动感交互。菜单面板展开时具备平滑的果冻物理回弹，内部导航项在悬停时采用自适应高亮块移动，适用于创意先锋、极简主义风格的网站全局导航。\n  触发词：菜单展开、侧边栏抽屉、弹性回弹、导航悬停、高亮跟随\nmotion_tokens:\n  spring:\n    stiffness: 380\n    damping: 22\n    mass: 0.95\n  css_easing: \"cubic-bezier(0.25, 1, 0.5, 1)\"\n  duration: \"500ms\"\n  variants:\n    initial: { x: \"100%\", borderRadius: \"40px\" }\n    animate: { x: \"0%\", borderRadius: \"24px\" }\n    exit: { x: \"100%\", borderRadius: \"40px\" }\ncomponents: [\"Navigation\"]\neffects: [\"Elastic\",\"Reveal\"]\n---\n\n# 弹性抽屉菜单与动感导航项规范\n\n## 1. 动效体感 (Feel & Vibe)\n* **视觉感受**：**丝滑、Q弹且具备极强的空间包裹感**。菜单面板的进场不是生硬的线性平移，而是在到达终点时有细微的伸缩与物理回弹（Overshoot）；内部导航项的悬停则通过箭头生出与背景微亮化，提供极其明确的指向性。\n* **交互逻辑**：\n  1. **面板展开（Menu Trigger）**：点击右上角“MENU”按钮，主菜单面板从右下角向左上角平滑滑入。面板左上角带有优雅的大圆角，随着完全展开，圆角会产生一个细腻的拉伸过渡。同时，右上角按钮文本由“MENU”无缝切换为“CLOSE”。\n  2. **导航项悬停（Nav Hover）**：鼠标指针悬停在某个导航项（如 Work、Home）上时，该项背景瞬间包裹上一层淡灰色的圆角高亮块，同时文字向右微移，左侧平滑淡入一个指向箭头（$\\rightarrow$）。\n  3. **面板收起（Menu Close）**：点击“CLOSE”，整个面板顺滑地依原路径向右下角退场消失。\n* **适用场景**：全面屏导航菜单、响应式移动端抽屉、独立工作室作品集导航。\n\n## 2. 媒体参考 (Reference Asset)\n* **文件路径**：`../assets/menu-drawer-elastic-reveal.gif`\n\n## 3. 视觉配色记录 (UI Palette)\n该组件完美承接了前序页面的高级暗黑/冷淡风，但在菜单内部使用了大面积的浅色画布来提亮视觉：\n\n| 颜色角色 | 核心 HEX 码 | 视觉表现 |\n| :--- | :--- | :--- |\n| **基础大背景** | `#2A2C2E` | 偏冷的深暗灰色，作为底框衬托。 |\n| **菜单面板背景** | `#DCDFE0` / `#E5E7E8` | 柔和的浅浅雾霾蓝灰/高级浅灰，与暗色背景形成强烈的明暗反差。 |\n| **导航文字颜色** | `#111111` | 接近纯黑的深石墨色，粗体（Bold），确保极高的文本易读性。 |\n| **悬停高亮背景** | `rgba(0, 0, 0, 0.05)` | 极淡的黑色透明度层，或者比面板略深的灰色块，用于视觉聚焦。 |\n| **右上角切换按钮** | `#111111` | 黑色高胶囊按钮，内部文字为白色，在轻微拉伸中切换 MENU / CLOSE。 |\n\n## 4. 技术实现要点 (Implementation Details)\n### 推荐库\n* **首选**：Framer Motion (结合 `AnimatePresence` 处理菜单的销毁进出场，并利用 `layoutId` 可以完美实现导航高亮块的丝滑跟随)。\n### 关键属性\n* **硬件加速**：面板位移必须使用 `transform: translate3d()`。\n* **圆角自然过渡**：面板在滑入时由于带有弹性形变，其 `borderTopLeftRadius` 可以从较大的像素（如 `40px`）随位移动画自然收缩至标准的 `24px`，这会带来极佳的触觉体感。\n* **层级控制**：确保菜单面板的 `zIndex` 高于内容层，但略低于右上角的全局控制按钮（MENU/CLOSE）。\n\n## 5. 示例代码骨架 (Code Skeleton)\n\n```tsx\nimport { motion, AnimatePresence } from 'framer-motion';\nimport { useState } from 'react';\n\nconst menuVariants = {\n  hidden: { x: '100%', y: '10%', borderTopLeftRadius: '100px', opacity: 0.9 },\n  visible: {\n    x: '0%',\n    y: '0%',\n    borderTopLeftRadius: '32px',\n    opacity: 1,\n    transition: { type: 'spring', stiffness: 350, damping: 24, mass: 0.9 }\n  },\n  exit: {\n    x: '100%',\n    y: '20%',\n    borderTopLeftRadius: '100px',\n    opacity: 0.5,\n    transition: { ease: 'easeInOut', duration: 0.3 }\n  }\n};\n\nconst itemVariants = {\n  rest: { x: 0 },\n  hover: { x: 12, transition: { type: 'spring', stiffness: 400, damping: 20 } }\n};\n\nconst arrowVariants = {\n  rest: { opacity: 0, x: -10 },\n  hover: { opacity: 1, x: 0 }\n};\n\nexport default function NavDrawer() {\n  const [isOpen, setIsOpen] = useState(false);\n  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);\n  const menuItems = [\"Home\", \"Studio\", \"Work\", \"Contact\"];\n\n  return (\n    <div style={{ position: 'relative', width: '100vw', height: '100vh', backgroundColor: '#2A2C2E', overflow: 'hidden' }}>\n      {/* 顶部全局控制栏 */}\n      <div style={{ position: 'absolute', top: '24px', right: '24px', zIndex: 100, display: 'flex', gap: '12px' }}>\n        <button\n          onClick={() => setIsOpen(!isOpen)}\n          style={{ padding: '12px 32px', borderRadius: '24px', background: '#111', color: '#FFF', border: 'none', cursor: 'pointer', fontWeight: 'bold', fontSize: '14px' }}\n        >\n          {isOpen ? 'CLOSE' : 'MENU'}\n        </button>\n      </div>\n\n      {/* 侧边栏抽屉 */}\n      <AnimatePresence>\n        {isOpen && (\n          <motion.div\n            initial=\"hidden\"\n            animate=\"visible\"\n            exit=\"exit\"\n            variants={menuVariants}\n            style={{\n              position: 'absolute',\n              right: 0,\n              bottom: 0,\n              width: '450px',\n              height: 'calc(100vh - 80px)', // 顶部给按钮留出呼吸空间\n              backgroundColor: '#E5E7E8',\n              padding: '80px 40px',\n              display: 'flex',\n              flexDirection: 'column',\n              boxShadow: '-20px 0px 60px rgba(0,0,0,0.15)',\n            }}\n          >\n            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginTop: '40px' }}>\n              {menuItems.map((item, index) => (\n                <motion.div\n                  key={item}\n                  initial=\"rest\"\n                  whileHover=\"hover\"\n                  onHoverStart={() => setHoveredIndex(index)}\n                  onHoverEnd={() => setHoveredIndex(null)}\n                  style={{\n                    position: 'relative',\n                    padding: '16px 24px',\n                    borderRadius: '16px',\n                    cursor: 'pointer',\n                    display: 'flex',\n                    alignItems: 'center',\n                    gap: '12px',\n                    backgroundColor: hoveredIndex === index ? 'rgba(0, 0, 0, 0.04)' : 'transparent',\n                    transition: 'background-color 0.2s ease'\n                  }}\n                >\n                  {/* 悬停箭头 */}\n                  <motion.span variants={arrowVariants} style={{ fontSize: '28px', color: '#111', fontWeight: '300' }}>\n                    →\n                  </motion.span>\n\n                  {/* 文本主位移 */}\n                  <motion.span variants={itemVariants} style={{ fontSize: '36px', fontWeight: 'bold', color: '#111' }}>\n                    {item}\n                  </motion.span>\n                </motion.div>\n              ))}\n            </div>\n          </motion.div>\n        )}\n      </AnimatePresence>\n    </div>\n  );\n}\n\n````\n\n## 6. 易错点与禁忌 (Gotchas & Don'ts)\n\n- **绝对不要**：切勿将菜单的出场（Exit）也设置得过于Q弹。进场需要物理反馈来惊艳用户，但**出场（关闭菜单）必须迅速、干脆**，以防阻碍用户的下一步实质操作。\n- **穿透限制**：当抽屉面板展开时，必须在代码中锁定下方底层页面的滚动（`document.body.style.overflow = 'hidden'`），避免用户在操作菜单时触发底层内容的错位滚动。\n\n```\n\n```\n"
+    },
+    {
+      "id": "elva-cinematic-dark-minimalism",
+      "type": "ui",
+      "name": "Elva Cinematic Dark Minimalism",
+      "nameZh": "Elva 电影感暗黑微光风",
+      "description": "该风格致力于营造高端、沉浸、极具电影质感的科技氛围。整体以大面积纯黑与深邃的暗调作为画布，通过高饱和度的微光气泡、流体三维球体以及流光线条作为核心视觉锚点，打破暗黑的沉闷。排版上采用极具张力的超大无衬线字体，通过极端的字重对比（超粗标题与极细正文）和紧凑的字距压缩，传递出先锋且专业的科技感。 触发词：elva-cinematic-dark-style",
+      "domains": [
+        "AI 视频工具",
+        "音视频剪辑",
+        "摄影/摄像应用",
+        "创意设计工具"
+      ],
+      "aesthetics": [
+        "暗黑极简 (Dark Minimalism)",
+        "电影质感 (Cinematic)",
+        "微光流体 (Glow & Fluid)"
+      ],
+      "interactionTypes": [],
+      "components": [],
+      "effects": [],
+      "colorScheme": "Dark",
+      "website": "https://elvalabs.ai/",
+      "preview": {
+        "backgroundColor": "#FFFFFF",
+        "textColor": "#171717"
+      },
+      "coverImage": "/content-assets/elvalabs.webp",
+      "source": {
+        "repo": "vibe-ui",
+        "referencePath": "skills/ui-style-library/references/elva-cinematic-dark-minimalism.md",
+        "skillPath": "skills/ui-style-library/SKILL.md"
+      },
+      "assets": [],
+      "triggers": [
+        "elva-cinematic-dark-style"
+      ],
+      "content": "---\nid: elva-cinematic-dark-minimalism\nname: Elva Cinematic Dark Minimalism\nname_zh: \"Elva 电影感暗黑微光风\"\ncover_image: \"../assets/elvalabs.webp\"\ndomain: [\"AI 视频工具\", \"音视频剪辑\", \"摄影/摄像应用\", \"创意设计工具\"]\naesthetic:\n  [\n    \"暗黑极简 (Dark Minimalism)\",\n    \"电影质感 (Cinematic)\",\n    \"微光流体 (Glow & Fluid)\",\n  ]\ncolor_scheme: \"Dark\"\nwebsite: https://elvalabs.ai/\ndescription: >\n  该风格致力于营造高端、沉浸、极具电影质感的科技氛围。整体以大面积纯黑与深邃的暗调作为画布，通过高饱和度的微光气泡、流体三维球体以及流光线条作为核心视觉锚点，打破暗黑的沉闷。排版上采用极具张力的超大无衬线字体，通过极端的字重对比（超粗标题与极细正文）和紧凑的字距压缩，传递出先锋且专业的科技感。\n  触发词：elva-cinematic-dark-style\n---\n\n# Elva Cinematic Dark Minimalism UI 规范说明书\n\n## 1. Overview (概览)\n\n- **核心基调**：沉浸深邃、电影质感、先锋科技、灵动克制。\n- **视觉特征**：大面积高纯度暗黑留白、超大字重与极紧字距的排版张力、拟真质感的三维多维浮球/气泡（用于承载图像素材）、动态流光线条与微光反馈。\n- **适用场景**：AI 创作工具、多媒体剪辑工作台、高端科技产品官网、艺术家作品集、沉浸式娱乐影音应用。\n- **不适用场景**：传统政企办公系统、高密度数据表格后台、少儿教育或强调明快温馨的社区平台。\n\n## 2. 具象化的 Tailwind 字典 (Tailwind Dictionary)\n\n> ⚠️ **AI 约束**：不要只使用模糊的形容词，必须明确指定 Tailwind 类名。\n\n- **圆角策略 (Rounded)**：手机框容器及核心展示卡片使用 `rounded-[40px]` 或 `rounded-3xl`；小组件、胶囊按钮或标签采用全圆角 `rounded-full`。\n- **阴影与发光策略 (Shadow/Glow)**：不使用传统的灰色物理阴影。采用滤色模式下的荧光或渐变微光，如使用 `shadow-[0_0_50px_rgba(255,255,255,0.08)]` 或利用毛玻璃混合模式实现局部提亮。\n- **边框策略 (Border)**：极度克制，常规内容不加边框。在需要分割手机界面或独立卡片时，使用 `border border-white/10` 或 `border border-neutral-800` 的极细发丝线。\n- **间距与留白 (Spacing)**：在大屏排版中，块级元素间采用极致的呼吸感留白（如 `space-y-24` 或 `gap-16`），而在手机 mock-up 或内容卡片内部，则保持紧凑的一体化布局。\n\n## 3. 色彩变量映射 (Color Variables)\n\n> ⚠️ **AI 约束**：明确告诉 AI 主色、背景色、边框色的具体 Hex 值，避免 AI 自由发挥。\n\n- **Primary (主色)**：`#FFFFFF` - 用于高亮文本、核心标题及主要行动点，在暗黑背景下形成绝对的高反差。\n- **Background/Canvas (画布背景)**：`#000000` - 纯黑。作为大面积的沉浸式底色，确保三维浮球与流光特效能完美显色。\n- **Surface (容器/卡片背景)**：`#1A1A1A` 或 `#121212` - 极暗灰。用于手机外框内部、次级功能面板或深色气泡底色。\n- **Border/Hairline (线条/描边)**：`#262626` (或 `rgba(255,255,255,0.1)`) - 用于极细的分隔线或容器边缘。\n- **Text/Ink (主要文本)**：`#FFFFFF` - 用于大标题、醒目文案，保持高清晰度。\n- **Muted (弱化文本)**：`#8C8C8C` (或 `text-neutral-400`) - 用于副标题、说明文字及未激活状态标签。\n\n## 4. Typography (排版系统原则)\n\n- **展示字体 (Display)**：用于核心大标题。必须使用无衬线体（如 Inter/SF Pro），配合超粗字重、极紧字距与紧凑行高。典型类名组合：`font-bold tracking-tighter leading-none text-white`。\n- **正文字体 (Body)**：用于说明文字与标签。保持中等字重与舒适的行间距，确保在暗色背景下的可读性。典型类名组合：`font-normal text-neutral-400 tracking-normal leading-relaxed`。\n\n## 5. 基准组件示例 (Anchor Component)\n\n> ⚠️ **AI 约束**：请 AI 在生成其他组件时，严格参考以下基准组件的 HTML/Tailwind 结构。\n\n```html\n<button\n  class=\"bg-white/10 text-white text-xs font-semibold px-4 py-2 rounded-full border border-white/20 backdrop-blur-md hover:bg-white hover:text-black hover:scale-105 transition-all duration-300\"\n>\n  Try Yourself\n</button>\n\n<div\n  class=\"bg-[#121212] rounded-[32px] p-8 border border-neutral-800 shadow-[0_0_40px_rgba(0,0,0,0.5)] max-w-sm text-center\"\n>\n  <div\n    class=\"w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-tr from-cyan-500 via-purple-500 to-indigo-500 opacity-80 blur-[2px] animate-pulse shadow-[0_0_30px_rgba(99,102,241,0.5)]\"\n  ></div>\n\n  <h3 class=\"text-2xl font-bold text-white tracking-tighter mb-2\">\n    Pick a music mood\n  </h3>\n  <p class=\"text-sm text-neutral-400 font-normal leading-relaxed mb-6\">\n    It listens and turns your idea into a finished edit.\n  </p>\n\n  <div class=\"flex flex-wrap justify-center gap-2\">\n    <span\n      class=\"px-4 py-1.5 bg-white text-black text-xs font-medium rounded-full\"\n      >Pop</span\n    >\n    <span\n      class=\"px-4 py-1.5 bg-neutral-900 text-neutral-300 text-xs font-medium rounded-full border border-neutral-800\"\n      >Cinematic</span\n    >\n    <span\n      class=\"px-4 py-1.5 bg-neutral-900 text-neutral-300 text-xs font-medium rounded-full border border-neutral-800\"\n      >Ambient</span\n    >\n  </div>\n</div>\n```\n\n## 6. Layout & Spacing (布局与空间)\n\n- **留白哲学**：采用大开大合的“剧场式”留白排版。四周留出极其宽裕的绝对纯黑空间，将视觉焦点牢牢锁定在屏幕中央的手机 Mock-up 或动态气泡流体上。\n- **叙事性层级**：左侧或背景为巨大的文案宣告，右侧或上层为交互实体，形成如同电影谢幕表或海报般的构图。\n\n## 7. Elevation & Depth (层级与深度)\n\n- **多维球体悬浮**：打破传统的平面卡片层级，大量使用三维带有玻璃质感、反光的圆形浮球（Bubble）来承载视频与图片素材。\n- **层级穿插**：浮球在 Z 轴上具有动态深度，通过大小透视和模糊滤镜（`blur`）形成前后穿插的景深效果（Depth of Field），营造出信息在三维夜空中漂浮的质感。\n\n## 8. Do's and Don'ts (设计禁忌)\n\n- **Do**：\n- 坚持使用纯黑（`#000000`）作为大面积背景，让图像和微光组件自然“浮”出来。\n- 标题文字一定要足够大、字距一定要紧（`tracking-tighter`），以产生视觉压迫感与时尚感。\n- 材质上多借用毛玻璃（`backdrop-blur`）与流体渐变来体现 AI 的灵动性。\n\n- **Don't**：\n- 绝对不要使用明亮的浅灰色卡片背景或大面积的物理灰色阴影。\n- 严禁使用过于花哨、衬线或小字重的弱排版作为核心主标题。\n- 严禁使用生硬的直角（`rounded-none`），所有的容器和交互按钮都应具备圆润或胶囊状的流线外形。\n"
     },
     {
       "id": "fluid-elastic-button-hover",
@@ -199,7 +279,7 @@
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/book-unit-button-hover.gif"
+        "/content-assets/fluid-elastic-button-hover.mp4"
       ],
       "triggers": [
         "按钮悬停",
@@ -209,6 +289,68 @@
         "CTA按钮"
       ],
       "content": "```yaml\nversion: alpha\nname: fluid-elastic-button-hover\nname_zh: \"流体弹性按钮悬停\"\ncover_video: \"../assets/fluid-elastic-button-hover.mp4\"\ndescription: >\n  一种高动态反馈的微交互按钮。鼠标悬停时，按钮通过带有强烈Q弹感和物理惯性的缩放进行反馈，迅速吸引视觉焦点并提升点击欲，适用于行动呼吁（CTA）按钮。\n  触发词：按钮悬停、弹性缩放、微动效、Q弹反馈、CTA按钮\nmotion_tokens:\n  spring:\n    stiffness: 450\n    damping: 18\n    mass: 0.8\n  css_easing: \"cubic-bezier(0.175, 0.885, 0.32, 1.275)\"\n  duration: \"300ms\"\n  variants:\n    initial: { transform: \"scale(1)\" }\n    animate: { transform: \"scale(1.08)\" }\n    exit: { transform: \"scale(1)\" }\ncomponents: [\"Button\"]\neffects: [\"Elastic\",\"Hover\"]\n---\n\n# 弹性缩放微动效按钮规范\n\n## 1. 动效体感 (Feel & Vibe)\n* **视觉感受**：**极具生机、Q弹且轻盈**。按钮的放大并非机械的线性缩放，而是在到达最大值时伴随有细微的“果冻般”过冲与回弹，给用户带来极其舒适的物理确认感。\n* **交互逻辑**：\n  1. **悬停触发（Hover）**：当鼠标指针滑入按钮区域时，按钮瞬间向外扩张放大（约 1.08 倍），并在边缘产生轻微的惯性抖动。\n  2. **移出复原（Leave）**：鼠标指针离开后，按钮快速且顺滑地收缩回原始大小。\n* **适用场景**：网页核心转化入口（如“立即预订”、“提交订单”、“加入购物车”等核心 CTA 按钮）。\n\n## 2. 媒体参考 (Reference Asset)\n* **文件路径**：`../assets/book-unit-button-hover.gif`\n\n## 3. 视觉配色记录 (UI Palette)\n\n| 颜色角色 | 核心 HEX 码 | 视觉表现 |\n| :--- | :--- | :--- |\n| **按钮主体背景** | `#8E44AD` / `#9B5DE5` | 醒目的明亮丁香紫/电光紫，具备极高的视觉权重。 |\n| **按钮文本** | `#000000` | 纯黑色，高粗细（Bold），确保在彩色背景上的绝对可读性。 |\n| **网页大背景** | `#F4F0EA` | 温暖的浅米色/燕麦色底色，作为柔和的画布衬托紫色按钮。 |\n\n## 4. 技术实现要点 (Implementation Details)\n### 推荐库\n* **首选**：Framer Motion (通过 `whileHover` 属性可以近乎完美地用一行代码还原这种物理弹簧手感)。\n### 关键属性\n* **必须开启硬件加速**：严格使用 `transform: scale()` 进行缩放。\n* **避坑指南**：**绝对不要**通过改变按钮的 `width`、`height` 或 `padding` 来放大按钮，否则会导致整页像素重排，彻底失去丝滑感。\n* **基准点锁定**：确保 `transform-origin: center center`，使按钮以中心为轴均匀向四周膨胀。\n\n## 5. 示例代码骨架 (Code Skeleton)\n\n```tsx\nimport { motion } from 'framer-motion';\n\n// 超高刚度、低阻尼的Q弹弹簧参数\nconst elasticSpring = { \n  type: \"spring\", \n  stiffness: 450, \n  damping: 18, \n  mass: 0.8 \n};\n\nexport default function BookUnitButton() {\n  return (\n    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#F4F0EA' }}>\n      <motion.button\n        style={{\n          backgroundColor: '#9B5DE5',\n          color: '#000000',\n          padding: '20px 48px',\n          borderRadius: '20px',\n          border: 'none',\n          fontSize: '24px',\n          fontWeight: 'bold',\n          cursor: 'pointer',\n          outline: 'none',\n          boxShadow: '0px 8px 24px rgba(155, 93, 229, 0.2)',\n          display: 'flex',\n          flexDirection: 'column',\n          alignItems: 'center',\n          justifyContent: 'center',\n          lineHeight: '1.2',\n        }}\n        // 核心悬停动效配置\n        whileHover={{ scale: 1.08 }}\n        whileTap={{ scale: 0.95 }} // 附加点击下压反馈，提升完整度\n        transition={elasticSpring}\n      >\n        <span>Book your</span>\n        <span>Unit</span>\n      </motion.button>\n    </div>\n  );\n}\n\n```\n\n## 6. 易错点与禁忌 (Gotchas & Don'ts)\n\n* **绝对不要**：缩放比例切勿设置过大（例如超过 1.15 倍），过大的形变会显得粗糙并破坏页面的整体精致感。\n* **文字抖动处理**：在某些低分屏浏览器上，CSS 缩放可能会导致文字边缘短暂模糊或抖动。可以在按钮样式中加入 `-webkit-font-smoothing: antialiased` 和 `will-change: transform` 来提前通知浏览器进行硬件渲染优化。\n\n```\n\n```"
+    },
+    {
+      "id": "hand-drawn-blob-eyetracking",
+      "type": "motion",
+      "name": "hand-drawn-blob-eyetracking",
+      "nameZh": "手绘涂鸦软泥与视线追踪联动动效",
+      "description": "这是一个极具个性和趣味性的手绘涂鸦风交互空间。中心是由粉色不规则线条构成的“软泥怪”面部，其边缘伴随着手绘特有的随机微幅抖动。当鼠标在屏幕上移动时，面部的眼睛会产生平滑的视线追踪；同时，原本重叠在面部下方的文字（Hello, Design, World, Play, Let's）会被一种无形的“排斥力”向四周推开，形成非线性的发散视差。",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [
+        "鼠标跟随",
+        "多层视差推离"
+      ],
+      "components": [
+        "手绘画布",
+        "视线追踪组件",
+        "物理弹性图层"
+      ],
+      "effects": [
+        "线条逐帧抖动 (Line Boiling)",
+        "果冻形变 (Squish/Blob)",
+        "瞳孔约束位移"
+      ],
+      "website": "未知（实验性创意设计）",
+      "preview": {
+        "backgroundColor": "#fcf5ec",
+        "textColor": "#171717"
+      },
+      "coverVideo": "/content-assets/hand-drawn-blob-eyetracking.mp4",
+      "source": {
+        "repo": "vibe-motion",
+        "referencePath": "skills/interaction-library/references/hand-drawn-blob-eyetracking.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "/content-assets/hand-drawn-blob-eyetracking.mp4"
+      ],
+      "triggers": [],
+      "content": "---\nversion: alpha\nname: hand-drawn-blob-eyetracking\nname_zh: \"手绘涂鸦软泥与视线追踪联动动效\"\ncover_video: \"../assets/hand-drawn-blob-eyetracking.mp4\"\ncomponents: [\"手绘画布\", \"视线追踪组件\", \"物理弹性图层\"]\neffects:\n  [\"线条逐帧抖动 (Line Boiling)\", \"果冻形变 (Squish/Blob)\", \"瞳孔约束位移\"]\ninteraction_types: [\"鼠标跟随\", \"多层视差推离\"]\ndescription: >\n  这是一个极具个性和趣味性的手绘涂鸦风交互空间。中心是由粉色不规则线条构成的“软泥怪”面部，其边缘伴随着手绘特有的随机微幅抖动。当鼠标在屏幕上移动时，面部的眼睛会产生平滑的视线追踪；同时，原本重叠在面部下方的文字（Hello, Design, World, Play, Let's）会被一种无形的“排斥力”向四周推开，形成非线性的发散视差。\ntrigger_words: [手绘风、逐帧抖动、史莱姆形变、视线追踪、交互排斥]\nwebsite: \"未知（实验性创意设计）\"\n\nmotion_tokens:\n  # 眼神追踪的物理弹性\n  eye_tracking_spring:\n    stiffness: 250\n    damping: 22\n    mass: 0.6\n\n  # 背景文字被推开的排斥系数\n  text_repulsion:\n    max_displacement: 120 # 最大被推开的像素距离\n    radius: 300 # 鼠标影响的半径范围\n\n  # 线条抖动频率 (SVG Noise Filter)\n  line_boiling:\n    frequency_hz: 8 # 每秒改变 8 次噪声基频，模拟手绘逐帧\n    base_frequency: 0.02\n---\n\n# 手绘涂鸦软泥与视线追踪联动规范\n\n## 1. 动效体感 (Feel & Vibe)\n\n- **视觉感受**：**俏皮、灵动、不完美主义（Wabi-Sabi）**。通过打破数字界面的绝对平滑与规则几何，利用模拟有机的“不规则手绘线条”和“软泥弹性”，让界面充满幽默感。\n- **交互逻辑**：\n  - **常态动画（Idle Motion）**：即使鼠标不动，所有的粉色手绘线条（包括背景文字和面部轮廓）也在以约 8Hz-12Hz 的频率进行微小的**波纹扭曲（Boiling Effect）**，假装自己是逐帧动画。\n  - **眼神跟随（Eye Tracking）**：眼珠（内圈实心粉圆）会跟随鼠标指针位置在眼白（外圈圆环）内部移动。运动带有轻微的延迟感（Damping），且边缘有硬性边界约束，不会跳出眼白。\n  - **文字排斥视差（Text Repulsion）**：初始状态下，手绘文字重叠堆积在面部中心；当鼠标晃动激活交互后，文字根据其距离中心的角度，如同被吹散一般向四周平滑位移，鼠标移开后缓慢回弹。\n\n## 2. 媒体参考 (Reference Asset)\n\n- **文件路径**：`../assets/录屏2026-06-18 14.44.57.mp4`\n- **来源引用**：手绘风格创意前端交互\n\n## 3. 技术实现要点 (Implementation Details)\n\n### 推荐库\n\n- **首选方案**：React + Framer Motion (用于处理鼠标位移与文字的弹性排斥) + **原生 SVG `<filter>` (用于实现线条抖动)**。\n- **关键突破点（如何做出手绘抖动感？）**：\n  无需真的画好几帧图片切换，在 CSS 中挂载一个 SVG 的 `feTurbulence`（湍流噪声）滤镜，用 JavaScript 写一个定时器（或 `requestAnimationFrame`），每隔 100ms 随机微调 `baseFrequency` 或 `seed` 的数值，即可让包裹该滤镜的 HTML 文字和 SVG 线条产生极其逼真的手绘抖动特效。\n\n```html\n<svg\n  xmlns=\"[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)\"\n  style=\"display:none\"\n>\n  <filter id=\"hand-drawn-filter\">\n    <feTurbulence\n      type=\"fractalNoise\"\n      baseFrequency=\"0.04\"\n      numOctaves=\"2\"\n      result=\"noise\"\n      seed=\"1\"\n    />\n    <feDisplacementMap\n      in=\"SourceGraphic\"\n      in2=\"noise\"\n      scale=\"4\"\n      xChannelSelector=\"R\"\n      yChannelSelector=\"G\"\n    />\n  </filter>\n</svg>\n```\n\n### 关键属性\n\n- **眼神边界计算**：\n  设眼白中心坐标为\n  $$(X_0, Y_0)$$\n\n，眼白半径为\n$$R_{white}$$\n\n，眼珠半径为\n$$R_{pupil}$$\n\n。当鼠标位于\n$$(X_m, Y_m)$$\n\n时，计算目标向量，眼珠的最大移动矢量模长不得超过\n$$R_{white} - R_{pupil}$$\n\n。\n\n- **排斥动画硬件加速**：背景文字推开时，必须通过 `transform: translate3d(x, y, 0)` 实现，切勿改动 `top/left`。\n\n## 4. 示例代码骨架 (Code Skeleton)\n\n```tsx\nimport { motion, useMotionValue, useSpring } from \"framer-motion\";\nimport { useEffect, useState } from \"react\";\n\nexport const HandDrawnHero = () => {\n  const [filterSeed, setFilterSeed] = useState(1);\n  const mouseX = useMotionValue(0);\n  const mouseY = useMotionValue(0);\n\n  // 使用 Spring 增加眼珠移动的丝滑阻尼感\n  const eyeX = useSpring(useMotionValue(0), { stiffness: 300, damping: 20 });\n  const eyeY = useSpring(useMotionValue(0), { stiffness: 300, damping: 20 });\n\n  // 1. 定时器：驱动 SVG 滤镜的 Seed 改变，制造手绘每秒抖动感 (Line Boiling)\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setFilterSeed(Math.random() * 100);\n    }, 120); // 约 8 帧/秒\n    return () => clearInterval(interval);\n  }, []);\n\n  // 2. 监听鼠标移动，映射给眼珠 (限制在最大 15px 的范围内)\n  const handleMouseMove = (e: React.MouseEvent) => {\n    const { clientX, clientY } = e;\n    const width = window.innerWidth;\n    const height = window.innerHeight;\n\n    // 归一化计算 (-1 到 1)\n    const moveX = (clientX / width - 0.5) * 2 * 15;\n    const moveY = (clientY / height - 0.5) * 2 * 15;\n\n    eyeX.set(moveX);\n    eyeY.set(moveY);\n  };\n\n  return (\n    <div\n      onMouseMove={handleMouseMove}\n      className=\"relative w-full h-screen bg-[#fcf5ec] flex items-center justify-center overflow-hidden\"\n      style={{ filter: \"url(#hand-drawn-sketch)\" }} // 全局挂载手绘滤镜\n    >\n      {/* 动态 SVG 滤镜定义 */}\n      <svg className=\"absolute w-0 h-0\">\n        <filter id=\"hand-drawn-sketch\">\n          <feTurbulence\n            type=\"fractalNoise\"\n            baseFrequency=\"0.03\"\n            numOctaves=\"1\"\n            seed={filterSeed}\n            result=\"noise\"\n          />\n          <feDisplacementMap in=\"SourceGraphic\" in2=\"noise\" scale=\"5\" />\n        </filter>\n      </svg>\n\n      {/* 背景手绘文字（此处仅写一个示意排斥，实际需结合鼠标距离计算） */}\n      <motion.div className=\"absolute text-pink-400 font-bold text-7xl select-none\">\n        Design\n      </motion.div>\n\n      {/* 中心怪脸容器 */}\n      <div className=\"relative w-80 h-80 border-4 border-pink-500 rounded-full flex items-center justify-center\">\n        {/* 左眼 */}\n        <div className=\"absolute left-24 top-28 w-12 h-12 border-4 border-pink-500 rounded-full flex items-center justify-center bg-white\">\n          <motion.div\n            style={{ x: eyeX, y: eyeY }}\n            className=\"w-5 h-5 bg-pink-500 rounded-full\"\n          />\n        </div>\n        {/* 右眼 */}\n        <div className=\"absolute right-24 top-28 w-12 h-12 border-4 border-pink-500 rounded-full flex items-center justify-center bg-white\">\n          <motion.div\n            style={{ x: eyeX, y: eyeY }}\n            className=\"w-5 h-5 bg-pink-500 rounded-full\"\n          />\n        </div>\n        {/* 标志性大鼻子线条 */}\n        <svg className=\"absolute w-16 h-20 top-36 fill-none stroke-pink-500 stroke-[4px]\">\n          <path d=\"M 10 10 Q 40 20 20 60\" />\n        </svg>\n      </div>\n    </div>\n  );\n};\n```\n\n## 5. 易错点与禁忌 (Gotchas & Don'ts)\n\n- **忌滤镜频率过快或形变（Scale）过大**：`feDisplacementMap` 的 `scale` 属性如果大于 `8`，线条会碎裂解体，产生电子噪声感，从而失去“手绘”的温润感；抖动间隔（Interval）维持在 `100ms - 150ms` 最为舒适，太快会引起视觉疲劳甚至像屏幕闪烁故障。\n- **文字排斥的归位边界**：鼠标离开视口（MouseLeave）或停止移动时，背景文字必须丝滑地弹回原始叠加状态，回弹动效的 `damping` 必须偏高，避免文字像硬质弹簧一样无休止地晃动。\n"
+    },
+    {
+      "id": "kawe-ski-pixel-art",
+      "type": "ui",
+      "name": "kawe ski pixel art",
+      "description": "",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [],
+      "components": [],
+      "effects": [],
+      "preview": {
+        "backgroundColor": "#000000",
+        "textColor": "#FFFFFF"
+      },
+      "source": {
+        "repo": "vibe-ui",
+        "referencePath": "skills/ui-style-library/references/kawe-ski-pixel-art.md",
+        "skillPath": "skills/ui-style-library/SKILL.md"
+      },
+      "assets": [],
+      "triggers": [],
+      "content": "````markdown\n---\nid: kawe-ski-pixel-art\nname: Kawe.ski Pixel Art\nname_zh: \"Kawe.ski 复古像素画风\"\ncover_image: \"../assets/kawe.webp\"\ndomain:\n  [\n    \"个人作品集 (Portfolio)\",\n    \"独立开发者/设计师官网\",\n    \"创意设计工作室\",\n    \"系统架构文档\",\n  ]\naesthetic:\n  [\n    \"新粗野主义 (Neo-Brutalism)\",\n    \"复古像素 (Pixel Art)\",\n    \"柔和高饱和 (Muted High-Saturation)\",\n  ]\ncolor_scheme: \"Light\"\nwebsite: https://kawe.ski/\ndescription: >\n  该风格是新粗野主义与复古低保真（Lo-Fi）美学的完美结合。它保留了新粗野主义标志性的纯黑高对比度描边（High-contrast stroke）、硬边缘无渐变投影（Hard shadows），但摒弃了传统粗野主义刺眼扎眼的荧光色，转而采用一种更具亲和力的、高饱和度却略带粉质感的柔和复古色块（如奶油黄、薰衣草紫、复古绿）。搭配像素艺术（Pixel Art）头像和精致的圆角微卡片，既有极客的硬核态度，又兼具设计师的细腻人文。\n  触发词：kaweski-brutalism-style\n---\n\n# Kawe.ski Neo-Brutalism UI 规范说明书\n\n## 1. Overview (概览)\n\n- **核心基调**：个性张扬、极客复古、率真幽默、克制规范。\n- **视觉特征**：1.5px 至 2px 的纯黑刚性描边、清晰的无渐变硬化位移投影、高饱和度但视觉舒适的粉质纯色块、像素风头像/ICON 与规整的网格双栏/三栏布局。\n- **适用场景**：个人求职作品集、独立品牌概念店、开发工具/Design System 官方主页、先锋科技博客。\n- **不适用场景**：强调奢侈品的高级微光质感界面、需要大面积图片沉浸式留白的摄影网站、高度严肃的医疗或金融风控后台。\n\n## 2. 具象化的 Tailwind 字典 (Tailwind Dictionary)\n\n> ⚠️ **AI 约束**：不要只使用模糊的形容词，必须明确指定 Tailwind 类名。\n\n- **圆角策略 (Rounded)**：区别于完全直角的新粗野主义，此风格更具亲和力。外层大卡片与核心功能块使用中等圆角 `rounded-2xl`（或 `rounded-[20px]`），内部小标签或状态组件采用 `rounded-lg` 或 `rounded-full`。\n- **阴影策略 (Shadow)**：绝对不使用任何模糊、渐变的弥散阴影。必须使用硬边缘的黑色位移投影来制造板块的立体系悬浮感，典型类名如 `shadow-[4px_4px_0px_0px_#000000]` 或 `shadow-[6px_6px_0px_0px_#1A1A1A]`。\n- **边框策略 (Border)**：全员标配描边，用来作为图形和卡片的分界线。统一使用纯黑（或极深灰）的实体边框：`border-2 border-black` 或 `border-[1.5px] border-neutral-900`。\n- **间距与留白 (Spacing)**：布局极其规整，像杂志格子般严丝合缝。 Section 之间使用标准的 `gap-6` 或 `gap-8` 紧凑排列；卡片内部通常使用对称的 `p-6` 或 `p-8` 保证充实的图文呼吸感。\n\n## 3. 色彩变量映射 (Color Variables)\n\n> ⚠️ **AI 约束**：明确告诉 AI 主色、背景色、边框色的具体 Hex 值，避免 AI 自由发挥。\n\n- **Background/Canvas (基础画布)**：`#F3F3F3` (或带一点点米调的 `#EFEFEF`) - 极为干净、理性的浅灰色大背景，用于衬托上层的多彩卡片。\n- **Primary/Accent (核心提亮色组)**：\n  - **复古芒果黄**：`#F2C94C` - 用于最核心的项目卡片、重点高亮标签或悬浮切换按钮。\n  - **低饱和紫萝兰**：`#D3C2F7` - 用于次要重点板块、按钮背景或设计系统标签。\n  - **清新草绿**：`#6FCF97` - 用于“战略”、“经验”等正向状态标签。\n  - **柔和珊瑚粉**：`#EB5757` - 用于特定分类或趣味性装饰元素。\n- **Surface (卡片背景)**：`#FFFFFF` - 标准卡片底色，配合黑色粗边框，确保极佳的内容可读性。\n- **Border/Text (边框与绝对油墨)**：`#000000` (或 `#111111`) - 用于所有的文字、图标描边、卡片边框以及硬投影。\n\n## 4. Typography (排版系统原则)\n\n- **展示字体 (Display/Heading)**：主标题与导航 LOGO。采用极为粗重、硬朗的无衬线黑体，字距略微压缩，大开大合。典型类名组合：`font-black text-3xl md:text-5xl text-black tracking-tight leading-none uppercase`。\n- **正文字体 (Body)**：正文与卡片描述。采用字形方正、间距适中的现代无衬线体，字重适中，确保在粗边框包围下依然拥有极高、极清晰的视觉传达。典型类名组合：`font-semibold text-neutral-800 text-sm md:text-base leading-relaxed`。\n\n## 5. 基准组件示例 (Anchor Component)\n\n> ⚠️ **AI 约束**：请 AI 在生成其他组件时，严格参考以下基准组件的 HTML/Tailwind 结构。\n\n```html\n<div\n  class=\"bg-[#F2C94C] rounded-[24px] p-6 border-2 border-black shadow-[6px_6px_0px_0px_#000000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_0px_#000000] transition-all duration-200 max-w-sm\"\n>\n  <div\n    class=\"w-full h-40 bg-white rounded-xl border-2 border-black mb-4 flex items-center justify-center font-black text-4xl\"\n  >\n    Y\n  </div>\n  <h3 class=\"font-black text-2xl text-black uppercase tracking-tight mb-2\">\n    Yorgute\n  </h3>\n  <p class=\"font-medium text-sm text-neutral-900 leading-relaxed mb-4\">\n    Projeto autoral que explora uma alternativa às redes sociais atuais,\n    priorizando vínculos humanos e memória digital.\n  </p>\n  <a\n    href=\"#\"\n    class=\"inline-flex items-center font-bold text-sm text-black underline underline-offset-4 hover:text-neutral-700\"\n  >\n    Ver projeto ↗\n  </a>\n</div>\n\n<div\n  class=\"flex flex-wrap gap-3 p-4 bg-white border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000000]\"\n>\n  <span\n    class=\"px-3 py-1 bg-[#6FCF97] text-black text-xs font-bold rounded-lg border-2 border-black\"\n  >\n    Estratégia\n  </span>\n  <span\n    class=\"px-3 py-1 bg-[#D3C2F7] text-black text-xs font-bold rounded-lg border-2 border-black\"\n  >\n    Design Inteligente\n  </span>\n  <button\n    class=\"ml-auto px-4 py-1 bg-black text-white text-xs font-bold rounded-lg border-2 border-black hover:bg-white hover:text-black transition-colors\"\n  >\n    Contato\n  </button>\n</div>\n```\n````\n\n## 6. Layout & Spacing (布局与空间)\n\n- **留白哲学**：严谨的几何主义。整体界面就像是由一个个被框起来的“信息集装箱”拼接而成。它不依赖无边界的空气感留白，而是通过卡片与卡片之间标准的、等距的物理缝隙（如 `space-y-6`）来形成天然的视觉秩序。\n\n## 7. Elevation & Depth (层级与深度)\n\n- **位移差与硬投影**：该风格的纵深感完全由“黑色实体投影”和“反向位移（Translate）”来决定。背景是 0 层，卡片通过 `shadow-[4px_4px_0px_0px_#000000]` 拔高至 1 层。当用户 Hover 悬停时，卡片向左上微调 `hover:-translate-y-0.5 hover:-translate-x-0.5` 且投影变大，形成极为纯粹的机械式物理反弹质感。\n\n## 8. Do's and Don'ts (设计禁忌)\n\n- **Do**：\n- 必须坚持为所有的卡片、按钮、标签添加刚性纯黑边框（`border-2 border-black`）。\n- 阴影必须是硬边无渐变色块（`shadow-[Xpx_Xpx_0px_0px_#000]`），禁止带有任何模糊度（`blur`）。\n- 卡片底色可以大胆尝试复古粉质色彩，但文字必须保持绝对的纯黑高可读性。\n\n- **Don't**：\n- 绝对不要引入任何现代化的渐变色、色彩斑斓的发光或弥散阴影（`blur-xl`）。\n- 不要使用纤细、软糯、带有过多装饰性的花体衬线字作为大标题。\n- 严格禁止在同一个组件内同时出现圆角、直角、粗边框、无边框混杂的情况，粗野主义的灵魂在于全站视觉规范的绝对高度统一。\n"
     },
     {
       "id": "kinetic-scroll-typography-reveal",
@@ -468,7 +610,7 @@
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/screen-recording-2026-06-14.gif"
+        "/content-assets/multi-column-accordion-reveal.mp4"
       ],
       "triggers": [
         "卡片折叠",
@@ -505,7 +647,7 @@
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/brand-services-sticky-overlap.gif"
+        "/content-assets/multi-section-sticky-overlap.mp4"
       ],
       "triggers": [
         "页面堆叠",
@@ -562,25 +704,45 @@
     {
       "id": "nvrmnd-editorial-neo-brutalism",
       "type": "ui",
-      "name": "nvrmnd editorial neo brutalism",
-      "description": "",
-      "domains": [],
-      "aesthetics": [],
+      "name": "Neo-Brutalist Editorial",
+      "nameZh": "NVRMND 编辑感新粗野主义",
+      "description": "该风格融合了现代新粗野主义（Neo-Brutalism）的硬朗骨架与高端时尚杂志的排版肌理。通过极具张力的超大非衬线紧凑字体、粗重线条分割，配合复古低保真像素（Pixelated）交互元素和高饱和荧光绿/宝蓝点缀，形成专业而叛逆、具有强烈视觉冲击力的先锋数字艺术氛围。 触发词：nvrmnd-editorial-neo-brutalism style, ultra-bold typography, neo-brutalist layouts, high contrast neon accents, pixelated interactive elements",
+      "domains": [
+        "创意设计",
+        "数字工作室",
+        "个人品牌",
+        "出海独立开发者"
+      ],
+      "aesthetics": [
+        "新粗野主义",
+        "先锋杂志风",
+        "像素波普",
+        "极高对比度"
+      ],
       "interactionTypes": [],
       "components": [],
       "effects": [],
+      "colorScheme": "Light",
+      "website": "https://www.nvrmndstudio.com/",
       "preview": {
         "backgroundColor": "#99FF00",
         "textColor": "#171717"
       },
+      "coverImage": "/content-assets/nvrmndstudio.webp",
       "source": {
         "repo": "vibe-ui",
         "referencePath": "skills/ui-style-library/references/nvrmnd-editorial-neo-brutalism.md",
         "skillPath": "skills/ui-style-library/SKILL.md"
       },
       "assets": [],
-      "triggers": [],
-      "content": "---\n\n## id: nvrmnd-editorial-neo-brutalism\n\nname: Neo-Brutalist Editorial\nname_zh: \"NVRMND 编辑感新粗野主义\"\ndomain: [\"创意设计\", \"数字工作室\", \"个人品牌\", \"出海独立开发者\"]\naesthetic: [\"新粗野主义\", \"先锋杂志风\", \"像素波普\", \"极高对比度\"]\ncolor_scheme: \"Light\"\ncover_image: \"../assets/nvrmndstudio.webp\"\nwebsite: [https://www.nvrmndstudio.com/](https://www.nvrmndstudio.com/)\ndescription: >\n该风格融合了现代新粗野主义（Neo-Brutalism）的硬朗骨架与高端时尚杂志的排版肌理。通过极具张力的超大非衬线紧凑字体、粗重的线条分割，配合复古的低保真像素（Pixelated）交互元素和高饱和度的荧光绿/宝蓝色作为点缀，营造出一种既专业又带有些许叛逆、极具视觉冲击力的先锋数字艺术氛围。\n触发词: nvrmnd-editorial-neo-brutalism style, ultra-bold typography, neo-brutalist layouts, high contrast neon accents, pixelated interactive elements\n\n# Neo-Brutalist Editorial UI 规范说明书\n\n## 1. Overview (概览)\n\n- **核心基调**：张扬叛逆、先锋自信、具有极强视线侵略性的时尚杂志感。\n- **视觉特征**：超大字重标题且字距极度紧凑（Tracking-tighter）、4px 粗黑边界线与网格基底、荧光绿高亮色块、低保真像素风（Pixelated）功能性文本与互动元素。\n- **适用场景**：设计工作室、独立创意人作品集、极客品牌官网、极具个性化的产品落地页（Landing Page）。\n- **不适用场景**：传统政企官网、医疗健康、需要提供极高安稳感和中庸信任感的理财或银行类应用。\n\n## 2. 具象化的 Tailwind 字典 (Tailwind Dictionary)\n\n> ⚠️ **AI 约束**：不要只使用模糊的形容词，必须明确指定 Tailwind 类名。\n\n- **圆角策略 (Rounded)**：整体采用完全直角 `rounded-none` 或极小圆角 `rounded-sm`。但在特定交互组件（如实体优惠券卡片、门票）上可使用 `rounded-3xl` 或 `rounded-full` 形成结构冲突。\n- **阴影策略 (Shadow)**：绝不使用渐变弥散阴影。若要表达层级，使用硬核无模糊的黑边错位投影 `shadow-[4px_4px_0px_0px_#000000]` 或纯色块直接层叠。\n- **边框策略 (Border)**：高频使用粗线进行区域分割。使用 `border-t-2 border-black` 或 `border-b` 进行 Section 级别划分；网格系统使用细线 `border-gray-300` 形成后台草稿感。\n- **间距与留白 (Spacing)**：Section 之间采用呼吸感极强的超大留白（`py-24` 至 `py-36`），但在元素组内部（如标题与副标题之间）采用极度紧凑的间距（`space-y-2` 或 `mt-1`）。\n\n## 3. 色彩变量映射 (Color Variables)\n\n> ⚠️ **AI 约束**：明确告诉 AI 主色、背景色、边框色的具体 Hex 值，避免 AI 自由发挥。\n\n- **Primary (高亮/主色)**：`#99FF00`（荧光冷绿）- 用于高光选中背景、核心行动点（CTA）悬浮反馈。\n- **Secondary (次高亮)**：`#1043FF`（宝蓝色）- 用于重要功能区块底色、标签背景或特定微交互。\n- **Background/Canvas (画布背景)**：`#E3E3E3` 或 `#EDEDED`（低饱和冷灰）- 模拟实体纸张或高级水泥画板大面积底色。\n- **Surface (容器背景)**：`#FFFFFF`（纯白）- 用于卡片、内容主干区域，与冷灰底色形成清晰切分。\n- **Border/Hairline (线条/描边)**：`#000000`（纯黑）- 用于粗分割线、文字描边或硬核投影。\n- **Text/Ink (主要文本)**：`#1A1A1A`（墨黑）- 承载大标题和主视觉文案，确保绝对的高对比度。\n- **Muted (弱化文本)**：`#666666`（中灰）- 用于副标题、时间戳、说明文本。\n\n## 4. Typography (排版系统原则)\n\n- **展示字体 (Display)**：大标题必须拥有极致的视觉压迫感。使用超重字重、极致压缩的字距与行距。示例：`font-black text-6xl md:text-8xl uppercase tracking-tighter leading-[0.85] text-[#1A1A1A]`。\n- **功能交互字体 (Interactive)**：在导航菜单序号、标签、提交按钮等功能性节点上，使用像素风字体或等宽字体。示例：`font-mono font-bold tracking-widest`。\n- **正文字体 (Body)**：正文需要回归理性和极高可读性，采用无衬线中文字体或现代无衬线英文字体，保障视线流畅。示例：`font-normal text-base leading-relaxed text-[#333333]`。\n\n## 5. 基准组件示例 (Anchor Component)\n\n> ⚠️ **AI 约束**：请 AI 在生成其他组件时，严格参考以下基准组件的 HTML/Tailwind 结构。\n\n```html\n<button\n  class=\"relative group bg-[#1043FF] text-white px-8 py-4 font-mono font-bold tracking-wider text-sm flex items-center gap-4 transition-all duration-200 active:scale-95\"\n>\n  LET'S BUILD YOURS\n  <span\n    class=\"inline-block border border-white p-1 text-xs group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform\"\n    >↗</span\n  >\n</button>\n\n<div class=\"relative inline-block cursor-pointer py-2 group\">\n  <span\n    class=\"relative z-10 text-4xl font-black tracking-tighter uppercase transition-colors group-hover:text-black\"\n  >\n    DREAM CLIENTS\n  </span>\n  <div\n    class=\"absolute inset-x-0 bottom-1 h-8 bg-[#99FF00] -z-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-200\"\n  ></div>\n</div>\n\n<div\n  class=\"w-full border-b border-black/10 py-6 flex justify-between items-end group cursor-pointer hover:border-black transition-colors\"\n>\n  <div class=\"flex items-baseline gap-6\">\n    <span class=\"font-mono text-xs text-[#1043FF]\">[ 01 ]</span>\n    <h3 class=\"text-5xl font-black uppercase tracking-tighter leading-none\">\n      HOME\n    </h3>\n  </div>\n  <span\n    class=\"font-mono text-xs opacity-0 group-hover:opacity-100 transition-opacity\"\n    >➔ VIEW SECTION</span\n  >\n</div>\n```\n\n## 6. Layout & Spacing (布局与空间)\n\n- **留白哲学**：采用“极空与极满”的剧烈反差。版面四周留出大面积的纯灰色块不放任何元素，给视觉以呼吸感；而核心文案区块则通过超大字号将空间近乎塞满，形成如同海报般的排版张力。\n\n## 7. Elevation & Depth (层级与深度)\n\n- 界面彻底抛弃伪物主义的三维阴影。完全依赖**高饱和度色块的对撞**（如灰底上放白卡片，白卡片上放蓝按钮）以及**硬边缘线条的堆叠**来划分前后层级。\n\n## 8. Do's and Don'ts (设计禁忌)\n\n- **Do**：\n- 大胆使用全大写（UPPERCASE）英文标题。\n- 在页面边缘加入像素化（Pixelated）或者点阵（Dot-matrix）风格的巨型 LOGO 作为视觉底纹。\n- 保持边框和线条的纯黑高对比度。\n\n- **Don't**：\n- **绝对不要**使用任何带有渐变色（Gradient）的背景或按钮。\n- 不要使用柔和、带有模糊（Blur）的毛玻璃效果或弥散阴影。\n- 严禁在大标题上使用大字距（Tracking-wide），这会彻底破坏新粗野主义的紧凑感和压迫力。\n"
+      "triggers": [
+        "nvrmnd-editorial-neo-brutalism style",
+        "ultra-bold typography",
+        "neo-brutalist layouts",
+        "high contrast neon accents",
+        "pixelated interactive elements"
+      ],
+      "content": "---\nid: nvrmnd-editorial-neo-brutalism\nname: Neo-Brutalist Editorial\nname_zh: \"NVRMND 编辑感新粗野主义\"\ncover_image: \"../assets/nvrmndstudio.webp\"\ndomain: [\"创意设计\", \"数字工作室\", \"个人品牌\", \"出海独立开发者\"]\naesthetic: [\"新粗野主义\", \"先锋杂志风\", \"像素波普\", \"极高对比度\"]\ncolor_scheme: \"Light\"\nwebsite: \"https://www.nvrmndstudio.com/\"\ndescription: >\n  该风格融合了现代新粗野主义（Neo-Brutalism）的硬朗骨架与高端时尚杂志的排版肌理。通过极具张力的超大非衬线紧凑字体、粗重线条分割，配合复古低保真像素（Pixelated）交互元素和高饱和荧光绿/宝蓝点缀，形成专业而叛逆、具有强烈视觉冲击力的先锋数字艺术氛围。\n  触发词：nvrmnd-editorial-neo-brutalism style, ultra-bold typography, neo-brutalist layouts, high contrast neon accents, pixelated interactive elements\n---\n\n# Neo-Brutalist Editorial UI 规范说明书\n\n## 1. Overview (概览)\n\n- **核心基调**：张扬叛逆、先锋自信、具有极强视线侵略性的时尚杂志感。\n- **视觉特征**：超大字重标题且字距极度紧凑（Tracking-tighter）、4px 粗黑边界线与网格基底、荧光绿高亮色块、低保真像素风（Pixelated）功能性文本与互动元素。\n- **适用场景**：设计工作室、独立创意人作品集、极客品牌官网、极具个性化的产品落地页（Landing Page）。\n- **不适用场景**：传统政企官网、医疗健康、需要提供极高安稳感和中庸信任感的理财或银行类应用。\n\n## 2. 具象化的 Tailwind 字典 (Tailwind Dictionary)\n\n> ⚠️ **AI 约束**：不要只使用模糊的形容词，必须明确指定 Tailwind 类名。\n\n- **圆角策略 (Rounded)**：整体采用完全直角 `rounded-none` 或极小圆角 `rounded-sm`。但在特定交互组件（如实体优惠券卡片、门票）上可使用 `rounded-3xl` 或 `rounded-full` 形成结构冲突。\n- **阴影策略 (Shadow)**：绝不使用渐变弥散阴影。若要表达层级，使用硬核无模糊的黑边错位投影 `shadow-[4px_4px_0px_0px_#000000]` 或纯色块直接层叠。\n- **边框策略 (Border)**：高频使用粗线进行区域分割。使用 `border-t-2 border-black` 或 `border-b` 进行 Section 级别划分；网格系统使用细线 `border-gray-300` 形成后台草稿感。\n- **间距与留白 (Spacing)**：Section 之间采用呼吸感极强的超大留白（`py-24` 至 `py-36`），但在元素组内部（如标题与副标题之间）采用极度紧凑的间距（`space-y-2` 或 `mt-1`）。\n\n## 3. 色彩变量映射 (Color Variables)\n\n> ⚠️ **AI 约束**：明确告诉 AI 主色、背景色、边框色的具体 Hex 值，避免 AI 自由发挥。\n\n- **Primary (高亮/主色)**：`#99FF00`（荧光冷绿）- 用于高光选中背景、核心行动点（CTA）悬浮反馈。\n- **Secondary (次高亮)**：`#1043FF`（宝蓝色）- 用于重要功能区块底色、标签背景或特定微交互。\n- **Background/Canvas (画布背景)**：`#E3E3E3` 或 `#EDEDED`（低饱和冷灰）- 模拟实体纸张或高级水泥画板大面积底色。\n- **Surface (容器背景)**：`#FFFFFF`（纯白）- 用于卡片、内容主干区域，与冷灰底色形成清晰切分。\n- **Border/Hairline (线条/描边)**：`#000000`（纯黑）- 用于粗分割线、文字描边或硬核投影。\n- **Text/Ink (主要文本)**：`#1A1A1A`（墨黑）- 承载大标题和主视觉文案，确保绝对的高对比度。\n- **Muted (弱化文本)**：`#666666`（中灰）- 用于副标题、时间戳、说明文本。\n\n## 4. Typography (排版系统原则)\n\n- **展示字体 (Display)**：大标题必须具备强视觉压迫感。使用超重字重和压缩字距行距，推荐：`font-black text-6xl md:text-8xl uppercase tracking-tighter leading-[0.85] text-[#1A1A1A]`。\n- **正文字体 (Body)**：正文强调理性与可读性，采用现代无衬线体系；功能标记（编号、按钮）可用 `font-mono font-bold tracking-widest` 增强机械感。\n\n## 5. 基准组件示例 (Anchor Component)\n\n> ⚠️ **AI 约束**：请 AI 在生成其他组件时，严格参考以下基准组件的 HTML/Tailwind 结构。\n\n```html\n<button\n  class=\"relative group bg-[#1043FF] text-white px-8 py-4 font-mono font-bold tracking-wider text-sm flex items-center gap-4 transition-all duration-200 active:scale-95\"\n>\n  LET'S BUILD YOURS\n  <span\n    class=\"inline-block border border-white p-1 text-xs group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform\"\n    >↗</span\n  >\n</button>\n\n<div class=\"relative inline-block cursor-pointer py-2 group\">\n  <span\n    class=\"relative z-10 text-4xl font-black tracking-tighter uppercase transition-colors group-hover:text-black\"\n  >\n    DREAM CLIENTS\n  </span>\n  <div\n    class=\"absolute inset-x-0 bottom-1 h-8 bg-[#99FF00] -z-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-200\"\n  ></div>\n</div>\n\n<div\n  class=\"w-full border-b border-black/10 py-6 flex justify-between items-end group cursor-pointer hover:border-black transition-colors\"\n>\n  <div class=\"flex items-baseline gap-6\">\n    <span class=\"font-mono text-xs text-[#1043FF]\">[ 01 ]</span>\n    <h3 class=\"text-5xl font-black uppercase tracking-tighter leading-none\">\n      HOME\n    </h3>\n  </div>\n  <span\n    class=\"font-mono text-xs opacity-0 group-hover:opacity-100 transition-opacity\"\n    >➔ VIEW SECTION</span\n  >\n</div>\n```\n\n## 6. Layout & Spacing (布局与空间)\n\n- **留白哲学**：采用“极空与极满”的剧烈反差。版面四周留出大面积的纯灰色块不放任何元素，给视觉以呼吸感；而核心文案区块则通过超大字号将空间近乎塞满，形成如同海报般的排版张力。\n\n## 7. Elevation & Depth (层级与深度)\n\n- 界面彻底抛弃伪物主义的三维阴影。完全依赖**高饱和度色块的对撞**（如灰底上放白卡片，白卡片上放蓝按钮）以及**硬边缘线条的堆叠**来划分前后层级。\n\n## 8. Do's and Don'ts (设计禁忌)\n\n- **Do**：保持全大写标题、纯黑高对比线条与像素化功能元素三者并存，维持“编辑感 + 粗野感”的统一视觉语气。\n- **Don't**：避免使用渐变、毛玻璃和模糊阴影；同时不要给主标题使用 `tracking-wide`，否则会破坏紧凑压迫感。\n"
     },
     {
       "id": "organic-soft-minimalism",
@@ -625,6 +787,83 @@
         "rounded aesthetic"
       ],
       "content": "---\nid: organic-soft-minimalism\nname: Organic Soft Minimalism\nname_zh: \"有机柔和极简风格\"\ncover_image: \"../assets/readymag.webp\"\ndomain: [\"健康生活\", \"习惯养成\", \"笔记工具\", \"情绪价值产品\"]\naesthetic: [\"有机极简\", \"柔和 UI\", \"低饱和渐变\", \"治愈科技感\"]\ncolor_scheme: \"Light\"\nwebsite: \"https://readymag.com/examples\"\ndescription: >\n  Organic Soft Minimalism 用暖中性色、低饱和粉彩、超大圆角和柔和渐变建立平静、亲近、无压力的界面气质。它弱化硬朗边界与强对比，用温柔的留白、圆润容器和轻盈排版传达治愈、专注和可信赖的情绪。触发词：organic minimalism, soft UI, pastel gradients, warm neutral background, calm tech, rounded aesthetic\n---\n\n# Organic Soft Minimalism UI 规范说明书\n\n## 1. Overview (概览)\n\n- **核心基调**：温暖、治愈、安静、低压力。\n- **视觉特征**：暖米色背景、粉彩渐变、超大圆角、低对比细线、柔软留白。\n- **适用场景**：习惯打卡、心理健康、日程管理、女性向消费产品、AI 陪伴或知识工具。\n- **不适用场景**：金融交易、重度开发者工具、竞技游戏、需要强警示感的后台系统。\n\n## 2. 具象化的 Tailwind 字典 (Tailwind Dictionary)\n\n> ⚠️ **AI 约束**：不要只使用模糊的形容词，必须明确指定 Tailwind 类名。\n\n- **圆角策略 (Rounded)**：大量使用 `rounded-3xl`、`rounded-[2rem]` 和 `rounded-full`，避免 `rounded-none`。\n- **阴影策略 (Shadow)**：使用极轻柔阴影 `shadow-[0_18px_60px_rgba(120,90,70,0.10)]`，不要使用硬阴影。\n- **边框策略 (Border)**：使用 `border border-white/70` 或 `border-[#E8DDD2]`，让边界几乎融入背景。\n- **间距与留白 (Spacing)**：采用舒缓节奏，Section 使用 `py-20 md:py-28`，卡片使用 `p-7 md:p-10`，元素间使用 `space-y-5`。\n\n## 3. 色彩变量映射 (Color Variables)\n\n> ⚠️ **AI 约束**：明确告诉 AI 主色、背景色、边框色的具体 Hex 值，避免 AI 自由发挥。\n\n- **Primary (主色)**：`#D98F75` - 用于 CTA、图标高亮和温暖强调。\n- **Background/Canvas (画布背景)**：`#F7F1E8` - 暖米色大面积底色。\n- **Surface (容器背景)**：`#FFFDF8` - 柔和白色卡片底。\n- **Border/Hairline (线条/描边)**：`#E8DDD2` - 低对比容器边界。\n- **Text/Ink (主要文本)**：`#2F2A25` - 温暖深棕黑文本。\n- **Muted (弱化文本)**：`#8B7E73` - 说明文本和辅助信息。\n\n## 4. Typography (排版系统原则)\n\n- **展示字体 (Display)**：标题应柔和但清晰，使用 `font-semibold tracking-tight leading-tight text-[#2F2A25]`，避免过度粗黑。\n- **正文字体 (Body)**：正文使用 `text-base leading-relaxed text-[#8B7E73]`，保持慢节奏阅读感。\n\n## 5. 基准组件示例 (Anchor Component)\n\n> ⚠️ **AI 约束**：请 AI 在生成其他组件时，严格参考以下基准组件的 HTML/Tailwind 结构。\n\n```html\n<div class=\"rounded-[2rem] border border-[#E8DDD2] bg-[#FFFDF8] p-8 shadow-[0_18px_60px_rgba(120,90,70,0.10)]\">\n  <div class=\"mb-6 h-28 rounded-[1.5rem] bg-gradient-to-br from-[#F8C8B8] via-[#F6E4B8] to-[#CDE7D8]\"></div>\n  <span class=\"rounded-full bg-[#F7F1E8] px-4 py-2 text-sm font-medium text-[#D98F75]\">Today</span>\n  <h3 class=\"mt-5 text-3xl font-semibold tracking-tight text-[#2F2A25]\">A calmer way to keep momentum.</h3>\n  <p class=\"mt-4 leading-relaxed text-[#8B7E73]\">Use soft surfaces, warm neutrals, and gentle gradients to reduce visual pressure.</p>\n  <button class=\"mt-8 rounded-full bg-[#D98F75] px-6 py-3 font-semibold text-white transition hover:scale-[1.02]\">Start gently</button>\n</div>\n```\n\n## 6. Layout & Spacing (布局与空间)\n\n- **留白哲学**：保持充足呼吸感，模块之间像漂浮在暖色画布上，不要压缩成工具后台式密度。\n\n## 7. Elevation & Depth (层级与深度)\n\n- 用柔和阴影、浅色边界和渐变色块表达深度。层级应像纸张轻轻叠放，而不是硬朗悬浮。\n\n## 8. Do's and Don'ts (设计禁忌)\n\n- **Do**：使用低饱和颜色、圆润容器、轻柔渐变和温暖文字色。\n- **Don't**：不要使用纯黑高对比、荧光色、锐利直角、强烈霓虹或厚重阴影。\n"
+    },
+    {
+      "id": "scroll-parallax-stagger-reveal",
+      "type": "motion",
+      "name": "scroll-parallax-stagger-reveal",
+      "nameZh": "流式滚动视差与非对称交错揭示",
+      "description": "这是一个基于页面滚动深度的非对称视差联动动效。当用户向下滚动时，左侧大字体的文本流以标准速率位移，而右侧的插图、卡片及背景色块以略微滞后或加速的“异步速度”向上推移。这种物理速度差消除了传统网页滚动的生硬感，营造出元素仿佛悬浮在不同空间维度的“流体层叠感”。",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [
+        "滚动联动",
+        "视差悬浮"
+      ],
+      "components": [
+        "卡片组件",
+        "图文流布局",
+        "网格系统"
+      ],
+      "effects": [
+        "滚动视差",
+        "揭示过渡",
+        "异步位移"
+      ],
+      "website": "https://safetonet.com",
+      "preview": {
+        "backgroundColor": "#171717",
+        "textColor": "#FFFFFF"
+      },
+      "coverVideo": "/content-assets/scroll-parallax-stagger-reveal.mp4",
+      "source": {
+        "repo": "vibe-motion",
+        "referencePath": "skills/interaction-library/references/scroll-parallax-stagger-reveal.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "/content-assets/scroll-parallax-stagger-reveal.mp4"
+      ],
+      "triggers": [],
+      "content": "---\nversion: alpha\nname: scroll-parallax-stagger-reveal\nname_zh: \"流式滚动视差与非对称交错揭示\"\ncover_video: \"../assets/scroll-parallax-stagger-reveal.mp4\"\ncomponents: [\"卡片组件\", \"图文流布局\", \"网格系统\"]\neffects: [\"滚动视差\", \"揭示过渡\", \"异步位移\"]\ninteraction_types: [\"滚动联动\", \"视差悬浮\"]\ndescription: >\n  这是一个基于页面滚动深度的非对称视差联动动效。当用户向下滚动时，左侧大字体的文本流以标准速率位移，而右侧的插图、卡片及背景色块以略微滞后或加速的“异步速度”向上推移。这种物理速度差消除了传统网页滚动的生硬感，营造出元素仿佛悬浮在不同空间维度的“流体层叠感”。\ntrigger_words: [滚动视差、异步交错、非对称流、视觉层叠]\nwebsite: \"https://safetonet.com\"\n\nmotion_tokens:\n  # 推荐使用滚动轴驱动的线性映射 (Scroll-Driven Animations)\n  scroll_mapping:\n    text_layer: \"speed * 1.0\"\n    image_card_layer: \"speed * 1.25\" # 略微加快，形成超越文字的动态包抄感\n    background_gradient: \"speed * 0.8\" # 慢速大面积移动，保证视觉重心稳固\n\n  # 如果使用基于 Framer Motion 的 Webhook 触发\n  spring:\n    stiffness: 120\n    damping: 25\n    mass: 1.2\n\n  css_easing: \"cubic-bezier(0.16, 1, 0.3, 1)\"\n  duration: \"滚动进度实时关联\"\n\n  variants:\n    initial: { opacity: 0, y: 60 }\n    animate: { opacity: 1, y: 0 }\n---\n\n# 流式滚动视差与非对称交错揭示规范\n\n## 1. 动效体感 (Feel & Vibe)\n\n- **视觉感受**：**空间层叠感、呼吸感、叙事平滑**。通过打破传统的“整页齐头并进”的滚动模式，赋予页面深度的 Z 轴空间幻觉。\n- **交互逻辑**：\n  - **视差联动**：随着用户向下滚动，页面右侧的带有圆角的彩色渐变容器（如 \"The Gold Standard\", \"Turning the Lights On\" 卡片）以比左侧纯文本略快的速度（大约 1.2 倍系数）向上滑入。\n  - **留白呼吸**：元素之间并非紧密排列，而是随着滚动在交错的位移差中释放出更多负空间（Negative Space），使得多图文排版在运动中保持呼吸感，避免视觉压迫。\n- **适用场景**：企业官网产品功能介绍、品牌故事长叙事页面、艺术设计类作品集展示。\n\n## 2. 媒体参考 (Reference Asset)\n\n> 动态行为源自实际网页的滚动行为捕获。\n\n- **文件路径**：`../assets/录屏2026-06-17 21.05.54.mp4`\n- **来源引用**：SafeToNet 官方网站产品介绍流\n\n## 3. 技术实现要点 (Implementation Details)\n\n### 推荐库\n\n- **首选**：Framer Motion (结合 `useScroll` 与 `useTransform`) 或 ScrollTrigger (GSAP)\n- **次选**：现代 CSS `animation-timeline: scroll()` (原生滚动驱动动画)\n\n### 关键属性\n\n- **异步转化系数**：必须对左右两侧的容器设置不同的 `y` 轴偏移映射区间。例如左侧 `y` 从 0 到 -100，右侧卡片 `y` 从 50 到 -150。\n- **视口预加载 (Will-Change)**：由于大面积带渐变色及圆角的阴影卡片（如 \"The Gold Standard\" 的毛玻璃/白底卡片）在视差滚动时极易引发浏览器重绘（Repaint），必须对滚动视差图层开启 `will-change: transform` 以激活 GPU 硬件加速，防止滚动撕裂。\n\n## 4. 示例代码骨架 (Code Skeleton)\n\n```tsx\nimport { motion, useScroll, useTransform } from \"framer-motion\";\nimport { useRef } from \"react\";\n\nexport const ParallaxSection = () => {\n  const containerRef = useRef(null);\n\n  // 监听容器相对于视口的滚动进度\n  const { scrollYProgress } = useScroll({\n    target: containerRef,\n    offset: [\"start end\", \"end start\"],\n  });\n\n  // 核心：为文字和卡片赋予不同的滚动位移系数（非对称位移）\n  const textY = useTransform(scrollYProgress, [0, 1], [0, -50]);\n  const cardY = useTransform(scrollYProgress, [0, 1], [100, -150]); // 移动速度更快，形成赶超视差\n  const bgOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 1, 0.6]);\n\n  return (\n    <div\n      ref={containerRef}\n      className=\"relative w-full min-h-screen flex items-center justify-between px-12 py-24 overflow-hidden\"\n    >\n      {/* 左侧文字层 */}\n      <motion.div style={{ y: textY }} className=\"w-1/2 max-w-xl\">\n        <h2 className=\"text-6xl font-serif tracking-tight text-gray-900 leading-none\">\n          Turning the Lights On\n        </h2>\n        <p className=\"mt-6 text-lg text-gray-600 leading-relaxed\">\n          SafeToNet shines a light on the unprotected, darker side of the\n          Internet...\n        </p>\n      </motion.div>\n\n      {/* 右侧加速滑入的视差卡片层 */}\n      <motion.div\n        style={{ y: cardY }}\n        className=\"w-5/12 bg-white/80 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-gray-100\"\n      >\n        <div className=\"w-full h-48 bg-gradient-to-br from-purple-400 to-pink-300 rounded-xl mb-6 overflow-hidden\">\n          {/* 插图或动态元素 */}\n        </div>\n        <h3 className=\"text-2xl font-bold mb-2\">The Gold Standard</h3>\n        <p className=\"text-sm text-gray-500\">Real-time on-device protection.</p>\n      </motion.div>\n    </div>\n  );\n};\n```\n\n## 5. 易错点与禁忌 (Gotchas & Don'ts)\n\n- **忌位移系数过大**：视差滚动的异步系数不可调得过于激进（右侧速度超过左侧 1.5 倍以上），否则会导致用户在快速滚动时产生眩晕感，或导致内容过早滑出屏幕、与上下游组件发生视觉重叠（Overlap 冲突）。\n- **动能平滑处理**：如果用户使用的是机械鼠标滚轮（带段落感），原生的滚动会非常生硬。建议页面配合 `lenis` 或 `smooth-scrollbar` 进行平滑滚动拦截，才能完美还原视频中那种如同奶油般丝滑的推进体感。\n- **移动端降级**：在手机或平板端，由于屏幕宽度限制，双栏布局会降级为单栏垂直排列。此时**必须关闭 Z 轴/Y 轴的视差错位**，恢复为正常的流式线性滚动，否则会导致极差的阅读阻碍。\n"
+    },
+    {
+      "id": "smat-organic-grain-editorial",
+      "type": "ui",
+      "name": "SMAT Organic Grain Editorial",
+      "nameZh": "SMAT 有机颗粒人文刊物风",
+      "description": "该风格融合了经典纸质刊物的优雅排版与现代数字化有机美学。核心视觉由柔和细腻的低饱和度渐变、高质感的复古噪点颗粒（Grain）以及流畅自然的 3D 抽象有机形态共同构成。排版上极为大胆地使用优雅高贵的衬线体（Serif）作为核心视觉锤，传递出极具人文关怀、温暖而包容的情绪基调，非常适合强引导、重文本阅读且需要建立深度信任感的产品。 触发词：smat-organic-editorial-style",
+      "domains": [
+        "健康与公益",
+        "心理戒断支持",
+        "生活方式倡导",
+        "人文艺术媒体"
+      ],
+      "aesthetics": [
+        "有机渐变 (Organic Gradient)",
+        "复古刊物 (Editorial Serif)",
+        "自然柔和 (Natural & Muted)"
+      ],
+      "interactionTypes": [],
+      "components": [],
+      "effects": [],
+      "colorScheme": "Auto",
+      "website": "https://smat.ca/",
+      "preview": {
+        "backgroundColor": "#000000",
+        "textColor": "#FFFFFF"
+      },
+      "coverImage": "/content-assets/smat.webp",
+      "source": {
+        "repo": "vibe-ui",
+        "referencePath": "skills/ui-style-library/references/smat-organic-grain-editorial.md",
+        "skillPath": "skills/ui-style-library/SKILL.md"
+      },
+      "assets": [],
+      "triggers": [
+        "smat-organic-editorial-style"
+      ],
+      "content": "---\nid: smat-organic-grain-editorial\nname: SMAT Organic Grain Editorial\nname_zh: \"SMAT 有机颗粒人文刊物风\"\ncover_image: \"../assets/smat.webp\"\ndomain: [\"健康与公益\", \"心理戒断支持\", \"生活方式倡导\", \"人文艺术媒体\"]\naesthetic:\n  [\n    \"有机渐变 (Organic Gradient)\",\n    \"复古刊物 (Editorial Serif)\",\n    \"自然柔和 (Natural & Muted)\",\n  ]\ncolor_scheme: \"Auto\"\nwebsite: https://smat.ca/\ndescription: >\n  该风格融合了经典纸质刊物的优雅排版与现代数字化有机美学。核心视觉由柔和细腻的低饱和度渐变、高质感的复古噪点颗粒（Grain）以及流畅自然的 3D 抽象有机形态共同构成。排版上极为大胆地使用优雅高贵的衬线体（Serif）作为核心视觉锤，传递出极具人文关怀、温暖而包容的情绪基调，非常适合强引导、重文本阅读且需要建立深度信任感的产品。\n  触发词：smat-organic-editorial-style\n---\n\n# SMAT Organic Grain Editorial UI 规范说明书\n\n## 1. Overview (概览)\n\n- **核心基调**：温暖治愈、包容平和、人文质感、克制优雅。\n- **视觉特征**：微噪点自然有机渐变底色、大字重有衬线体（Serif）带来的传统报刊印刷感、拟真圆角气泡对话框（强化亲切感）、轻量化的微拟物 3D 抽象图形与趣味性浮动标签网格。\n- **适用场景**：心理健康与戒断服务、公益组织官网、数字杂志与内容社区、注重情感连接的人文科技产品。\n- **不适用场景**：硬核暗黑风游戏界面、高冷冷调工业风后台、快节奏强刺激的电商大促活动页。\n\n## 2. 具象化的 Tailwind 字典 (Tailwind Dictionary)\n\n> ⚠️ **AI 约束**：不要只使用模糊的形容词，必须明确指定 Tailwind 类名。\n\n- **圆角策略 (Rounded)**：常规功能卡片和模态弹窗使用亲和力较强的 `rounded-2xl` 到 `rounded-3xl`；按钮及悬浮气泡标签使用更柔软圆润的 `rounded-xl` 或 `rounded-full`。\n- **阴影策略 (Shadow)**：极为克制，常规内容完全不使用物理阴影（`shadow-none`）。仅在模拟现实对话气泡卡片层级或强提示弹窗时，使用微弱的硬边缘投影或柔和的一体化阴影，如 `shadow-[0_4px_20px_rgba(0,0,0,0.03)]`。\n- **边框策略 (Border)**：不使用强硬的深色实线。卡片边界或输入框通常采用低对比度的细描边（如 `border border-black/10` 或 `border border-amber-900/10`），或直接通过色块拼接分割，拒绝粗暴的线条感。\n- **间距与留白 (Spacing)**：倡导高呼吸感的“段落式”杂志排版。Section 之间使用极其宽裕的 `py-20` 到 `py-32`，组件内部则通过大文字间距和自然行高（`leading-relaxed`）营造出不急不躁的阅读节奏。\n\n## 3. 色彩变量映射 (Color Variables)\n\n> ⚠️ **AI 约束**：明确告诉 AI 主色、背景色、边框色的具体 Hex 值，避免 AI 自由发挥。\n\n- **Primary (主色)**：`#000000` (或 `#1A1A1A`) - 用于大字重的有衬线标题和核心正文，复刻纸质油墨印刷的尊贵质感。\n- **Background/Canvas (基础画布)**：`#FFFEE0` (明亮米黄/暖奶白) - 作为全站最底层的环境底色，相比纯白更具纸张的温度与阅读舒适感。\n- **Organic Gradient (有机渐变色谱)**：采用从绿色 `#1F996B`、温暖粉橘 `#F2B89D` 到柔和蓝紫 `#A1C6D9` 的大面积多色流体渐变，并叠加微细噪点。\n- **Surface (容器/卡片背景)**：`#FFFDD0` (低饱和度浅暖黄) 或 `#FFFFFF` (纯白) - 用于文字对话框和通栏信息板块，与背景形成微妙且舒适的层级差。\n- **Accent/Alert (强调/公告色)**：`#F9FA62` (高明度柠檬黄) - 用于顶部重要公告 Banner 或全局强提示弹窗，起到吸睛作用但不带侵略性。\n- **Text/Ink (油墨正文)**：`#1A1A1A` - 保证高品质的阅读体验。\n- **Muted (弱化说明)**：`#555555` - 用于次要辅助文本。\n\n## 4. Typography (排版系统原则)\n\n- **展示字体 (Display/Heading)**：大标题和核心口号。必须选用高阶、带有经典人文美感的**有衬线体（Serif）**，字重极粗，字距微调。典型类名组合：`font-serif font-bold text-4xl md:text-6xl text-neutral-900 tracking-tight leading-tight`。\n- **正文字体 (Body)**：正文与细则说明。为了保障屏幕长文本的极佳可读性，切换为高清晰度的**无衬线体（Sans-serif）**。典型类名组合：`font-sans font-medium text-base text-neutral-800 leading-relaxed`。\n\n## 5. 基准组件示例 (Anchor Component)\n\n> ⚠️ **AI 约束**：请 AI 在生成其他组件时，严格参考以下基准组件的 HTML/Tailwind 结构。\n\n```html\n<div\n  class=\"bg-[#F9FA62] rounded-[24px] p-8 max-w-md border border-black/5 text-center relative shadow-[0_12px_40px_rgba(0,0,0,0.04)]\"\n>\n  <button class=\"absolute top-4 right-4 text-neutral-700 hover:text-black\">\n    <svg class=\"w-5 h-5\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\">\n      <path\n        stroke-linecap=\"round\"\n        stroke-linejoin=\"round\"\n        stroke-width=\"2\"\n        d=\"M6 18L18 6M6 6l12 12\"\n      />\n    </svg>\n  </button>\n\n  <h3 class=\"font-serif font-bold text-2xl text-neutral-950 leading-snug mb-4\">\n    Les inscriptions au SMAT sont mises en pause pour une durée indéterminée.\n  </h3>\n  <p class=\"font-sans font-medium text-sm text-neutral-800 mb-6\">\n    Besoin de soutien ou de plus d'infos?\n  </p>\n  <button\n    class=\"bg-[#D6C5FF] text-neutral-950 font-sans font-semibold px-6 py-2.5 rounded-full border border-black/10 hover:bg-[#c3aeff] transition-colors\"\n  >\n    En savoir plus\n  </button>\n</div>\n\n<div\n  class=\"flex flex-wrap gap-3 p-6 bg-[#FFFEE0] rounded-3xl justify-center items-center\"\n>\n  <span\n    class=\"px-5 py-2.5 bg-[#FCD8A5] text-neutral-900 font-sans font-medium text-sm rounded-full border border-black/5 cursor-pointer hover:scale-105 transition-transform\"\n  >\n    Substituts nicotiniques\n  </span>\n  <span\n    class=\"px-5 py-2.5 bg-[#FBCBB5] text-neutral-900 font-sans font-medium text-sm rounded-full border border-black/5 cursor-pointer hover:scale-105 transition-transform\"\n  >\n    Santé physique\n  </span>\n  <span\n    class=\"px-5 py-2.5 bg-[#E1E5AC] text-neutral-900 font-sans font-medium text-sm rounded-full border border-black/5 cursor-pointer hover:scale-105 transition-transform\"\n  >\n    Préparation\n  </span>\n  <span\n    class=\"px-5 py-2.5 bg-[#F7C5A9] text-neutral-900 font-sans font-medium text-sm rounded-full border border-black/5 cursor-pointer hover:scale-105 transition-transform\"\n  >\n    Soutien\n  </span>\n</div>\n```\n\n## 6. Layout & Spacing (布局与空间)\n\n- **留白哲学**：采用如同高端生活方式画报般的自然留白。模块与模块之间通过超宽的间距（如 `space-y-32`）来减缓信息密度，绝不让用户在浏览时产生压迫感，从而提供一个让人静下心来阅读和倾听的舒适底色。\n\n## 7. Elevation & Depth (层级与深度)\n\n- **平面层叠与气泡悬浮**：该风格不追求前卫的 3D 纵深。它主要采用“纸张层叠”的伪 2D 层级：底层是有机多色微噪点画布，中层是干净纯色的对话气泡卡片，最表层则是通过趣味性微错位、乱序排列的悬浮胶囊标签，形成一种轻松、灵动、不刻板的手工拼贴刊物感。\n\n## 8. Do's and Don'ts (设计禁忌)\n\n- **Do**：\n- 核心大标题必须坚定不移地使用优雅、粗重的衬线体（Serif）来奠定人文基调。\n- 大量使用明度适中、带有一点点灰调或奶调的自然保护色（如米黄、淡绿、暖橘），减少刺眼的纯白色。\n- 细节处要注重人情味，多采用对话气泡或者略带俏皮的圆角标签形式。\n\n- **Don't**：\n- 绝对不要使用极具科技冷冽感的纯黑白冷调或高饱和度荧光渐变（如科技蓝、赛博紫）。\n- 标题严禁使用过于死板、毫无个性的标准黑体或几何无衬线体。\n- 避免引入大面积错综复杂的物理强阴影或生硬刺眼的工业化粗描边，那会彻底破坏这种温润治愈的人文氛围。\n"
     },
     {
       "id": "spatial-glass-ui",
@@ -696,7 +935,7 @@
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/magnetic-circular-button-hover.mp4"
+        "/content-assets/sticky-horizontal-line-indicator.mp4"
       ],
       "triggers": [
         "圆形磁吸吸附",
@@ -793,6 +1032,45 @@
         "纸质便利贴"
       ],
       "content": "---\nid: tiimo-organic-minimalism\nname: Tiimo Organic Minimalism\nname_zh: \"Tiimo 有机治愈极简风\"\ncover_image: \"../assets/tiimoapp.webp\"\ndomain: [\"Healthcare\", \"Productivity\", \"Mental Health\"]\naesthetic: [\"Organic\", \"Soft Minimalism\", \"Pastel\"]\ncolor_scheme: \"Light\"\nwebsite: https://www.tiimoapp.com/\ndescription: >\n  这是一种温和、安抚、无压迫感的有机极简主义风格。大量使用低饱和水彩/粉彩渐变、柔和的手绘感边缘和纸质便利贴般的立体感，营造出治愈、减压的氛围。特别适合 ADHD 友好、日程管理、专注计时、心理健康辅助等需要降低用户认知负荷的产品。\n  触发词：Tiimo、有机极简、治愈系、低饱和、粉彩、ADHD 友好、纸质便利贴\n---\n\n# Tiimo Organic Minimalism UI 规范说明书\n\n## 1. Overview (概览)\n\n- **核心基调**：温和、安抚、无压迫感、治愈系。\n- **视觉特征**：低饱和水彩/粉彩渐变、柔和手绘感边缘、纸质便利贴立体感、极细阴影与分层、大量留白。\n- **适用场景**：日程管理、专注计时、习惯追踪、心理健康辅助。\n- **不适用场景**：高频交易、硬核工具、需要强警示的合规场景。\n\n## 2. 具象化的 Tailwind 字典 (Tailwind Dictionary)\n\n> ⚠️ **AI 约束**：不要只使用模糊的形容词，必须明确指定 Tailwind 类名。\n\n- **圆角策略 (Rounded)**：\n  - 核心卡片：使用 `rounded-2xl` 或 `rounded-3xl`\n  - 按钮/标签：使用 `rounded-xl` 或 `rounded-full`\n- **阴影策略 (Shadow)**：使用极柔和、弥散的阴影，如 `shadow-[0_2px_12px_rgba(0,0,0,0.06)]` 或 `shadow-sm`，避免生硬的黑影。\n- **边框策略 (Border)**：尽量不使用边框，或使用极淡的边框 `border border-gray-100`。\n- **间距与留白 (Spacing)**：大量留白，使用 `p-6` 或 `p-8` 增加呼吸感，Section 之间使用 `gap-8` 或 `gap-12`。\n\n## 3. 色彩变量映射 (Color Variables)\n\n> ⚠️ **AI 约束**：明确告诉 AI 主色、背景色、边框色的具体 Hex 值，避免 AI 自由发挥。\n\n- **Primary (工作/专注)**：`#5BA8A0` (蓝绿) - 用于专注类任务、积极反馈。\n- **Secondary (休息/放松)**：`#E8A87C` (暖橙) - 用于休息、放松类提示。\n- **Tertiary (过渡/中性)**：`#C5B4E3` (浅紫) - 用于状态过渡。\n- **Background/Canvas (画布背景)**：`#F8F9FA` - 极其柔和的浅灰白，避免纯白的刺眼。\n- **Surface (容器背景)**：`#FFFFFF` - 卡片底色。\n- **Text/Ink (主要文本)**：`#2D3436` - 深灰，避免纯黑的压迫感。\n\n## 4. Typography (排版系统原则)\n\n- **展示字体 (Display)**：使用圆润或现代的无衬线字体，字重适中，如 `font-bold tracking-tight text-[#2D3436]`。\n- **正文字体 (Body)**：清晰易读，避免过细字重，如 `font-medium leading-relaxed text-gray-600`。\n\n## 5. 基准组件示例 (Anchor Component)\n\n> ⚠️ **AI 约束**：请 AI 在生成其他组件时，严格参考以下基准组件的 HTML/Tailwind 结构。\n\n```html\n<!-- 示例：一个标准的 Tiimo 风格按钮 -->\n<button class=\"bg-[#5BA8A0] text-white px-6 py-3 rounded-2xl font-medium shadow-[0_2px_12px_rgba(91,168,160,0.3)] hover:opacity-90 transition-opacity\">\n  Start Focus\n</button>\n\n<!-- 示例：一个标准的 Tiimo 风格卡片 (类似纸质便利贴) -->\n<div class=\"bg-white rounded-3xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-gray-50/50\">\n  <div class=\"flex items-center gap-3 mb-3\">\n    <div class=\"w-3 h-3 rounded-full bg-[#E8A87C]\"></div>\n    <h3 class=\"text-lg font-bold text-[#2D3436]\">Break Time</h3>\n  </div>\n  <p class=\"text-gray-500 font-medium leading-relaxed\">Take a deep breath and relax.</p>\n</div>\n```\n\n## 6. Layout & Spacing (布局与空间)\n\n- **留白哲学**：极大的留白，元素之间保持松散的距离，避免信息过载。\n\n## 7. Elevation & Depth (层级与深度)\n\n通过极细的弥散阴影（如 `0 2px 12px rgba(0, 0, 0, 0.06)`）和微小的层级叠加，营造出类似真实纸质便利贴的轻盈立体感。\n\n## 8. Do's and Don'ts (设计禁忌)\n\n- **Do**：使用低饱和水彩/粉彩渐变。统一明度，避免高刺激纯色。使用柔和手绘感边缘。\n- **Don't**：禁止使用纯红（#FF0000）作为错误提示。禁止使用倒计时压迫感（优先使用环状时间轴）。禁止使用惩罚性未完成文案（如“未完成 ❌”）。\n"
+    },
+    {
+      "id": "typographic-accordion-push",
+      "type": "motion",
+      "name": "typographic-accordion-push",
+      "nameZh": "瑞士粗野主义：巨幅排版手风琴联动挤压",
+      "description": "这是一种充满现代粗野主义（Brutalist）与瑞士平面设计感的手风琴折叠动效。每一个分类都以极具视觉冲击力的巨幅黑色粗体字、高饱和度纯色块（蓝、绿、紫、粉、黄）和背景图片叠加呈现。当用户点击其中一个条目时，该条目会以带有明显惯性缓冲的节奏平滑“膨胀”展开，展示内部的详细内容与行动按钮（CTA），而其他未被选中的条目则会被优雅地向上或向下“推挤”缩小。",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [
+        "点击切换",
+        "布局弹性联动"
+      ],
+      "components": [
+        "手风琴折叠栏",
+        "巨幅文本条",
+        "内容揭示容器"
+      ],
+      "effects": [
+        "弹性高度动态挤压",
+        "层级交错渐显 (Stagger Reveal)",
+        "边界顺滑裁切"
+      ],
+      "website": "未知（艺术创意或社会运动组织官网）",
+      "preview": {
+        "backgroundColor": "#0091ff",
+        "textColor": "#FFFFFF"
+      },
+      "coverVideo": "/content-assets/typographic-accordion-push.mp4",
+      "source": {
+        "repo": "vibe-motion",
+        "referencePath": "skills/interaction-library/references/typographic-accordion-push.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "/content-assets/typographic-accordion-push.mp4"
+      ],
+      "triggers": [],
+      "content": "---\nversion: alpha\nname: typographic-accordion-push\nname_zh: \"瑞士粗野主义：巨幅排版手风琴联动挤压\"\ncover_video: \"../assets/typographic-accordion-push.mp4\"\ncomponents: [\"手风琴折叠栏\", \"巨幅文本条\", \"内容揭示容器\"]\neffects: [\"弹性高度动态挤压\", \"层级交错渐显 (Stagger Reveal)\", \"边界顺滑裁切\"]\ninteraction_types: [\"点击切换\", \"布局弹性联动\"]\ndescription: >\n  这是一种充满现代粗野主义（Brutalist）与瑞士平面设计感的手风琴折叠动效。每一个分类都以极具视觉冲击力的巨幅黑色粗体字、高饱和度纯色块（蓝、绿、紫、粉、黄）和背景图片叠加呈现。当用户点击其中一个条目时，该条目会以带有明显惯性缓冲的节奏平滑“膨胀”展开，展示内部的详细内容与行动按钮（CTA），而其他未被选中的条目则会被优雅地向上或向下“推挤”缩小。\ntrigger_words: [粗野主义、巨幅排版、手风琴联动、动态挤压、高饱和色块]\nwebsite: \"未知（艺术创意或社会运动组织官网）\"\n\nmotion_tokens:\n  # 高度自适应流体过渡参数\n  layout_spring:\n    stiffness: 180\n    damping: 24\n    mass: 0.9\n\n  # 内部文字与按钮子元素的交错（Stagger）延迟\n  stagger_children:\n    delay_between: 0.08\n    initial_y_offset: 20\n\n  css_easing: \"cubic-bezier(0.16, 1, 0.3, 1)\" # 超平滑的 EaseOut 曲线\n  duration: \"550ms\"\n---\n\n# 瑞士粗野主义：巨幅排版手风琴联动挤压规范\n\n## 1. 动效体感 (Feel & Vibe)\n\n- **视觉感受**：**强反差、模块化、机械感与流体感的动态结合**。未展开时，密集堆叠的高饱色彩条带和巨幅文字带来蓄势待发的紧凑感；展开后，大面积纯色与留白瞬间释放，给予视线极强的聚焦。\n- **交互逻辑**：\n  - **联动排挤（Layout Squeezing）**：点击某一个色彩条带（例如 \"OUR SUPPORTERS\"），其容器的 `height`（或 `flex-grow`）在约 500ms 内平滑放大至内容撑起的高度。与此同时，其他兄弟节点的空间被等比例平滑压缩。\n  - **内容异步揭示（Content Unveiling）**：内部的大图、描述文案以及右侧的白底按钮，在高度展开的过程中，通过 `opacity` 从 0 到 1 渐显，并伴随一个向上微幅推移（y: 20 -> 0）的交错动画（Stagger），避免图文生硬突兀地闪现。\n\n## 2. 媒体参考 (Reference Asset)\n\n- **文件路径**：`../assets/录屏2026-06-18 16.20.30.mp4`\n- **来源引用**：The Push / 青年音乐创意运动官网\n\n## 3. 技术实现要点 (Implementation Details)\n\n### 推荐库\n\n- **首选**：Framer Motion (React) 中的 `<motion.div layout />`。这是处理 CSS 高度变化（`height: auto` 动画化）最完美的现代方案。\n- **次选**：现代 CSS Grid 动画。通过对 `grid-template-rows: 0fr` 到 `1fr` 的 `transition` 过渡来实现纯 CSS 的顺滑展开。\n\n### 关键属性\n\n- **防止内容溢出抖动**：手风琴在膨胀或闭合的过程中，其内部子组件的整体高度一直在剧烈变动。为了防止文字产生折行闪烁、图片比例变形，外层包裹容器必须设置 `overflow: hidden`，并配合 `will-change: height` 以确保动画期间的重绘效率。\n- **色彩与层级深度**：每一个条目在激活时，其 `z-index` 应短暂提升，避免在高度拉伸的瞬间被相邻条目的阴影或边框遮挡。\n\n## 4. 示例代码骨架 (Code Skeleton)\n\n```tsx\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { useState } from \"react\";\n\nconst accordionData = [\n  { id: \"young\", title: \"OUR YOUNG PEOPLE\", color: \"bg-[#0091ff]\" },\n  { id: \"parents\", title: \"OUR PARENTS & GUARDIANS\", color: \"bg-[#00c853]\" },\n  { id: \"supporters\", title: \"OUR SUPPORTERS\", color: \"bg-[#e040fb]\" },\n];\n\nexport const BrutalistAccordion = () => {\n  const [expandedId, setExpandedId] = useState<string | null>(null);\n\n  return (\n    <div className=\"w-full min-h-screen flex flex-col bg-black text-black\">\n      {accordionData.map((item) => {\n        const isExpanded = expandedId === item.id;\n\n        return (\n          <motion.div\n            key={item.id}\n            layout // Framer Motion 的核心：开启自动布局平滑重绘\n            onClick={() => setExpandedId(isExpanded ? null : item.id)}\n            className={`cursor-pointer overflow-hidden border-b-4 border-black transition-colors ${item.color} ${\n              isExpanded ? \"flex-grow min-h-[400px]\" : \"h-20 flex items-center\"\n            }`}\n          >\n            {/* 未展开时的标题条（保持巨幅粗体字） */}\n            <div className=\"p-6 select-none flex items-center justify-between w-full\">\n              <h2 className=\"text-4xl md:text-6xl font-black tracking-tighter uppercase\">\n                {item.title}\n              </h2>\n            </div>\n\n            {/* 展开后的详细内容区 */}\n            <AnimatePresence>\n              {isExpanded && (\n                <motion.div\n                  initial={{ opacity: 0 }}\n                  animate={{ opacity: 1 }}\n                  exit={{ opacity: 0 }}\n                  transition={{ duration: 0.3 }}\n                  className=\"px-6 pb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-start\"\n                >\n                  {/* 左侧内容描述，带 Stagger 错位入场体感 */}\n                  <motion.div\n                    initial={{ y: 20 }}\n                    animate={{ y: 0 }}\n                    className=\"max-w-xl text-xl font-bold\"\n                  >\n                    <p>\n                      Learn about how you can support our movement and create\n                      more opportunities for everyone.\n                    </p>\n                  </motion.div>\n\n                  {/* 右侧白底黑字粗野主义行动按钮 */}\n                  <motion.div\n                    initial={{ y: 30 }}\n                    animate={{ y: 0 }}\n                    className=\"flex flex-col gap-4\"\n                  >\n                    <button className=\"bg-white border-4 border-black p-4 text-left font-black uppercase tracking-wider hover:bg-black hover:text-white transition-colors\">\n                      Partner With Us ➔\n                    </button>\n                    <button className=\"bg-white border-4 border-black p-4 text-left font-black uppercase tracking-wider hover:bg-black hover:text-white transition-colors\">\n                      Become a Donor ➔\n                    </button>\n                  </motion.div>\n                </motion.div>\n              )}\n            </AnimatePresence>\n          </motion.div>\n        );\n      })}\n    </div>\n  );\n};\n```\n\n## 5. 易错点与禁忌 (Gotchas & Don'ts)\n\n- **忌不设最小高度（Min-Height）**：当展开某一项时，若内部文字极少，整个条目会因为没有撑起足够的 Z 轴视觉空间而显得局促。必须强制指定展开后的 `min-height`（如 `400px`），确保大面积色块能完全暴露，维持粗野主义风格。\n- **避免文本原生换行抖动**：巨幅英文字体（如 `text-6xl`）在容器宽度被挤压收缩时，容易因为空间不足被迫自动换行，导致原本一行写完的标题变成两行。应为标题文字加上 `white-space: nowrap` 结合 `text-overflow: clip`，允许其在收缩时被自然裁切，而不是生硬地换行将页面撑爆。\n"
     },
     {
       "id": "typographic-carousel-slide",
@@ -958,6 +1236,7 @@
   "filters": {
     "domains": [
       "AI 工具",
+      "AI 视频工具",
       "Agency",
       "Community",
       "Creative",
@@ -969,27 +1248,41 @@
       "SaaS",
       "Youth",
       "个人主页",
+      "个人品牌",
       "习惯养成",
       "产品展示",
+      "人文艺术媒体",
       "代码产品",
       "仪表盘",
       "作品集",
+      "健康与公益",
       "健康生活",
       "内容平台",
+      "出海独立开发者",
       "创意产品",
+      "创意设计",
+      "创意设计工具",
       "品牌官网",
       "媒体应用",
       "建筑设计",
       "开发者工具",
+      "心理戒断支持",
       "情绪价值产品",
+      "摄影/摄像应用",
       "教育工具",
+      "数字工作室",
       "沉浸式产品",
       "消费产品",
+      "潮流文化",
       "独立开发者",
+      "独立游戏",
+      "生活方式倡导",
       "移动应用",
       "笔记工具",
       "编辑内容",
       "自动化平台",
+      "音乐/乐队官网",
+      "音视频剪辑",
       "高端品牌",
       "高级控制面板"
     ],
@@ -1010,28 +1303,47 @@
       "VisionOS style",
       "低饱和渐变",
       "便当盒布局",
+      "像素波普",
+      "像素艺术 (Pixel Art)",
+      "先锋杂志风",
       "几何清洁",
       "半透明层级",
+      "复古刊物 (Editorial Serif)",
+      "微光流体 (Glow & Fluid)",
       "微质感",
       "整洁信息架构",
       "新粗野主义",
+      "暗黑极简 (Dark Minimalism)",
       "有机极简",
+      "有机渐变 (Organic Gradient)",
       "极客终端风",
+      "极高对比度",
       "柔和 UI",
       "模块化网格",
       "治愈科技感",
       "现代扁平",
       "玻璃态",
+      "电影质感 (Cinematic)",
       "硬阴影",
       "空间 UI",
+      "粗野主义 (Brutalism)",
       "粗黑描边",
       "绝对极简",
       "网格排版",
+      "自然柔和 (Natural & Muted)",
+      "赛博朋克/复古朋克",
       "霓虹强调",
       "高饱和色块",
       "黑白灰"
     ],
-    "interactionTypes": [],
+    "interactionTypes": [
+      "多层视差推离",
+      "布局弹性联动",
+      "滚动联动",
+      "点击切换",
+      "视差悬浮",
+      "鼠标跟随"
+    ],
     "types": [
       "ui",
       "motion"

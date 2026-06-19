@@ -18,3 +18,20 @@ export function getCatalogItems(filter?: {
 
   return catalog.items.filter((item) => item.type === type);
 }
+
+/** Lightweight list items without full markdown content for client hydration. */
+export type CatalogListItem = Omit<CatalogItem, "content">;
+
+export function getCatalogListItems(filter?: {
+  type?: CatalogItemType | "all";
+}): CatalogListItem[] {
+  return getCatalogItems(filter).map(({ content: _content, ...item }) => item);
+}
+
+export function getCatalogItemContent(
+  id: string,
+  type: CatalogItemType,
+): string | undefined {
+  return catalog.items.find((item) => item.id === id && item.type === type)
+    ?.content;
+}

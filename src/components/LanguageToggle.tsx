@@ -3,11 +3,7 @@
 import React from "react";
 import { motion, LayoutGroup } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
-import {
-  localeLabels,
-  locales,
-  type Locale,
-} from "../i18n/config";
+import { localeLabels, locales, type Locale } from "../i18n/config";
 import { useTranslation } from "../i18n/provider";
 
 const fluidSpring = {
@@ -27,9 +23,9 @@ export function LanguageToggle() {
 
     document.cookie = `locale=${nextLocale};path=/;max-age=31536000;SameSite=Lax`;
 
-    const segments = pathname.split("/");
-    segments[1] = nextLocale;
-    router.push(segments.join("/") || `/${nextLocale}`);
+    const rest = pathname.replace(new RegExp(`^/${locale}(?=/|$)`), "") || "";
+    const href = `/${nextLocale}${rest}${window.location.search}${window.location.hash}`;
+    router.push(href);
   };
 
   return (

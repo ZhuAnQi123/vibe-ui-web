@@ -235,14 +235,25 @@ function buildItem(
   }
 
   const assetsMatch = body.match(/`\.\.\/assets\/[^`]+`/g) ?? [];
-  const assets = assetsMatch.map((item) => {
+  const bodyAssets = assetsMatch.map((item) => {
     const cleanPath = item
       .replace(/`/g, "")
       .replace(/^\.\.\//, "skills/interaction-library/");
     return cleanPath;
   });
 
-  assets.forEach((assetPath) => {
+  // Motion items: prefer cover_video (mp4) over stale gif paths in markdown body
+  const assetPaths =
+    type === "motion" && typeof data.cover_video === "string" && data.cover_video
+      ? [
+          data.cover_video.replace(
+            /^\.\.\//,
+            "skills/interaction-library/",
+          ),
+        ]
+      : bodyAssets;
+
+  assetPaths.forEach((assetPath) => {
     const sourceAssetPath = path.join(repoRoot, assetPath);
     const targetAssetPath = path.join(
       publicAssetsDir,
@@ -255,9 +266,11 @@ function buildItem(
     }
   });
 
-  const publicAssetsUrls = assets.map(
-    (assetPath) => `/content-assets/${path.basename(assetPath)}`,
-  );
+  const publicAssetsUrls = assetPaths
+    .filter((assetPath) =>
+      fs.existsSync(path.join(repoRoot, assetPath)),
+    )
+    .map((assetPath) => `/content-assets/${path.basename(assetPath)}`);
 
   return {
     id,
