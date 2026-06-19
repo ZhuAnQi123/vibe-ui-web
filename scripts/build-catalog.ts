@@ -236,15 +236,9 @@ function buildItem(
 
   const assetsMatch = body.match(/`\.\.\/assets\/[^`]+`/g) ?? [];
   const assets = assetsMatch.map((item) => {
-    let cleanPath = item
+    const cleanPath = item
       .replace(/`/g, "")
       .replace(/^\.\.\//, "skills/interaction-library/");
-    if (cleanPath.endsWith(".mp4") || cleanPath.endsWith(".gif")) {
-      const movPath = cleanPath.replace(/\.(mp4|gif)$/, ".mov");
-      if (fs.existsSync(path.join(repoRoot, movPath))) {
-        cleanPath = movPath;
-      }
-    }
     return cleanPath;
   });
 

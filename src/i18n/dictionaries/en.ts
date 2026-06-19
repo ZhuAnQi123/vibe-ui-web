@@ -7,7 +7,6 @@ const en: Dictionary = {
       "Copy and paste highly-structured aesthetic instructions for Cursor, Windsurf, and Claude.",
   },
   hero: {
-    badge: "UI Design Systems, Translated for AI.",
     titleInject: "Inject",
     titleHighlight: "Design Soul",
     titleSuffix: "into your Vibe Coding.",

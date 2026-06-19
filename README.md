@@ -61,7 +61,7 @@ vibe-ui-web/
 ### `npm run catalog:build` 做了什么？
 - **扫描解析**：它会扫描 `content/` 或同级目录下的 `vibe-ui` 和 `vibe-motion` 仓库，解析所有 `.md` 文件的 Frontmatter 元数据。
 - **生成索引**：将解析结果汇总，生成 `src/data/catalog.json`，供前端 `StyleGrid` 和 `ElasticFilter` 组件驱动渲染。
-- **拷贝资产**：自动将 `vibe-motion` 仓库中的视频/GIF 文件（如 `.mov`, `.mp4`）拷贝到 `public/content-assets/` 目录下，以便前端可以作为静态资源直接加载播放。
+- **拷贝资产**：自动将 `vibe-motion` 仓库中的视频/GIF 文件（如  `.mp4`）拷贝到 `public/content-assets/` 目录下，以便前端可以作为静态资源直接加载播放。
 
 ### 当内容库更新后，我该怎么做？
 

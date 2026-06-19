@@ -117,11 +117,7 @@ export const ClientHome = ({
         </div>
       </header>
 
-      <section className="w-full pt-24 pb-12 px-4 flex flex-col items-center text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-sm font-semibold text-neutral-600 mb-8">
-          {t.hero.badge}
-        </div>
-
+      <section className="w-full pt-14 pb-12 px-4 flex flex-col items-center text-center">
         <h1 className="text-6xl md:text-7xl font-black tracking-tighter text-neutral-900 max-w-4xl leading-[1.1]">
           {locale === "zh" ? (
             <>

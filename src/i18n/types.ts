@@ -4,7 +4,6 @@ export type Dictionary = {
     description: string;
   };
   hero: {
-    badge: string;
     titleInject: string;
     titleHighlight: string;
     titleSuffix: string;

@@ -41,13 +41,14 @@ export const ElasticFilter = ({
   const [isMoreOpen, setIsMoreOpen] = useState(false);
 
   const allTabs = [{ id: "__all__", label: t.filter.all }].concat(
-    domainOptions.map((domain) => ({
+    ["情绪价值产品", "品牌官网", "移动应用"].map((domain) => ({
       id: domain,
       label: t.tags[domain] || domain,
     })),
   );
 
   const VISIBLE_COUNT = 4;
+
   const baseVisible = allTabs.slice(0, VISIBLE_COUNT);
   let visibleTabs = [...baseVisible];
 
@@ -245,7 +246,9 @@ export const ElasticFilter = ({
                           <p className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
                             {t.filter.interactionTypes}
                           </p>
-                          {renderInteractionOptions(groupedInteractionOptions.interaction)}
+                          {renderInteractionOptions(
+                            groupedInteractionOptions.interaction,
+                          )}
                         </div>
                       )}
 
@@ -254,7 +257,9 @@ export const ElasticFilter = ({
                           <p className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
                             {t.filter.interactionEffects}
                           </p>
-                          {renderInteractionOptions(groupedInteractionOptions.effect)}
+                          {renderInteractionOptions(
+                            groupedInteractionOptions.effect,
+                          )}
                         </div>
                       )}
 
@@ -263,7 +268,9 @@ export const ElasticFilter = ({
                           <p className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
                             {t.filter.interactionComponents}
                           </p>
-                          {renderInteractionOptions(groupedInteractionOptions.component)}
+                          {renderInteractionOptions(
+                            groupedInteractionOptions.component,
+                          )}
                         </div>
                       )}
                     </div>
