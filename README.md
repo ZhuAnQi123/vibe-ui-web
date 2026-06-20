@@ -72,7 +72,7 @@ vibe-ui-web/
 
 **如果是在 Vercel 等线上环境：**
 1. 在 `vibe-ui-web` 目录下，拉取最新的子模块代码：`git submodule update --remote`
-2. 提交并推送：`git commit -am "update content submodules" && git push`
+2. 提交并推送：`git commit -am "feat: update content submodules" && git push`
 3. Vercel 会自动触发重新部署，并在部署前执行 `catalog:build`，线上网站即刻更新。
 
 ### Catalog Item Schema（摘要）
