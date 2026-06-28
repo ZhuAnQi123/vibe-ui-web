@@ -9,6 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "catalog:build": "tsx scripts/build-catalog.ts",
+    "mcp:build": "npm run build --prefix mcp-server",
+    "mcp:dev": "npm run dev --prefix mcp-server",
     "predev": "npm run catalog:build",
     "prebuild": "npm run catalog:build"
   },
