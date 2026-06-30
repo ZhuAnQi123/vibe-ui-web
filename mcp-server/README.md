@@ -1,4 +1,4 @@
-# @vibe-ui/mcp
+# @vibe-ui-n-motion/mcp
 
 Vibe UI & Motion 的 MCP Server — 让 Cursor 等 AI 工具直接读取 UI 设计规范与动效参数。
 

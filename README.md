@@ -1,4 +1,3 @@
-
 # Vibe UI Web
 
 UI Design Systems, Translated for AI.
@@ -33,6 +32,7 @@ npm install
 ```bash
 npm run catalog:build
 ```
+
 此命令会扫描 `vibe-ui` 和 `vibe-motion` 的 Markdown，生成 `src/data/catalog.json`。
 
 ### 3. 启动开发服务器
@@ -42,11 +42,12 @@ npm run dev
 ```
 
 ### 4. 预览
+
 打开浏览器访问 [http://localhost:3000](http://localhost:3000) 即可查看效果。
 
 ## 🤖 MCP Server 使用指南
 
-Vibe UI Web 内置了一个完整的 MCP Server（`@vibe-ui/mcp`），让 AI 可以直接读取最新的设计系统和动效参数。
+Vibe UI Web 内置了一个完整的 MCP Server（`@vibe-ui-n-motion/mcp`），让 AI 可以直接读取最新的设计系统和动效参数。
 
 ### 快速开始（3 种方式）
 
@@ -54,7 +55,7 @@ Vibe UI Web 内置了一个完整的 MCP Server（`@vibe-ui/mcp`），让 AI 可
 
 ```bash
 # 1. 全局安装
-npm install -g @vibe-ui/mcp
+npm install -g @vibe-ui-n-motion/mcp
 
 # 2. 在 Cursor 中配置 MCP
 ```
@@ -80,9 +81,7 @@ Cursor 设置 → MCP → 添加 Server：
   "mcpServers": {
     "vibe-ui": {
       "command": "npx",
-      "args": [
-        "@vibe-ui/mcp@latest"
-      ],
+      "args": ["@vibe-ui-n-motion/mcp@latest"],
       "env": {
         "VIBE_API_URL": "https://你的域名.vercel.app"
       }
@@ -121,12 +120,12 @@ npm run build
 
 ### MCP 提供的 Tools
 
-| Tool | 用途 | 示例 |
-|------|------|------|
-| `list_vibe_styles` | 列出所有 UI / Motion 条目 | `type: "ui"` |
-| `search_vibe_styles` | 按关键词、领域、审美筛选 | `query: "Stripe"` |
-| `get_vibe_style` | 获取完整 Markdown 规范 | `id: "supabase", type: "ui"` |
-| `get_vibe_combo` | 一次拉取 UI + 多个动效 | `ui: "supabase", motions: ["fluid-elastic"]` |
+| Tool                 | 用途                      | 示例                                         |
+| -------------------- | ------------------------- | -------------------------------------------- |
+| `list_vibe_styles`   | 列出所有 UI / Motion 条目 | `type: "ui"`                                 |
+| `search_vibe_styles` | 按关键词、领域、审美筛选  | `query: "Stripe"`                            |
+| `get_vibe_style`     | 获取完整 Markdown 规范    | `id: "supabase", type: "ui"`                 |
+| `get_vibe_combo`     | 一次拉取 UI + 多个动效    | `ui: "supabase", motions: ["fluid-elastic"]` |
 
 ### 在 Cursor 中使用示例
 
@@ -143,6 +142,7 @@ AI 会自动调用 MCP 工具获取设计参数和动效配置，并生成代码
 当 `vibe-ui` 或 `vibe-motion` 内容更新后：
 
 **本地用户：**
+
 ```bash
 cd vibe-ui-web
 git submodule update --remote  # 拉取最新内容
@@ -151,6 +151,7 @@ npm run catalog:build          # 重新生成 catalog
 ```
 
 **远程用户：**
+
 1. `vibe-ui-web` 自动部署到 Vercel
 2. MCP Server 在 60 秒内拉取最新数据
 3. **所有用户实时生效，无需手动更新**
@@ -173,7 +174,7 @@ vibe-ui-web/
 │   │   ├── services/
 │   │   │   └── catalog-service.ts
 │   │   └── types/
-│   ├── package.json           # @vibe-ui/mcp
+│   ├── package.json           # @vibe-ui-n-motion/mcp
 │   └── README.md
 ├── scripts/
 │   └── build-catalog.ts       # 扫描 md → catalog.json
@@ -208,11 +209,13 @@ vibe-ui-web/
 ### 当内容库更新后，我该怎么做？
 
 **本地开发：**
+
 ```bash
 npm run catalog:build  # 重新生成 catalog + MCP
 ```
 
 **线上环境（Vercel）：**
+
 1. 更新子模块：`git submodule update --remote`
 2. 提交推送：`git commit -am "feat: update content" && git push`
 3. Vercel 自动部署，新内容实时生效

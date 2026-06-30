@@ -1,11 +1,11 @@
 {
-  "name": "@vibe-ui/mcp",
+  "name": "@vibe-ui-n-motion/mcp",
   "version": "1.0.0",
   "description": "MCP Server for Vibe UI styles and Vibe Motion interaction specs",
   "type": "module",
   "license": "MIT",
   "bin": {
-    "vibe-mcp": "./dist/index.js"
+    "vibe-mcp": "dist/index.js"
   },
   "files": [
     "dist"
