@@ -1,5 +1,7 @@
 # Vibe UI Web
 
+## [线上预览](https://vibe-ui-prompt.online)
+
 UI Design Systems, Translated for AI.
 
 这是一个专为 Vibe Coder 打造的开源设计风格库展示网站。它将顶级产品的视觉风格转换为 AI（Cursor, Windsurf, Claude 等）能直接读懂并完美执行的纯文本设计说明书（Prompt/Skill）。
@@ -83,7 +85,7 @@ Cursor 设置 → MCP → 添加 Server：
       "command": "npx",
       "args": ["@vibe-ui-n-motion/mcp@latest"],
       "env": {
-        "VIBE_API_URL": "https://你的域名.vercel.app"
+        "VIBE_API_URL": "https://vibe-ui-prompt.online"
       }
     }
   }
@@ -120,12 +122,12 @@ npm run build
 
 ### MCP 提供的 Tools
 
-| Tool                 | 用途                      | 示例                                         |
-| -------------------- | ------------------------- | -------------------------------------------- |
-| `list_vibe_styles`   | 列出所有 UI / Motion 条目 | `type: "ui"`                                 |
-| `search_vibe_styles` | 按关键词、领域、审美筛选  | `query: "Stripe"`                            |
-| `get_vibe_style`     | 获取完整 Markdown 规范    | `id: "supabase", type: "ui"`                 |
-| `get_vibe_combo`     | 一次拉取 UI + 多个动效    | `ui: "supabase", motions: ["fluid-elastic"]` |
+| Tool | 用途 | 示例 |
+| --- | --- | --- |
+| `list_vibe_styles` | 列出所有 UI / Motion 条目 | `type: "ui"` |
+| `search_vibe_styles` | 按关键词、领域、审美筛选 | `query: "Stripe"` |
+| `get_vibe_style` | 获取完整 Markdown 规范 | `id: "supabase", type: "ui"` |
+| `get_vibe_combo` | 一次拉取 UI + 多个动效 | `ui: "supabase", motions: ["fluid-elastic"]` |
 
 ### 在 Cursor 中使用示例
 

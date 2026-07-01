@@ -34,7 +34,7 @@ Remote mode:
 ```json
 {
   "env": {
-    "VIBE_API_URL": "https://your-vibe-ui-web.vercel.app"
+    "VIBE_API_URL": "https://vibe-ui-prompt.online"
   }
 }
 ```

@@ -132,7 +132,7 @@ vibe-ui-web/
          "command": "node",
          "args": ["/绝对路径/vibe-ui-web/mcp-server/dist/index.js"],
          "env": {
-           "VIBE_API_URL": "https://你的域名.vercel.app"
+           "VIBE_API_URL": "https://vibe-ui-prompt.online"
          }
        }
      }
@@ -155,7 +155,7 @@ Cursor 配置：
     "vibe-ui": {
       "command": "vibe-mcp",
       "env": {
-        "VIBE_API_URL": "https://你的域名.vercel.app"
+        "VIBE_API_URL": "https://vibe-ui-prompt.online"
       }
     }
   }
