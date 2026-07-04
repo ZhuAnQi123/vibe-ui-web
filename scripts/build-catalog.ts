@@ -10,6 +10,21 @@ import type {
 
 const ROOT = path.join(__dirname, "..");
 const OUTPUT_PATH = path.join(ROOT, "src/data/catalog.json");
+const MOTION_CDN_BASE =
+  process.env.MOTION_CDN_BASE ??
+  "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev";
+
+function isVideoAsset(filename: string): boolean {
+  return /\.(mp4|webm|mov|gif)$/i.test(filename);
+}
+
+function resolveMotionAssetUrl(assetPath: string): string {
+  const filename = path.basename(assetPath);
+  if (isVideoAsset(filename)) {
+    return `${MOTION_CDN_BASE}/${filename}`;
+  }
+  return `/content-assets/${filename}`;
+}
 
 const CONTENT_SOURCES = {
   vibeUi: {
@@ -225,12 +240,21 @@ function buildItem(
 
   let coverVideo: string | undefined = undefined;
   if (typeof data.cover_video === "string" && data.cover_video) {
-    const assetRelativePath = data.cover_video.replace(/^\.\.\//, `skills/${type === "ui" ? "ui-style-library" : "interaction-library"}/`);
-    const sourceAssetPath = path.join(repoRoot, assetRelativePath);
-    const targetAssetPath = path.join(publicAssetsDir, path.basename(assetRelativePath));
-    if (fs.existsSync(sourceAssetPath)) {
-      fs.copyFileSync(sourceAssetPath, targetAssetPath);
-      coverVideo = `/content-assets/${path.basename(assetRelativePath)}`;
+    const assetRelativePath = data.cover_video.replace(
+      /^\.\.\//,
+      `skills/${type === "ui" ? "ui-style-library" : "interaction-library"}/`,
+    );
+    const filename = path.basename(assetRelativePath);
+
+    if (type === "motion" && isVideoAsset(filename)) {
+      coverVideo = resolveMotionAssetUrl(assetRelativePath);
+    } else {
+      const sourceAssetPath = path.join(repoRoot, assetRelativePath);
+      const targetAssetPath = path.join(publicAssetsDir, filename);
+      if (fs.existsSync(sourceAssetPath)) {
+        fs.copyFileSync(sourceAssetPath, targetAssetPath);
+        coverVideo = `/content-assets/${filename}`;
+      }
     }
   }
 
@@ -254,11 +278,13 @@ function buildItem(
       : bodyAssets;
 
   assetPaths.forEach((assetPath) => {
+    const filename = path.basename(assetPath);
+    if (type === "motion" && isVideoAsset(filename)) {
+      return;
+    }
+
     const sourceAssetPath = path.join(repoRoot, assetPath);
-    const targetAssetPath = path.join(
-      publicAssetsDir,
-      path.basename(assetPath),
-    );
+    const targetAssetPath = path.join(publicAssetsDir, filename);
     if (fs.existsSync(sourceAssetPath)) {
       fs.copyFileSync(sourceAssetPath, targetAssetPath);
     } else {
@@ -266,11 +292,16 @@ function buildItem(
     }
   });
 
-  const publicAssetsUrls = assetPaths
-    .filter((assetPath) =>
-      fs.existsSync(path.join(repoRoot, assetPath)),
-    )
-    .map((assetPath) => `/content-assets/${path.basename(assetPath)}`);
+  const publicAssetsUrls = assetPaths.map((assetPath) => {
+    const filename = path.basename(assetPath);
+    if (type === "motion" && isVideoAsset(filename)) {
+      return resolveMotionAssetUrl(assetPath);
+    }
+    if (fs.existsSync(path.join(repoRoot, assetPath))) {
+      return `/content-assets/${filename}`;
+    }
+    return null;
+  }).filter((url): url is string => url !== null);
 
   return {
     id,

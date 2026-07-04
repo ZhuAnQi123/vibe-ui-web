@@ -205,7 +205,7 @@ vibe-ui-web/
 
 - **扫描解析**：扫描 `content/` 下的 `vibe-ui` 和 `vibe-motion`，解析所有 `.md` 文件的 Frontmatter。
 - **生成索引**：汇总生成 `src/data/catalog.json`，供网站和 MCP Server 使用。
-- **拷贝资产**：将视频/GIF 文件拷贝到 `public/content-assets/`。
+- **拷贝资产**：将 vibe-ui 的封面图片拷贝到 `public/content-assets/`；动效视频从 Cloudflare R2 CDN 读取，不再本地拷贝。
 - **构建 MCP**：自动构建 `mcp-server` 的 `dist/`。
 
 ### 当内容库更新后，我该怎么做？

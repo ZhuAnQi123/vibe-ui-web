@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generatedAt": "2026-06-28T14:55:16.175Z",
+  "generatedAt": "2026-07-04T06:18:45.550Z",
   "sources": {
     "vibeUi": {
       "path": "vibe-ui",
@@ -158,14 +158,14 @@
         "backgroundColor": "#0d0d0d",
         "textColor": "#FFFFFF"
       },
-      "coverVideo": "/content-assets/corner-elastic-curtain-expand.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/corner-elastic-curtain-expand.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/corner-elastic-curtain-expand.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/corner-elastic-curtain-expand.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/corner-elastic-curtain-expand.mp4"
       ],
       "triggers": [
         "角落幕布展开",
@@ -196,14 +196,14 @@
         "backgroundColor": "#2A2C2E",
         "textColor": "#FFFFFF"
       },
-      "coverVideo": "/content-assets/elastic-sidebar-menu-reveal.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/elastic-sidebar-menu-reveal.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/elastic-sidebar-menu-reveal.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/elastic-sidebar-menu-reveal.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/elastic-sidebar-menu-reveal.mp4"
       ],
       "triggers": [
         "菜单展开",
@@ -272,14 +272,14 @@
         "backgroundColor": "#8E44AD",
         "textColor": "#FFFFFF"
       },
-      "coverVideo": "/content-assets/fluid-elastic-button-hover.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/fluid-elastic-button-hover.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/fluid-elastic-button-hover.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/fluid-elastic-button-hover.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/fluid-elastic-button-hover.mp4"
       ],
       "triggers": [
         "按钮悬停",
@@ -317,14 +317,14 @@
         "backgroundColor": "#fcf5ec",
         "textColor": "#171717"
       },
-      "coverVideo": "/content-assets/hand-drawn-blob-eyetracking.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/hand-drawn-blob-eyetracking.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/hand-drawn-blob-eyetracking.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/hand-drawn-blob-eyetracking.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/hand-drawn-blob-eyetracking.mp4"
       ],
       "triggers": [],
       "content": "---\nversion: alpha\nname: hand-drawn-blob-eyetracking\nname_zh: \"手绘涂鸦软泥与视线追踪联动动效\"\ncover_video: \"../assets/hand-drawn-blob-eyetracking.mp4\"\ncomponents: [\"手绘画布\", \"视线追踪组件\", \"物理弹性图层\"]\neffects:\n  [\"线条逐帧抖动 (Line Boiling)\", \"果冻形变 (Squish/Blob)\", \"瞳孔约束位移\"]\ninteraction_types: [\"鼠标跟随\", \"多层视差推离\"]\ndescription: >\n  这是一个极具个性和趣味性的手绘涂鸦风交互空间。中心是由粉色不规则线条构成的“软泥怪”面部，其边缘伴随着手绘特有的随机微幅抖动。当鼠标在屏幕上移动时，面部的眼睛会产生平滑的视线追踪；同时，原本重叠在面部下方的文字（Hello, Design, World, Play, Let's）会被一种无形的“排斥力”向四周推开，形成非线性的发散视差。\ntrigger_words: [手绘风、逐帧抖动、史莱姆形变、视线追踪、交互排斥]\nwebsite: \"未知（实验性创意设计）\"\n\nmotion_tokens:\n  # 眼神追踪的物理弹性\n  eye_tracking_spring:\n    stiffness: 250\n    damping: 22\n    mass: 0.6\n\n  # 背景文字被推开的排斥系数\n  text_repulsion:\n    max_displacement: 120 # 最大被推开的像素距离\n    radius: 300 # 鼠标影响的半径范围\n\n  # 线条抖动频率 (SVG Noise Filter)\n  line_boiling:\n    frequency_hz: 8 # 每秒改变 8 次噪声基频，模拟手绘逐帧\n    base_frequency: 0.02\n---\n\n# 手绘涂鸦软泥与视线追踪联动规范\n\n## 1. 动效体感 (Feel & Vibe)\n\n- **视觉感受**：**俏皮、灵动、不完美主义（Wabi-Sabi）**。通过打破数字界面的绝对平滑与规则几何，利用模拟有机的“不规则手绘线条”和“软泥弹性”，让界面充满幽默感。\n- **交互逻辑**：\n  - **常态动画（Idle Motion）**：即使鼠标不动，所有的粉色手绘线条（包括背景文字和面部轮廓）也在以约 8Hz-12Hz 的频率进行微小的**波纹扭曲（Boiling Effect）**，假装自己是逐帧动画。\n  - **眼神跟随（Eye Tracking）**：眼珠（内圈实心粉圆）会跟随鼠标指针位置在眼白（外圈圆环）内部移动。运动带有轻微的延迟感（Damping），且边缘有硬性边界约束，不会跳出眼白。\n  - **文字排斥视差（Text Repulsion）**：初始状态下，手绘文字重叠堆积在面部中心；当鼠标晃动激活交互后，文字根据其距离中心的角度，如同被吹散一般向四周平滑位移，鼠标移开后缓慢回弹。\n\n## 2. 媒体参考 (Reference Asset)\n\n- **文件路径**：`../assets/hand-drawn-blob-eyetracking.mp4`\n- **来源引用**：手绘风格创意前端交互\n\n## 3. 技术实现要点 (Implementation Details)\n\n### 推荐库\n\n- **首选方案**：React + Framer Motion (用于处理鼠标位移与文字的弹性排斥) + **原生 SVG `<filter>` (用于实现线条抖动)**。\n- **关键突破点（如何做出手绘抖动感？）**：\n  无需真的画好几帧图片切换，在 CSS 中挂载一个 SVG 的 `feTurbulence`（湍流噪声）滤镜，用 JavaScript 写一个定时器（或 `requestAnimationFrame`），每隔 100ms 随机微调 `baseFrequency` 或 `seed` 的数值，即可让包裹该滤镜的 HTML 文字和 SVG 线条产生极其逼真的手绘抖动特效。\n\n```html\n<svg\n  xmlns=\"[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)\"\n  style=\"display:none\"\n>\n  <filter id=\"hand-drawn-filter\">\n    <feTurbulence\n      type=\"fractalNoise\"\n      baseFrequency=\"0.04\"\n      numOctaves=\"2\"\n      result=\"noise\"\n      seed=\"1\"\n    />\n    <feDisplacementMap\n      in=\"SourceGraphic\"\n      in2=\"noise\"\n      scale=\"4\"\n      xChannelSelector=\"R\"\n      yChannelSelector=\"G\"\n    />\n  </filter>\n</svg>\n```\n\n### 关键属性\n\n- **眼神边界计算**：\n  设眼白中心坐标为\n  $$(X_0, Y_0)$$\n\n，眼白半径为\n$$R_{white}$$\n\n，眼珠半径为\n$$R_{pupil}$$\n\n。当鼠标位于\n$$(X_m, Y_m)$$\n\n时，计算目标向量，眼珠的最大移动矢量模长不得超过\n$$R_{white} - R_{pupil}$$\n\n。\n\n- **排斥动画硬件加速**：背景文字推开时，必须通过 `transform: translate3d(x, y, 0)` 实现，切勿改动 `top/left`。\n\n## 4. 示例代码骨架 (Code Skeleton)\n\n```tsx\nimport { motion, useMotionValue, useSpring } from \"framer-motion\";\nimport { useEffect, useState } from \"react\";\n\nexport const HandDrawnHero = () => {\n  const [filterSeed, setFilterSeed] = useState(1);\n  const mouseX = useMotionValue(0);\n  const mouseY = useMotionValue(0);\n\n  // 使用 Spring 增加眼珠移动的丝滑阻尼感\n  const eyeX = useSpring(useMotionValue(0), { stiffness: 300, damping: 20 });\n  const eyeY = useSpring(useMotionValue(0), { stiffness: 300, damping: 20 });\n\n  // 1. 定时器：驱动 SVG 滤镜的 Seed 改变，制造手绘每秒抖动感 (Line Boiling)\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setFilterSeed(Math.random() * 100);\n    }, 120); // 约 8 帧/秒\n    return () => clearInterval(interval);\n  }, []);\n\n  // 2. 监听鼠标移动，映射给眼珠 (限制在最大 15px 的范围内)\n  const handleMouseMove = (e: React.MouseEvent) => {\n    const { clientX, clientY } = e;\n    const width = window.innerWidth;\n    const height = window.innerHeight;\n\n    // 归一化计算 (-1 到 1)\n    const moveX = (clientX / width - 0.5) * 2 * 15;\n    const moveY = (clientY / height - 0.5) * 2 * 15;\n\n    eyeX.set(moveX);\n    eyeY.set(moveY);\n  };\n\n  return (\n    <div\n      onMouseMove={handleMouseMove}\n      className=\"relative w-full h-screen bg-[#fcf5ec] flex items-center justify-center overflow-hidden\"\n      style={{ filter: \"url(#hand-drawn-sketch)\" }} // 全局挂载手绘滤镜\n    >\n      {/* 动态 SVG 滤镜定义 */}\n      <svg className=\"absolute w-0 h-0\">\n        <filter id=\"hand-drawn-sketch\">\n          <feTurbulence\n            type=\"fractalNoise\"\n            baseFrequency=\"0.03\"\n            numOctaves=\"1\"\n            seed={filterSeed}\n            result=\"noise\"\n          />\n          <feDisplacementMap in=\"SourceGraphic\" in2=\"noise\" scale=\"5\" />\n        </filter>\n      </svg>\n\n      {/* 背景手绘文字（此处仅写一个示意排斥，实际需结合鼠标距离计算） */}\n      <motion.div className=\"absolute text-pink-400 font-bold text-7xl select-none\">\n        Design\n      </motion.div>\n\n      {/* 中心怪脸容器 */}\n      <div className=\"relative w-80 h-80 border-4 border-pink-500 rounded-full flex items-center justify-center\">\n        {/* 左眼 */}\n        <div className=\"absolute left-24 top-28 w-12 h-12 border-4 border-pink-500 rounded-full flex items-center justify-center bg-white\">\n          <motion.div\n            style={{ x: eyeX, y: eyeY }}\n            className=\"w-5 h-5 bg-pink-500 rounded-full\"\n          />\n        </div>\n        {/* 右眼 */}\n        <div className=\"absolute right-24 top-28 w-12 h-12 border-4 border-pink-500 rounded-full flex items-center justify-center bg-white\">\n          <motion.div\n            style={{ x: eyeX, y: eyeY }}\n            className=\"w-5 h-5 bg-pink-500 rounded-full\"\n          />\n        </div>\n        {/* 标志性大鼻子线条 */}\n        <svg className=\"absolute w-16 h-20 top-36 fill-none stroke-pink-500 stroke-[4px]\">\n          <path d=\"M 10 10 Q 40 20 20 60\" />\n        </svg>\n      </div>\n    </div>\n  );\n};\n```\n\n## 5. 易错点与禁忌 (Gotchas & Don'ts)\n\n- **忌滤镜频率过快或形变（Scale）过大**：`feDisplacementMap` 的 `scale` 属性如果大于 `8`，线条会碎裂解体，产生电子噪声感，从而失去“手绘”的温润感；抖动间隔（Interval）维持在 `100ms - 150ms` 最为舒适，太快会引起视觉疲劳甚至像屏幕闪烁故障。\n- **文字排斥的归位边界**：鼠标离开视口（MouseLeave）或停止移动时，背景文字必须丝滑地弹回原始叠加状态，回弹动效的 `damping` 必须偏高，避免文字像硬质弹簧一样无休止地晃动。\n"
@@ -372,14 +372,14 @@
         "backgroundColor": "#0a0a0a",
         "textColor": "#FFFFFF"
       },
-      "coverVideo": "/content-assets/kinetic-scroll-typography-reveal.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/kinetic-scroll-typography-reveal.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/kinetic-scroll-typography-reveal.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/kinetic-scroll-typography-reveal.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/kinetic-scroll-typography-reveal.mp4"
       ],
       "triggers": [
         "视差擦除",
@@ -409,14 +409,14 @@
         "backgroundColor": "#ffffff",
         "textColor": "#171717"
       },
-      "coverVideo": "/content-assets/list-item-inverse-stretch-reveal.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/list-item-inverse-stretch-reveal.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/list-item-inverse-stretch-reveal.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/list-item-inverse-stretch-reveal.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/list-item-inverse-stretch-reveal.mp4"
       ],
       "triggers": [
         "弹性反色块",
@@ -446,14 +446,14 @@
         "backgroundColor": "#0f1115",
         "textColor": "#FFFFFF"
       },
-      "coverVideo": "/content-assets/magnetic-button-magnetic-arrow.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/magnetic-button-magnetic-arrow.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/magnetic-button-magnetic-arrow.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/magnetic-button-magnetic-arrow.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/magnetic-button-magnetic-arrow.mp4"
       ],
       "triggers": [
         "磁性吸附按钮",
@@ -484,14 +484,14 @@
         "backgroundColor": "#1a1a1a",
         "textColor": "#FFFFFF"
       },
-      "coverVideo": "/content-assets/magnetic-circular-button-hover.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/magnetic-circular-button-hover.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/magnetic-circular-button-hover.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/magnetic-circular-button-hover.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/magnetic-circular-button-hover.mp4"
       ],
       "triggers": [
         "圆形磁吸吸附",
@@ -523,14 +523,14 @@
         "backgroundColor": "#0a0a0a",
         "textColor": "#FFFFFF"
       },
-      "coverVideo": "/content-assets/minimalist-text-menu-hover.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/minimalist-text-menu-hover.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/minimalist-text-menu-hover.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/minimalist-text-menu-hover.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/minimalist-text-menu-hover.mp4"
       ],
       "triggers": [
         "极简菜单高亮",
@@ -603,14 +603,14 @@
         "backgroundColor": "#FFE600",
         "textColor": "#171717"
       },
-      "coverVideo": "/content-assets/multi-column-accordion-reveal.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/multi-column-accordion-reveal.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/multi-column-accordion-reveal.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/multi-column-accordion-reveal.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/multi-column-accordion-reveal.mp4"
       ],
       "triggers": [
         "卡片折叠",
@@ -640,14 +640,14 @@
         "backgroundColor": "#111111",
         "textColor": "#FFFFFF"
       },
-      "coverVideo": "/content-assets/multi-section-sticky-overlap.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/multi-section-sticky-overlap.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/multi-section-sticky-overlap.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/multi-section-sticky-overlap.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/multi-section-sticky-overlap.mp4"
       ],
       "triggers": [
         "页面堆叠",
@@ -815,14 +815,14 @@
         "backgroundColor": "#171717",
         "textColor": "#FFFFFF"
       },
-      "coverVideo": "/content-assets/scroll-parallax-stagger-reveal.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/scroll-parallax-stagger-reveal.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/scroll-parallax-stagger-reveal.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/scroll-parallax-stagger-reveal.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/scroll-parallax-stagger-reveal.mp4"
       ],
       "triggers": [],
       "content": "---\nversion: alpha\nname: scroll-parallax-stagger-reveal\nname_zh: \"流式滚动视差与非对称交错揭示\"\ncover_video: \"../assets/scroll-parallax-stagger-reveal.mp4\"\ncomponents: [\"卡片组件\", \"图文流布局\", \"网格系统\"]\neffects: [\"滚动视差\", \"揭示过渡\", \"异步位移\"]\ninteraction_types: [\"滚动联动\", \"视差悬浮\"]\ndescription: >\n  这是一个基于页面滚动深度的非对称视差联动动效。当用户向下滚动时，左侧大字体的文本流以标准速率位移，而右侧的插图、卡片及背景色块以略微滞后或加速的“异步速度”向上推移。这种物理速度差消除了传统网页滚动的生硬感，营造出元素仿佛悬浮在不同空间维度的“流体层叠感”。\ntrigger_words: [滚动视差、异步交错、非对称流、视觉层叠]\nwebsite: \"https://safetonet.com\"\n\nmotion_tokens:\n  # 推荐使用滚动轴驱动的线性映射 (Scroll-Driven Animations)\n  scroll_mapping:\n    text_layer: \"speed * 1.0\"\n    image_card_layer: \"speed * 1.25\" # 略微加快，形成超越文字的动态包抄感\n    background_gradient: \"speed * 0.8\" # 慢速大面积移动，保证视觉重心稳固\n\n  # 如果使用基于 Framer Motion 的 Webhook 触发\n  spring:\n    stiffness: 120\n    damping: 25\n    mass: 1.2\n\n  css_easing: \"cubic-bezier(0.16, 1, 0.3, 1)\"\n  duration: \"滚动进度实时关联\"\n\n  variants:\n    initial: { opacity: 0, y: 60 }\n    animate: { opacity: 1, y: 0 }\n---\n\n# 流式滚动视差与非对称交错揭示规范\n\n## 1. 动效体感 (Feel & Vibe)\n\n- **视觉感受**：**空间层叠感、呼吸感、叙事平滑**。通过打破传统的“整页齐头并进”的滚动模式，赋予页面深度的 Z 轴空间幻觉。\n- **交互逻辑**：\n  - **视差联动**：随着用户向下滚动，页面右侧的带有圆角的彩色渐变容器（如 \"The Gold Standard\", \"Turning the Lights On\" 卡片）以比左侧纯文本略快的速度（大约 1.2 倍系数）向上滑入。\n  - **留白呼吸**：元素之间并非紧密排列，而是随着滚动在交错的位移差中释放出更多负空间（Negative Space），使得多图文排版在运动中保持呼吸感，避免视觉压迫。\n- **适用场景**：企业官网产品功能介绍、品牌故事长叙事页面、艺术设计类作品集展示。\n\n## 2. 媒体参考 (Reference Asset)\n\n> 动态行为源自实际网页的滚动行为捕获。\n\n- **文件路径**：`../assets/scroll-parallax-stagger-reveal.mp4`\n- **来源引用**：SafeToNet 官方网站产品介绍流\n\n## 3. 技术实现要点 (Implementation Details)\n\n### 推荐库\n\n- **首选**：Framer Motion (结合 `useScroll` 与 `useTransform`) 或 ScrollTrigger (GSAP)\n- **次选**：现代 CSS `animation-timeline: scroll()` (原生滚动驱动动画)\n\n### 关键属性\n\n- **异步转化系数**：必须对左右两侧的容器设置不同的 `y` 轴偏移映射区间。例如左侧 `y` 从 0 到 -100，右侧卡片 `y` 从 50 到 -150。\n- **视口预加载 (Will-Change)**：由于大面积带渐变色及圆角的阴影卡片（如 \"The Gold Standard\" 的毛玻璃/白底卡片）在视差滚动时极易引发浏览器重绘（Repaint），必须对滚动视差图层开启 `will-change: transform` 以激活 GPU 硬件加速，防止滚动撕裂。\n\n## 4. 示例代码骨架 (Code Skeleton)\n\n```tsx\nimport { motion, useScroll, useTransform } from \"framer-motion\";\nimport { useRef } from \"react\";\n\nexport const ParallaxSection = () => {\n  const containerRef = useRef(null);\n\n  // 监听容器相对于视口的滚动进度\n  const { scrollYProgress } = useScroll({\n    target: containerRef,\n    offset: [\"start end\", \"end start\"],\n  });\n\n  // 核心：为文字和卡片赋予不同的滚动位移系数（非对称位移）\n  const textY = useTransform(scrollYProgress, [0, 1], [0, -50]);\n  const cardY = useTransform(scrollYProgress, [0, 1], [100, -150]); // 移动速度更快，形成赶超视差\n  const bgOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 1, 0.6]);\n\n  return (\n    <div\n      ref={containerRef}\n      className=\"relative w-full min-h-screen flex items-center justify-between px-12 py-24 overflow-hidden\"\n    >\n      {/* 左侧文字层 */}\n      <motion.div style={{ y: textY }} className=\"w-1/2 max-w-xl\">\n        <h2 className=\"text-6xl font-serif tracking-tight text-gray-900 leading-none\">\n          Turning the Lights On\n        </h2>\n        <p className=\"mt-6 text-lg text-gray-600 leading-relaxed\">\n          SafeToNet shines a light on the unprotected, darker side of the\n          Internet...\n        </p>\n      </motion.div>\n\n      {/* 右侧加速滑入的视差卡片层 */}\n      <motion.div\n        style={{ y: cardY }}\n        className=\"w-5/12 bg-white/80 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-gray-100\"\n      >\n        <div className=\"w-full h-48 bg-gradient-to-br from-purple-400 to-pink-300 rounded-xl mb-6 overflow-hidden\">\n          {/* 插图或动态元素 */}\n        </div>\n        <h3 className=\"text-2xl font-bold mb-2\">The Gold Standard</h3>\n        <p className=\"text-sm text-gray-500\">Real-time on-device protection.</p>\n      </motion.div>\n    </div>\n  );\n};\n```\n\n## 5. 易错点与禁忌 (Gotchas & Don'ts)\n\n- **忌位移系数过大**：视差滚动的异步系数不可调得过于激进（右侧速度超过左侧 1.5 倍以上），否则会导致用户在快速滚动时产生眩晕感，或导致内容过早滑出屏幕、与上下游组件发生视觉重叠（Overlap 冲突）。\n- **动能平滑处理**：如果用户使用的是机械鼠标滚轮（带段落感），原生的滚动会非常生硬。建议页面配合 `lenis` 或 `smooth-scrollbar` 进行平滑滚动拦截，才能完美还原视频中那种如同奶油般丝滑的推进体感。\n- **移动端降级**：在手机或平板端，由于屏幕宽度限制，双栏布局会降级为单栏垂直排列。此时**必须关闭 Z 轴/Y 轴的视差错位**，恢复为正常的流式线性滚动，否则会导致极差的阅读阻碍。\n"
@@ -928,14 +928,14 @@
         "backgroundColor": "#1a1a1a",
         "textColor": "#FFFFFF"
       },
-      "coverVideo": "/content-assets/sticky-horizontal-line-indicator.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/sticky-horizontal-line-indicator.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/sticky-horizontal-line-indicator.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/sticky-horizontal-line-indicator.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/sticky-horizontal-line-indicator.mp4"
       ],
       "triggers": [
         "圆形磁吸吸附",
@@ -1060,14 +1060,14 @@
         "backgroundColor": "#0091ff",
         "textColor": "#FFFFFF"
       },
-      "coverVideo": "/content-assets/typographic-accordion-push.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/typographic-accordion-push.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/typographic-accordion-push.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/typographic-accordion-push.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/typographic-accordion-push.mp4"
       ],
       "triggers": [],
       "content": "---\nversion: alpha\nname: typographic-accordion-push\nname_zh: \"瑞士粗野主义：巨幅排版手风琴联动挤压\"\ncover_video: \"../assets/typographic-accordion-push.mp4\"\ncomponents: [\"手风琴折叠栏\", \"巨幅文本条\", \"内容揭示容器\"]\neffects: [\"弹性高度动态挤压\", \"层级交错渐显 (Stagger Reveal)\", \"边界顺滑裁切\"]\ninteraction_types: [\"点击切换\", \"布局弹性联动\"]\ndescription: >\n  这是一种充满现代粗野主义（Brutalist）与瑞士平面设计感的手风琴折叠动效。每一个分类都以极具视觉冲击力的巨幅黑色粗体字、高饱和度纯色块（蓝、绿、紫、粉、黄）和背景图片叠加呈现。当用户点击其中一个条目时，该条目会以带有明显惯性缓冲的节奏平滑“膨胀”展开，展示内部的详细内容与行动按钮（CTA），而其他未被选中的条目则会被优雅地向上或向下“推挤”缩小。\ntrigger_words: [粗野主义、巨幅排版、手风琴联动、动态挤压、高饱和色块]\nwebsite: \"未知（艺术创意或社会运动组织官网）\"\n\nmotion_tokens:\n  # 高度自适应流体过渡参数\n  layout_spring:\n    stiffness: 180\n    damping: 24\n    mass: 0.9\n\n  # 内部文字与按钮子元素的交错（Stagger）延迟\n  stagger_children:\n    delay_between: 0.08\n    initial_y_offset: 20\n\n  css_easing: \"cubic-bezier(0.16, 1, 0.3, 1)\" # 超平滑的 EaseOut 曲线\n  duration: \"550ms\"\n---\n\n# 瑞士粗野主义：巨幅排版手风琴联动挤压规范\n\n## 1. 动效体感 (Feel & Vibe)\n\n- **视觉感受**：**强反差、模块化、机械感与流体感的动态结合**。未展开时，密集堆叠的高饱色彩条带和巨幅文字带来蓄势待发的紧凑感；展开后，大面积纯色与留白瞬间释放，给予视线极强的聚焦。\n- **交互逻辑**：\n  - **联动排挤（Layout Squeezing）**：点击某一个色彩条带（例如 \"OUR SUPPORTERS\"），其容器的 `height`（或 `flex-grow`）在约 500ms 内平滑放大至内容撑起的高度。与此同时，其他兄弟节点的空间被等比例平滑压缩。\n  - **内容异步揭示（Content Unveiling）**：内部的大图、描述文案以及右侧的白底按钮，在高度展开的过程中，通过 `opacity` 从 0 到 1 渐显，并伴随一个向上微幅推移（y: 20 -> 0）的交错动画（Stagger），避免图文生硬突兀地闪现。\n\n## 2. 媒体参考 (Reference Asset)\n\n- **文件路径**：`../assets/typographic-accordion-push.mp4`\n- **来源引用**：The Push / 青年音乐创意运动官网\n\n## 3. 技术实现要点 (Implementation Details)\n\n### 推荐库\n\n- **首选**：Framer Motion (React) 中的 `<motion.div layout />`。这是处理 CSS 高度变化（`height: auto` 动画化）最完美的现代方案。\n- **次选**：现代 CSS Grid 动画。通过对 `grid-template-rows: 0fr` 到 `1fr` 的 `transition` 过渡来实现纯 CSS 的顺滑展开。\n\n### 关键属性\n\n- **防止内容溢出抖动**：手风琴在膨胀或闭合的过程中，其内部子组件的整体高度一直在剧烈变动。为了防止文字产生折行闪烁、图片比例变形，外层包裹容器必须设置 `overflow: hidden`，并配合 `will-change: height` 以确保动画期间的重绘效率。\n- **色彩与层级深度**：每一个条目在激活时，其 `z-index` 应短暂提升，避免在高度拉伸的瞬间被相邻条目的阴影或边框遮挡。\n\n## 4. 示例代码骨架 (Code Skeleton)\n\n```tsx\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { useState } from \"react\";\n\nconst accordionData = [\n  { id: \"young\", title: \"OUR YOUNG PEOPLE\", color: \"bg-[#0091ff]\" },\n  { id: \"parents\", title: \"OUR PARENTS & GUARDIANS\", color: \"bg-[#00c853]\" },\n  { id: \"supporters\", title: \"OUR SUPPORTERS\", color: \"bg-[#e040fb]\" },\n];\n\nexport const BrutalistAccordion = () => {\n  const [expandedId, setExpandedId] = useState<string | null>(null);\n\n  return (\n    <div className=\"w-full min-h-screen flex flex-col bg-black text-black\">\n      {accordionData.map((item) => {\n        const isExpanded = expandedId === item.id;\n\n        return (\n          <motion.div\n            key={item.id}\n            layout // Framer Motion 的核心：开启自动布局平滑重绘\n            onClick={() => setExpandedId(isExpanded ? null : item.id)}\n            className={`cursor-pointer overflow-hidden border-b-4 border-black transition-colors ${item.color} ${\n              isExpanded ? \"flex-grow min-h-[400px]\" : \"h-20 flex items-center\"\n            }`}\n          >\n            {/* 未展开时的标题条（保持巨幅粗体字） */}\n            <div className=\"p-6 select-none flex items-center justify-between w-full\">\n              <h2 className=\"text-4xl md:text-6xl font-black tracking-tighter uppercase\">\n                {item.title}\n              </h2>\n            </div>\n\n            {/* 展开后的详细内容区 */}\n            <AnimatePresence>\n              {isExpanded && (\n                <motion.div\n                  initial={{ opacity: 0 }}\n                  animate={{ opacity: 1 }}\n                  exit={{ opacity: 0 }}\n                  transition={{ duration: 0.3 }}\n                  className=\"px-6 pb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-start\"\n                >\n                  {/* 左侧内容描述，带 Stagger 错位入场体感 */}\n                  <motion.div\n                    initial={{ y: 20 }}\n                    animate={{ y: 0 }}\n                    className=\"max-w-xl text-xl font-bold\"\n                  >\n                    <p>\n                      Learn about how you can support our movement and create\n                      more opportunities for everyone.\n                    </p>\n                  </motion.div>\n\n                  {/* 右侧白底黑字粗野主义行动按钮 */}\n                  <motion.div\n                    initial={{ y: 30 }}\n                    animate={{ y: 0 }}\n                    className=\"flex flex-col gap-4\"\n                  >\n                    <button className=\"bg-white border-4 border-black p-4 text-left font-black uppercase tracking-wider hover:bg-black hover:text-white transition-colors\">\n                      Partner With Us ➔\n                    </button>\n                    <button className=\"bg-white border-4 border-black p-4 text-left font-black uppercase tracking-wider hover:bg-black hover:text-white transition-colors\">\n                      Become a Donor ➔\n                    </button>\n                  </motion.div>\n                </motion.div>\n              )}\n            </AnimatePresence>\n          </motion.div>\n        );\n      })}\n    </div>\n  );\n};\n```\n\n## 5. 易错点与禁忌 (Gotchas & Don'ts)\n\n- **忌不设最小高度（Min-Height）**：当展开某一项时，若内部文字极少，整个条目会因为没有撑起足够的 Z 轴视觉空间而显得局促。必须强制指定展开后的 `min-height`（如 `400px`），确保大面积色块能完全暴露，维持粗野主义风格。\n- **避免文本原生换行抖动**：巨幅英文字体（如 `text-6xl`）在容器宽度被挤压收缩时，容易因为空间不足被迫自动换行，导致原本一行写完的标题变成两行。应为标题文字加上 `white-space: nowrap` 结合 `text-overflow: clip`，允许其在收缩时被自然裁切，而不是生硬地换行将页面撑爆。\n"
@@ -1091,14 +1091,14 @@
         "backgroundColor": "#0d0d0d",
         "textColor": "#FFFFFF"
       },
-      "coverVideo": "/content-assets/typographic-carousel-slide.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/typographic-carousel-slide.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/typographic-carousel-slide.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/typographic-carousel-slide.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/typographic-carousel-slide.mp4"
       ],
       "triggers": [
         "巨幕视差滚动",
@@ -1129,14 +1129,14 @@
         "backgroundColor": "#0f0f0f",
         "textColor": "#FFFFFF"
       },
-      "coverVideo": "/content-assets/typographic-menu-preview-card.mp4",
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/typographic-menu-preview-card.mp4",
       "source": {
         "repo": "vibe-motion",
         "referencePath": "skills/interaction-library/references/typographic-menu-preview-card.md",
         "skillPath": "skills/interaction-library/SKILL.md"
       },
       "assets": [
-        "/content-assets/typographic-menu-preview-card.mp4"
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/typographic-menu-preview-card.mp4"
       ],
       "triggers": [
         "大字报菜单",
