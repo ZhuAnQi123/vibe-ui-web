@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { getCatalogItemContent } from "../../../../lib/get-catalog";
-import type { CatalogItemType } from "../../../../types/catalog";
+import { getCatalogItemContent } from "../../../../../lib/get-catalog";
+import { CatalogItemType } from "../../../../../types/catalog";
 
 export const dynamic = "force-dynamic";
 
