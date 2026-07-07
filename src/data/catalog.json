@@ -1,13 +1,13 @@
 {
   "version": "1.0.0",
-  "generatedAt": "2026-07-07T06:14:47.962Z",
+  "generatedAt": "2026-07-07T11:45:56.269Z",
   "sources": {
     "vibeUi": {
-      "path": "vibe-ui",
+      "path": "../vibe-ui",
       "resolvedFrom": "sibling"
     },
     "vibeMotionMd": {
-      "path": "vibe-motion",
+      "path": "../vibe-motion",
       "resolvedFrom": "sibling"
     }
   },
@@ -97,6 +97,49 @@
         "modular dashboard UI"
       ],
       "content": "---\nid: bento-grid-layout\nname: Bento Grid Layout\nname_zh: \"便当盒模块化网格布局\"\ncover_image: \"../assets/notion.webp\"\ndomain: [\"SaaS\", \"产品展示\", \"仪表盘\", \"个人主页\"]\naesthetic: [\"便当盒布局\", \"模块化网格\", \"Apple-like widgets\", \"整洁信息架构\"]\ncolor_scheme: \"Light\"\nwebsite: \"https://www.notion.com/\"\ndescription: >\n  Bento Grid Layout 是一种将内容拆分为严格对齐、大小错落的圆角矩形模块的 UI 风格。它强调清晰的信息层级、稳定的网格节奏和高度可扫描的卡片化结构，适合把多个功能、数据或卖点组织成像日本便当盒一样紧凑但有秩序的界面。触发词：bento grid layout, bento box layout, rounded distinct cards, strict grid alignment, Apple-like widgets, modular dashboard UI\n---\n\n# Bento Grid Layout UI 规范说明书\n\n## 1. Overview (概览)\n\n- **核心基调**：整洁、理性、高级、产品感强，像精心排列的现代 SaaS 或 Apple 小组件界面。\n- **视觉特征**：严格网格对齐、大小不一的圆角卡片、统一间距系统、清晰的图标/数据/文案层级。\n- **适用场景**：SaaS 落地页、数据看板、个人主页、功能介绍页、AI 产品能力展示页。\n- **不适用场景**：强叙事长文页面、需要高度随机感或艺术破坏性的品牌视觉、密集表格后台。\n\n## 2. 具象化的 Tailwind 字典 (Tailwind Dictionary)\n\n> ⚠️ **AI 约束**：不要只使用模糊的形容词，必须明确指定 Tailwind 类名。\n\n- **圆角策略 (Rounded)**：卡片使用 `rounded-3xl` 或 `rounded-[2rem]`，内部小元素使用 `rounded-2xl`，避免尖锐直角。\n- **阴影策略 (Shadow)**：使用轻微扩散阴影 `shadow-[0_16px_50px_rgba(15,23,42,0.08)]`，避免厚重硬阴影。\n- **边框策略 (Border)**：使用 `border border-slate-200/80` 或深色模式下 `border-white/10` 强化模块边界。\n- **间距与留白 (Spacing)**：网格使用 `grid gap-4 md:gap-6`，卡片内使用 `p-6 md:p-8`，Section 外围使用 `py-20 md:py-28`。\n\n## 3. 色彩变量映射 (Color Variables)\n\n> ⚠️ **AI 约束**：明确告诉 AI 主色、背景色、边框色的具体 Hex 值，避免 AI 自由发挥。\n\n- **Primary (主色)**：`#2563EB` - 用于 CTA、关键数据、选中态和重点图标。\n- **Background/Canvas (画布背景)**：`#F8FAFC` - 大面积浅冷灰背景，保持科技产品感。\n- **Surface (容器背景)**：`#FFFFFF` - 卡片和模块主底色。\n- **Border/Hairline (线条/描边)**：`#E2E8F0` - 卡片边界、分割线和小组件轮廓。\n- **Text/Ink (主要文本)**：`#0F172A` - 标题和核心数据文本。\n- **Muted (弱化文本)**：`#64748B` - 说明文字、标签和辅助指标。\n\n## 4. Typography (排版系统原则)\n\n- **展示字体 (Display)**：使用现代无衬线粗字重，强调清晰层级。示例：`font-bold tracking-tight leading-none text-slate-950`。\n- **正文字体 (Body)**：正文保持紧凑可读。示例：`text-sm md:text-base leading-relaxed text-slate-500`。\n- **数据字体 (Metrics)**：数据和短标签可使用 `font-semibold tabular-nums tracking-tight`，保证看板式稳定感。\n\n## 5. 基准组件示例 (Anchor Component)\n\n> ⚠️ **AI 约束**：请 AI 在生成其他组件时，严格参考以下基准组件的 HTML/Tailwind 结构。\n\n```html\n<section class=\"bg-[#F8FAFC] py-24 px-6\">\n  <div class=\"mx-auto grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-4\">\n    <div class=\"rounded-[2rem] border border-[#E2E8F0] bg-white p-8 shadow-[0_16px_50px_rgba(15,23,42,0.08)] md:col-span-2 md:row-span-2\">\n      <span class=\"text-sm font-semibold text-[#2563EB]\">Analytics</span>\n      <h3 class=\"mt-4 text-4xl font-bold tracking-tight text-[#0F172A]\">One grid for every signal.</h3>\n      <p class=\"mt-4 max-w-md text-base leading-relaxed text-[#64748B]\">Group metrics, actions, and summaries into distinct rounded modules.</p>\n    </div>\n    <div class=\"rounded-[2rem] border border-[#E2E8F0] bg-white p-6\">\n      <p class=\"text-sm text-[#64748B]\">Revenue</p>\n      <p class=\"mt-3 text-3xl font-bold tabular-nums text-[#0F172A]\">$48.2K</p>\n    </div>\n    <div class=\"rounded-[2rem] border border-[#E2E8F0] bg-[#2563EB] p-6 text-white\">\n      <p class=\"text-sm text-white/70\">Active users</p>\n      <p class=\"mt-3 text-3xl font-bold tabular-nums\">12,408</p>\n    </div>\n  </div>\n</section>\n```\n\n## 6. Layout & Spacing (布局与空间)\n\n- **留白哲学**：页面整体保持宽松，模块内部保持紧凑。用大小不同的卡片承载层级，而不是靠杂乱装饰制造变化。\n\n## 7. Elevation & Depth (层级与深度)\n\n- 主要依靠卡片尺寸、背景色差、轻边框和柔和阴影建立层级。重要模块可以跨列跨行，次要模块保持标准尺寸。\n\n## 8. Do's and Don'ts (设计禁忌)\n\n- **Do**：坚持统一的 `gap`、统一圆角半径和严格网格线；让每张卡片只承载一个明确主题。\n- **Don't**：不要随意错位、旋转卡片或混用过多圆角；不要把所有卡片做成同等视觉权重。\n"
+    },
+    {
+      "id": "bento-button-stagger-hover",
+      "type": "motion",
+      "name": "bento-button-stagger-hover",
+      "nameZh": "便当盒按钮交错悬停",
+      "description": "这是一个便当盒布局中按钮的交错悬停交互规范。",
+      "domains": [
+        "SaaS",
+        "产品展示",
+        "个人主页"
+      ],
+      "aesthetics": [
+        "便当盒布局",
+        "新粗野主义"
+      ],
+      "interactionTypes": [
+        "Hover Feedback"
+      ],
+      "components": [
+        "Button",
+        "Grid"
+      ],
+      "effects": [
+        "Elastic",
+        "Stagger"
+      ],
+      "website": "https://vibe-ui-prompt.online",
+      "preview": {
+        "backgroundColor": "#0d0a07",
+        "textColor": "#FFFFFF"
+      },
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/bento-button-stagger-hover.mp4",
+      "source": {
+        "repo": "vibe-motion",
+        "referencePath": "skills/interaction-library/references/bento-button-stagger-hover.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/bento-button-stagger-hover.mp4"
+      ],
+      "triggers": [],
+      "content": "---\nversion: alpha\nname: bento-button-stagger-hover\nname_zh: \"便当盒按钮交错悬停\"\ncover_video: \"../assets/bento-button-stagger-hover.mp4\"\ncdn_video_url: \"https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/bento-button-stagger-hover.mp4\"\ndomains: [\"SaaS\", \"产品展示\", \"个人主页\"]\naesthetics: [\"便当盒布局\", \"新粗野主义\"]\ncomponents: [\"Button\", \"Grid\"]\neffects: [\"Elastic\", \"Stagger\"]\ninteraction_types: [\"Hover Feedback\"]\npreview: { backgroundColor: \"#0d0a07\", textColor: \"#FFFFFF\" }\ndescription: >\n  这是一个便当盒布局中按钮的交错悬停交互规范。\nwebsite: \"https://vibe-ui-prompt.online\"\n\n# ==========================================\n# VISION-AGENT GUIDE: 动效物理预设词典\n# ==========================================\nmotion_tokens:\n  selected_preset: \"PRESET_EASE_OUT_EXPO\"\n  transform_origin: \"center 800px\" # 以底部轨道圆心作为旋转原点\n  stagger_delay: \"0ms\"\n\n  # Framer Motion / CSS 映射参数\n  active_physics:\n    stiffness: 200\n    damping: 25\n    mass: 1\n  css_fallback_easing: \"cubic-bezier(0.16, 1, 0.3, 1)\"\n  duration: \"scroll-linked\"\n\n  # 结构化状态变体\n  variants:\n    left_offscreen: { opacity: 0.2, rotate: -30, scale: 0.8 }\n    active_center: { opacity: 1, rotate: 0, scale: 1 }\n    right_offscreen: { opacity: 0.2, rotate: 30, scale: 0.8 }\n---\n\n# 滚动驱动圆弧传送带交互 / Scroll-driven Circular Carousel Specification & Implementation Protocol\n\n## 1. Interaction & Feel Vibe (动效体感)\n\n- **Visual Physics Class**: Linear-Smooth (Scroll-linked)\n- **Core Experience**: 组件的运动完全由页面的滚动进度（`scrollYProgress`）锁定。卡片组并非直线横移，而是附着在一个巨大的不可见圆形轨道的边缘。滚动时，卡片伴随着角度旋转（Rotate）与缩放（Scale）顺畅过渡，当元素滑向舞台中央时，其透明度变满、字重或比例达到顶峰，带来极强的空间感和方向操控感。\n- **Interaction Flow**: Scroll Down -> Circle Track Rotates Clockwise -> Card 01 moves out (Rotate left, Fade) -> Card 02 moves in (Rotate to center, Scale up to 1.0) -> Card 03 follows on track.\n\n## 2. Component DOM Mapping (元素与动效节点映射)\n\n- **[Scroll ScrollContainer]** (`div` - Section Wrapper)\n  - 使用 `scroll-timeline` 或 `useScroll` 捕获当前区域的滚动容器，高度通常设为 `200vh` - `300vh` 以锁定视口（Sticky Position）。\n- **[Rotating Track Ring]** (`motion.div` - Inner Carousel Container)\n  - 设置绝对定位与极大的 `transform-origin`（如 `center 100%` 或具体像素），接收滚动进度并直接转化为 `rotate` 属性。\n- **[Carousel Item Cards]** (`motion.div` - Item Wrapper)\n  - 分布在圆环上的子节点，分别设置初始的角度偏置。在自身接近视口中心时，触发自身的局部 `opacity` 和 `scale` 变化。\n\n## 3. Detailed Timeline Sequence (时序编排)\n\n- **[Scroll Progression 0% - 33%] Phase 1**:\n  - 第一组卡片 \"01\" 处于中心（`rotate: 0deg`, `opacity: 1`）。随着滚动加深，大容器整体顺时针旋转，\"01\" 旋转至 `-25deg` 并淡出。\n- **[Scroll Progression 33% - 66%] Phase 2**:\n  - 第二组卡片 \"02\" 伴随旋转从右侧（`25deg`）滑入到正中央（`0deg`），同时放大至 `1.0`，文本内容显现。\n- **[Scroll Progression 66% - 100%] Phase 3**:\n  - 重复该圆弧传送交替，\"02\" 旋出，\"03\" 旋转切入。\n\n## 4. Implementation Directives for Code-Agent (核心指令)\n\n> **⚠️ CRITICAL IMPLEMENTATION RULES (NO-NEGOTIABLE):**\n>\n> 1. **Framework Priority**: 优先使用现代浏览器原生 CSS `@scroll-timeline` 或 Framer Motion 的 `useScroll` 与 `useTransform`。\n> 2. **Performance Guard**: 必须将轨道旋转限制在单个容器的 `transform: rotate()`，严禁对多张卡片进行独立的复杂绝对定位重算，以防止滚动导致严重的掉帧（Jank）。\n\n## 5. Generated Code Skeleton (示例代码)\n\n```tsx\n// Complete production-ready implementation of Scroll-driven Circular Carousel\nimport React, { useRef } from \"react\";\nimport { motion, useScroll, useTransform } from \"framer-motion\";\n\nexport const CircularCarousel = () => {\n  const containerRef = useRef<HTMLDivElement>(null);\n  \n  // 捕获该容器在视口中的滚动进度\n  const { scrollYProgress } = useScroll({\n    target: containerRef,\n    offset: [\"start start\", \"end end\"]\n  });\n\n  // 将滚动进度（0 到 1）映射为圆环的旋转角度（从 0deg 到 -60deg）\n  const trackRotation = useTransform(scrollYProgress, [0, 1], [0, -60]);\n\n  const items = [\n    { id: \"01\", title: \"SMALL BATCHES\", desc: \"Small runs. No conveyor belts...\" },\n    { id: \"02\", title: \"REAL INGREDIENTS\", desc: \"Real fruit. Fresh peppers. No syrups...\" },\n    { id: \"03\", title: \"OH, THIS?\", desc: \"Philly Hot Sauce Fest Winner...\" }\n  ];\n\n  return (\n    <div ref={containerRef} className=\"relative h-[300vh] bg-[#0d0a07] text-white\">\n      {/* 钉住视口的核心展示区域 */}\n      <div className=\"sticky top-0 flex flex-col items-center justify-center h-screen overflow-hidden\">\n        \n        {/* 弧形大轨道容器 */}\n        <motion.div\n          style={{ \n            rotate: trackRotation,\n            transformOrigin: \"center 1200px\" // 极其重要的中心原点外置设定\n          }}\n          className=\"absolute top-[20vh] flex justify-center w-[2000px] h-[2000px]\"\n        >\n          {items.map((item, index) => {\n            // 每张卡片根据索引在圆环上平铺（间隔 30 度）\n            const itemRotation = index * 30; \n\n            return (\n              <div\n                key={item.id}\n                style={{\n                  transform: `rotate(${itemRotation}deg)`,\n                  transformOrigin: \"center 1200px\",\n                  position: \"absolute\"\n                }}\n                className=\"w-[400px] text-center flex flex-col items-center\"\n              >\n                <span className=\"text-[12rem] font-bold opacity-20 block leading-none\">{item.id}</span>\n                <div className=\"px-6 py-2 bg-[#fcf9f2] text-black font-bold rounded-full uppercase tracking-wider text-sm my-4\">\n                  ✦ {item.title}\n                </div>\n                <p className=\"text-gray-400 text-lg max-w-sm\">{item.desc}</p>\n              </div>\n            );\n          })}\n        </motion.div>\n        \n        {/* 视口中心辅助线或静态装饰元素可在此层叠 */}\n        <div className=\"absolute bottom-10 w-full text-center pointer-events-none opacity-30\">\n          ─── ✦ ───\n        </div>\n      </div>\n    </div>\n  );\n};\n```"
     },
     {
       "id": "copula-neo-brutalism",
@@ -789,6 +832,47 @@
       "content": "---\nid: organic-soft-minimalism\nname: Organic Soft Minimalism\nname_zh: \"有机柔和极简风格\"\ncover_image: \"../assets/readymag.webp\"\ndomain: [\"健康生活\", \"习惯养成\", \"笔记工具\", \"情绪价值产品\"]\naesthetic: [\"有机极简\", \"柔和 UI\", \"低饱和渐变\", \"治愈科技感\"]\ncolor_scheme: \"Light\"\nwebsite: \"https://readymag.com/examples\"\ndescription: >\n  Organic Soft Minimalism 用暖中性色、低饱和粉彩、超大圆角和柔和渐变建立平静、亲近、无压力的界面气质。它弱化硬朗边界与强对比，用温柔的留白、圆润容器和轻盈排版传达治愈、专注和可信赖的情绪。触发词：organic minimalism, soft UI, pastel gradients, warm neutral background, calm tech, rounded aesthetic\n---\n\n# Organic Soft Minimalism UI 规范说明书\n\n## 1. Overview (概览)\n\n- **核心基调**：温暖、治愈、安静、低压力。\n- **视觉特征**：暖米色背景、粉彩渐变、超大圆角、低对比细线、柔软留白。\n- **适用场景**：习惯打卡、心理健康、日程管理、女性向消费产品、AI 陪伴或知识工具。\n- **不适用场景**：金融交易、重度开发者工具、竞技游戏、需要强警示感的后台系统。\n\n## 2. 具象化的 Tailwind 字典 (Tailwind Dictionary)\n\n> ⚠️ **AI 约束**：不要只使用模糊的形容词，必须明确指定 Tailwind 类名。\n\n- **圆角策略 (Rounded)**：大量使用 `rounded-3xl`、`rounded-[2rem]` 和 `rounded-full`，避免 `rounded-none`。\n- **阴影策略 (Shadow)**：使用极轻柔阴影 `shadow-[0_18px_60px_rgba(120,90,70,0.10)]`，不要使用硬阴影。\n- **边框策略 (Border)**：使用 `border border-white/70` 或 `border-[#E8DDD2]`，让边界几乎融入背景。\n- **间距与留白 (Spacing)**：采用舒缓节奏，Section 使用 `py-20 md:py-28`，卡片使用 `p-7 md:p-10`，元素间使用 `space-y-5`。\n\n## 3. 色彩变量映射 (Color Variables)\n\n> ⚠️ **AI 约束**：明确告诉 AI 主色、背景色、边框色的具体 Hex 值，避免 AI 自由发挥。\n\n- **Primary (主色)**：`#D98F75` - 用于 CTA、图标高亮和温暖强调。\n- **Background/Canvas (画布背景)**：`#F7F1E8` - 暖米色大面积底色。\n- **Surface (容器背景)**：`#FFFDF8` - 柔和白色卡片底。\n- **Border/Hairline (线条/描边)**：`#E8DDD2` - 低对比容器边界。\n- **Text/Ink (主要文本)**：`#2F2A25` - 温暖深棕黑文本。\n- **Muted (弱化文本)**：`#8B7E73` - 说明文本和辅助信息。\n\n## 4. Typography (排版系统原则)\n\n- **展示字体 (Display)**：标题应柔和但清晰，使用 `font-semibold tracking-tight leading-tight text-[#2F2A25]`，避免过度粗黑。\n- **正文字体 (Body)**：正文使用 `text-base leading-relaxed text-[#8B7E73]`，保持慢节奏阅读感。\n\n## 5. 基准组件示例 (Anchor Component)\n\n> ⚠️ **AI 约束**：请 AI 在生成其他组件时，严格参考以下基准组件的 HTML/Tailwind 结构。\n\n```html\n<div class=\"rounded-[2rem] border border-[#E8DDD2] bg-[#FFFDF8] p-8 shadow-[0_18px_60px_rgba(120,90,70,0.10)]\">\n  <div class=\"mb-6 h-28 rounded-[1.5rem] bg-gradient-to-br from-[#F8C8B8] via-[#F6E4B8] to-[#CDE7D8]\"></div>\n  <span class=\"rounded-full bg-[#F7F1E8] px-4 py-2 text-sm font-medium text-[#D98F75]\">Today</span>\n  <h3 class=\"mt-5 text-3xl font-semibold tracking-tight text-[#2F2A25]\">A calmer way to keep momentum.</h3>\n  <p class=\"mt-4 leading-relaxed text-[#8B7E73]\">Use soft surfaces, warm neutrals, and gentle gradients to reduce visual pressure.</p>\n  <button class=\"mt-8 rounded-full bg-[#D98F75] px-6 py-3 font-semibold text-white transition hover:scale-[1.02]\">Start gently</button>\n</div>\n```\n\n## 6. Layout & Spacing (布局与空间)\n\n- **留白哲学**：保持充足呼吸感，模块之间像漂浮在暖色画布上，不要压缩成工具后台式密度。\n\n## 7. Elevation & Depth (层级与深度)\n\n- 用柔和阴影、浅色边界和渐变色块表达深度。层级应像纸张轻轻叠放，而不是硬朗悬浮。\n\n## 8. Do's and Don'ts (设计禁忌)\n\n- **Do**：使用低饱和颜色、圆润容器、轻柔渐变和温暖文字色。\n- **Don't**：不要使用纯黑高对比、荧光色、锐利直角、强烈霓虹或厚重阴影。\n"
     },
     {
+      "id": "scroll-driven-circular-carousel",
+      "type": "motion",
+      "name": "scroll-driven-circular-carousel",
+      "nameZh": "滚动驱动圆弧传送带交互",
+      "description": "这是一个由页面滚动驱动的圆弧传送带叙事交互。随着用户向下滚动，底部的巨大圆形刻度盘（轨道）发生旋转，原本位于两侧的卡片/数字（\"01\", \"02\", \"03\"）和插画元素沿着弧形轨道依次切入视觉中心，并相对应地伴随淡入、缩放与微弱的浮动物理感，形成了一种沉浸式的产品特点探索体验。 触发词：[滚动驱动、圆弧旋转、切入切出、叙事传送带]",
+      "domains": [],
+      "aesthetics": [],
+      "interactionTypes": [
+        "Scroll-driven"
+      ],
+      "components": [
+        "Carousel",
+        "ScrollWrapper"
+      ],
+      "effects": [
+        "Fluid Expand",
+        "Scroll-driven"
+      ],
+      "website": "https://buckssauce.com/",
+      "preview": {
+        "backgroundColor": "#0d0a07",
+        "textColor": "#FFFFFF"
+      },
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/scroll-driven-circular-carousel.mp4",
+      "source": {
+        "repo": "vibe-motion",
+        "referencePath": "skills/interaction-library/references/scroll-driven-circular-carousel.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/scroll-driven-circular-carousel.mp4"
+      ],
+      "triggers": [
+        "[滚动驱动",
+        "圆弧旋转",
+        "切入切出",
+        "叙事传送带]"
+      ],
+      "content": "---\nversion: alpha\nname: scroll-driven-circular-carousel\nname_zh: \"滚动驱动圆弧传送带交互\"\ncover_video: \"../assets/scroll-driven-circular-carousel.mp4\"\ncdn_video_url: \"https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/scroll-driven-carousel.mp4\"\ncomponents: [\"Carousel\", \"ScrollWrapper\"]\neffects: [\"Fluid Expand\", \"Scroll-driven\"]\ninteraction_types: [\"Scroll-driven\"]\ndescription: >\n  这是一个由页面滚动驱动的圆弧传送带叙事交互。随着用户向下滚动，底部的巨大圆形刻度盘（轨道）发生旋转，原本位于两侧的卡片/数字（\"01\", \"02\", \"03\"）和插画元素沿着弧形轨道依次切入视觉中心，并相对应地伴随淡入、缩放与微弱的浮动物理感，形成了一种沉浸式的产品特点探索体验。\n  触发词：[滚动驱动、圆弧旋转、切入切出、叙事传送带]\nwebsite: \"https://buckssauce.com/\"\npreview:\n  backgroundColor: \"#0d0a07\"\n  textColor: \"#FFFFFF\"\n\n# ==========================================\n# VISION-AGENT GUIDE: 动效物理预设词典\n# ==========================================\nmotion_tokens:\n  selected_preset: \"PRESET_EASE_OUT_EXPO\"\n  transform_origin: \"center 800px\" # 以底部轨道圆心作为旋转原点\n  stagger_delay: \"0ms\"\n\n  # Framer Motion / CSS 映射参数\n  active_physics:\n    stiffness: 200\n    damping: 25\n    mass: 1\n  css_fallback_easing: \"cubic-bezier(0.16, 1, 0.3, 1)\"\n  duration: \"scroll-linked\"\n\n  # 结构化状态变体\n  variants:\n    left_offscreen: { opacity: 0.2, rotate: -30, scale: 0.8 }\n    active_center: { opacity: 1, rotate: 0, scale: 1 }\n    right_offscreen: { opacity: 0.2, rotate: 30, scale: 0.8 }\n---\n# 滚动驱动圆弧传送带交互 / Scroll-driven Circular Carousel Specification & Implementation Protocol\n\n## 1. Interaction & Feel Vibe (动效体感)\n\n- **Visual Physics Class**: Linear-Smooth (Scroll-linked)\n- **Core Experience**: 组件的运动完全由页面的滚动进度（`scrollYProgress`）锁定。卡片组并非直线横移，而是附着在一个巨大的不可见圆形轨道的边缘。滚动时，卡片伴随着角度旋转（Rotate）与缩放（Scale）顺畅过渡，当元素滑向舞台中央时，其透明度变满、字重或比例达到顶峰，带来极强的空间感和方向操控感。\n- **Interaction Flow**: Scroll Down -> Circle Track Rotates Clockwise -> Card 01 moves out (Rotate left, Fade) -> Card 02 moves in (Rotate to center, Scale up to 1.0) -> Card 03 follows on track.\n\n## 2. Component DOM Mapping (元素与动效节点映射)\n\n- **[Scroll ScrollContainer]** (`div` - Section Wrapper)\n  - 使用 `scroll-timeline` 或 `useScroll` 捕获当前区域的滚动容器，高度通常设为 `200vh` - `300vh` 以锁定视口（Sticky Position）。\n- **[Rotating Track Ring]** (`motion.div` - Inner Carousel Container)\n  - 设置绝对定位与极大的 `transform-origin`（如 `center 100%` 或具体像素），接收滚动进度并直接转化为 `rotate` 属性。\n- **[Carousel Item Cards]** (`motion.div` - Item Wrapper)\n  - 分布在圆环上的子节点，分别设置初始的角度偏置。在自身接近视口中心时，触发自身的局部 `opacity` 和 `scale` 变化。\n\n## 3. Detailed Timeline Sequence (时序编排)\n\n- **[Scroll Progression 0% - 33%] Phase 1**:\n  - 第一组卡片 \"01\" 处于中心（`rotate: 0deg`, `opacity: 1`）。随着滚动加深，大容器整体顺时针旋转，\"01\" 旋转至 `-25deg` 并淡出。\n- **[Scroll Progression 33% - 66%] Phase 2**:\n  - 第二组卡片 \"02\" 伴随旋转从右侧（`25deg`）滑入到正中央（`0deg`），同时放大至 `1.0`，文本内容显现。\n- **[Scroll Progression 66% - 100%] Phase 3**:\n  - 重复该圆弧传送交替，\"02\" 旋出，\"03\" 旋转切入。\n\n## 4. Implementation Directives for Code-Agent (核心指令)\n\n> **⚠️ CRITICAL IMPLEMENTATION RULES (NO-NEGOTIABLE):**\n>\n> 1. **Framework Priority**: 优先使用现代浏览器原生 CSS `@scroll-timeline` 或 Framer Motion 的 `useScroll` 与 `useTransform`。\n> 2. **Performance Guard**: 必须将轨道旋转限制在单个容器的 `transform: rotate()`，严禁对多张卡片进行独立的复杂绝对定位重算，以防止滚动导致严重的掉帧（Jank）。\n\n## 5. Generated Code Skeleton (示例代码)\n\n```tsx\n// Complete production-ready implementation of Scroll-driven Circular Carousel\nimport React, { useRef } from \"react\";\nimport { motion, useScroll, useTransform } from \"framer-motion\";\n\nexport const CircularCarousel = () => {\n  const containerRef = useRef<HTMLDivElement>(null);\n  \n  // 捕获该容器在视口中的滚动进度\n  const { scrollYProgress } = useScroll({\n    target: containerRef,\n    offset: [\"start start\", \"end end\"]\n  });\n\n  // 将滚动进度（0 到 1）映射为圆环的旋转角度（从 0deg 到 -60deg）\n  const trackRotation = useTransform(scrollYProgress, [0, 1], [0, -60]);\n\n  const items = [\n    { id: \"01\", title: \"SMALL BATCHES\", desc: \"Small runs. No conveyor belts...\" },\n    { id: \"02\", title: \"REAL INGREDIENTS\", desc: \"Real fruit. Fresh peppers. No syrups...\" },\n    { id: \"03\", title: \"OH, THIS?\", desc: \"Philly Hot Sauce Fest Winner...\" }\n  ];\n\n  return (\n    <div ref={containerRef} className=\"relative h-[300vh] bg-[#0d0a07] text-white\">\n      {/* 钉住视口的核心展示区域 */}\n      <div className=\"sticky top-0 flex flex-col items-center justify-center h-screen overflow-hidden\">\n        \n        {/* 弧形大轨道容器 */}\n        <motion.div\n          style={{ \n            rotate: trackRotation,\n            transformOrigin: \"center 1200px\" // 极其重要的中心原点外置设定\n          }}\n          className=\"absolute top-[20vh] flex justify-center w-[2000px] h-[2000px]\"\n        >\n          {items.map((item, index) => {\n            // 每张卡片根据索引在圆环上平铺（间隔 30 度）\n            const itemRotation = index * 30; \n\n            return (\n              <div\n                key={item.id}\n                style={{\n                  transform: `rotate(${itemRotation}deg)`,\n                  transformOrigin: \"center 1200px\",\n                  position: \"absolute\"\n                }}\n                className=\"w-[400px] text-center flex flex-col items-center\"\n              >\n                <span className=\"text-[12rem] font-bold opacity-20 block leading-none\">{item.id}</span>\n                <div className=\"px-6 py-2 bg-[#fcf9f2] text-black font-bold rounded-full uppercase tracking-wider text-sm my-4\">\n                  ✦ {item.title}\n                </div>\n                <p className=\"text-gray-400 text-lg max-w-sm\">{item.desc}</p>\n              </div>\n            );\n          })}\n        </motion.div>\n        \n        {/* 视口中心辅助线或静态装饰元素可在此层叠 */}\n        <div className=\"absolute bottom-10 w-full text-center pointer-events-none opacity-30\">\n          ─── ✦ ───\n        </div>\n      </div>\n    </div>\n  );\n};\n```"
+    },
+    {
       "id": "scroll-parallax-stagger-reveal",
       "type": "motion",
       "name": "scroll-parallax-stagger-reveal",
@@ -989,6 +1073,54 @@
         "high contrast"
       ],
       "content": "---\nid: terminal-ai-first-aesthetic\nname: Terminal AI-First Aesthetic\nname_zh: \"终端优先 AI 工具风格\"\ncover_image: \"../assets/supabase.webp\"\ndomain: [\"AI 工具\", \"开发者工具\", \"自动化平台\", \"代码产品\"]\naesthetic: [\"极客终端风\", \"Dark mode first\", \"Monospace\", \"霓虹强调\"]\ncolor_scheme: \"Dark\"\nwebsite: \"https://supabase.com/\"\ndescription: >\n  Terminal AI-First Aesthetic 是面向 AI 工具和开发者产品的深色界面风格。它借鉴代码编辑器、命令行和现代 DevTools 的视觉语言，用纯黑或深灰背景、等宽字体、高对比文本和少量霓虹强调色营造专业、精确、技术可信的氛围。触发词：developer-tools aesthetic, dark mode first, monospace typography, terminal inspired, neon glowing accents, high contrast\n---\n\n# Terminal AI-First Aesthetic UI 规范说明书\n\n## 1. Overview (概览)\n\n- **核心基调**：极客、精准、冷静、高效、AI-native。\n- **视觉特征**：深色背景、等宽字体、命令行式标签、细线分割、荧光强调色、编辑器面板结构。\n- **适用场景**：AI Agent 控制台、脚本工具、开发者 SaaS、日志分析、自动化工作流。\n- **不适用场景**：儿童产品、柔和生活方式应用、高级奢侈品视觉、需要大量图片情绪表达的页面。\n\n## 2. 具象化的 Tailwind 字典 (Tailwind Dictionary)\n\n> ⚠️ **AI 约束**：不要只使用模糊的形容词，必须明确指定 Tailwind 类名。\n\n- **圆角策略 (Rounded)**：使用 `rounded-lg` 或 `rounded-xl`，整体偏工具感；避免 `rounded-3xl` 大圆角滥用。\n- **阴影策略 (Shadow)**：少用传统阴影，可使用霓虹光晕 `shadow-[0_0_40px_rgba(34,197,94,0.18)]`。\n- **边框策略 (Border)**：高频使用 `border border-white/10`、`divide-y divide-white/10` 和 `ring-1 ring-inset ring-white/5`。\n- **间距与留白 (Spacing)**：面板使用 `p-4 md:p-6`，组件之间使用 `gap-3 md:gap-4`，保持开发工具的紧凑效率。\n\n## 3. 色彩变量映射 (Color Variables)\n\n> ⚠️ **AI 约束**：明确告诉 AI 主色、背景色、边框色的具体 Hex 值，避免 AI 自由发挥。\n\n- **Primary (主色)**：`#22C55E` - 荧光绿色，用于运行状态、CTA 和高亮代码。\n- **Background/Canvas (画布背景)**：`#020617` - 近黑蓝色主背景。\n- **Surface (容器背景)**：`#0F172A` - 编辑器面板和卡片背景。\n- **Border/Hairline (线条/描边)**：`#1E293B` - 面板边框和分割线。\n- **Text/Ink (主要文本)**：`#E2E8F0` - 主文本和命令输出。\n- **Muted (弱化文本)**：`#64748B` - 注释、时间戳、次级说明。\n\n## 4. Typography (排版系统原则)\n\n- **展示字体 (Display)**：标题可混用无衬线和等宽字体，示例：`font-semibold tracking-tight text-slate-100`。\n- **功能字体 (Code/Mono)**：按钮、标签、日志和状态使用 `font-mono text-sm tracking-tight`。\n- **正文字体 (Body)**：正文使用 `text-sm leading-6 text-slate-400`，避免过大字号破坏工具密度。\n\n## 5. 基准组件示例 (Anchor Component)\n\n> ⚠️ **AI 约束**：请 AI 在生成其他组件时，严格参考以下基准组件的 HTML/Tailwind 结构。\n\n```html\n<div class=\"rounded-xl border border-[#1E293B] bg-[#0F172A] shadow-[0_0_40px_rgba(34,197,94,0.12)]\">\n  <div class=\"flex items-center justify-between border-b border-white/10 px-4 py-3 font-mono text-xs text-[#64748B]\">\n    <span>~/agent/run.sh</span>\n    <span class=\"text-[#22C55E]\">● ONLINE</span>\n  </div>\n  <div class=\"space-y-4 p-6\">\n    <h3 class=\"text-2xl font-semibold tracking-tight text-[#E2E8F0]\">Deploy autonomous workflow</h3>\n    <p class=\"font-mono text-sm leading-6 text-[#94A3B8]\">$ vibe agent start --mode production --watch</p>\n    <button class=\"rounded-lg border border-[#22C55E]/40 bg-[#22C55E]/10 px-4 py-2 font-mono text-sm font-semibold text-[#22C55E] transition hover:bg-[#22C55E]/20\">RUN COMMAND</button>\n  </div>\n</div>\n```\n\n## 6. Layout & Spacing (布局与空间)\n\n- **留白哲学**：保持面板化和信息密度，留白服务于扫描效率，而不是营造生活方式品牌的空灵感。\n\n## 7. Elevation & Depth (层级与深度)\n\n- 使用深浅面板、细边框、状态色光晕和代码块层级表达深度，避免传统卡片阴影。\n\n## 8. Do's and Don'ts (设计禁忌)\n\n- **Do**：坚持深色优先、等宽字体、状态指示和命令行语汇。\n- **Don't**：不要使用粉彩治愈渐变、大量插画、厚重圆角或浅色 Apple-like 小组件风。\n"
+    },
+    {
+      "id": "text-liquid-wave-distortion",
+      "type": "motion",
+      "name": "text-liquid-wave-distortion",
+      "nameZh": "文字局部近接液态波纹动效",
+      "description": "这是一种应用于大字重网页排版的“鼠标邻近液态水波纹”动效。 其核心体感是：文字在静止状态下保持绝对的刚性几何形态。当鼠标悬停于文字之上时，只有“鼠标指针直接触及的单个字母”以及“其左右相邻的 1-2 个字母”会产生高频、丝滑的液态正弦扭曲。 远离鼠标的字母保持静止，扭曲强度随距离呈指数级衰减。鼠标离开后，字母带有阻尼感地恢复原状。 触发词：局部水波纹、字符拆分扭曲、鼠标近接衰减、SVG Proximity Displacement",
+      "domains": [
+        "个人作品集 (Portfolio)",
+        "创意设计"
+      ],
+      "aesthetics": [
+        "极高对比度",
+        "微质感"
+      ],
+      "interactionTypes": [
+        "鼠标悬停反馈 (Hover)",
+        "邻近元素联动 (Proximity)"
+      ],
+      "components": [
+        "Typography",
+        "SplitText"
+      ],
+      "effects": [
+        "Liquid",
+        "Distortion",
+        "Proximity"
+      ],
+      "preview": {
+        "backgroundColor": "#fcf5ec",
+        "textColor": "#171717"
+      },
+      "coverVideo": "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/portfolio-text-wave.mp4",
+      "source": {
+        "repo": "vibe-motion",
+        "referencePath": "skills/interaction-library/references/text-liquid-wave-distortion.md",
+        "skillPath": "skills/interaction-library/SKILL.md"
+      },
+      "assets": [
+        "https://pub-78bb53484bcd4179b692b8ebeee0e014.r2.dev/portfolio-text-wave.mp4"
+      ],
+      "triggers": [
+        "局部水波纹",
+        "字符拆分扭曲",
+        "鼠标近接衰减",
+        "SVG Proximity Displacement"
+      ],
+      "content": "---\nversion: alpha\nname: text-liquid-wave-distortion\nname_zh: \"文字局部近接液态波纹动效\"\ncover_video: \"../assets/portfolio-text-wave.mp4\"\ndomains: [\"个人作品集 (Portfolio)\", \"创意设计\"]\naesthetics: [\"极高对比度\", \"微质感\"]\ncomponents: [\"Typography\", \"SplitText\"]\neffects: [\"Liquid\", \"Distortion\", \"Proximity\"]\ninteraction_types: [\"鼠标悬停反馈 (Hover)\", \"邻近元素联动 (Proximity)\"]\npreview: { backgroundColor: \"#fcf5ec\", textColor: \"#171717\" }\ndescription: >\n  这是一种应用于大字重网页排版的“鼠标邻近液态水波纹”动效。\n  其核心体感是：文字在静止状态下保持绝对的刚性几何形态。当鼠标悬停于文字之上时，只有“鼠标指针直接触及的单个字母”以及“其左右相邻的 1-2 个字母”会产生高频、丝滑的液态正弦扭曲。\n  远离鼠标的字母保持静止，扭曲强度随距离呈指数级衰减。鼠标离开后，字母带有阻尼感地恢复原状。\n  触发词：局部水波纹、字符拆分扭曲、鼠标近接衰减、SVG Proximity Displacement\nwebsite: [\"https://aikawakenichi.com/\"]\n\n# 结构化的物理动效参数（供 AI 直接读取应用）\nmotion_tokens:\n  proximity_influence:\n    target_char_scale: 50      # 直接鼠标悬停的字母，最大像素偏移量值\n    sibling_1_scale: 20        # 左右相邻第1个字母，衰减后的偏移量值\n    sibling_2_scale: 5         # 左右相邻第2个字母，衰减后的偏移量值\n    frequency: \"0.04 0.08\"     # 水波纹的基准频率 (X Y 轴)\n  \n  transition_properties:\n    css_easing: \"cubic-bezier(0.25, 1, 0.5, 1)\" # 恢复刚性时的缓动曲线\n    enter_duration: \"150ms\"    # 鼠标滑入，扭曲迅速反应的时间\n    leave_duration: \"400ms\"    # 鼠标滑出，文字恢复原状的阻尼时间\n---\n\n# 文字局部近接液态波纹 规范\n\n## 1. 动效体感 (Feel & Vibe)\n\n- **视觉感受**：高频、局部、磁吸般的液体反应。当鼠标划过一串文字时，波纹就像指尖划过琴弦或水面一样，紧紧跟随鼠标的轨迹局部荡漾，未触及处平静如镜。\n- **交互逻辑**：\n  1. 页面加载时，文字为普通的静态排版。\n  2. 鼠标滑入某个字符 $Char_n$，该字符立即加载液态滤镜。\n  3. 协同反应：$Char_{n-1}$ 与 $Char_{n+1}$ 同步触发较低强度的同款滤镜。\n  4. 鼠标移开后，波纹的振幅（Scale）在 400ms 内迅速归零，不产生晃动的余波，干净利落。\n- **禁忌现象**：**严禁整个文本块（Text Block）无差别整体晃动**，这会导致视觉上的廉价感和眩晕感。\n\n## 2. 媒体参考 (Reference Asset)\n\n- **文件路径**：`../assets/portfolio-text-wave.gif`\n- **来源引用**：https://aikawakenichi.com/ 视频 00:00 - 00:03。对比用户实验文件（录屏2026-06-27 18.11.42.mov）中的全局晃动，必须严格限制受控范围。\n\n## 3. 技术实现要点 (Implementation Details)\n\n### 推荐库 / 技术栈\n- **DOM 结构重构**：必须在运行时使用 JS（或通过 React/Vue 组件）将目标文本利用 `split(\"\")` 拆分为独立的 `<span>` 字符流。\n- **驱动方式**：\n  - **方法 A (纯 CSS 方案)**：定义多个不同强度的 SVG 滤镜（如 `#wave-max`, `#wave-mid`），利用 CSS 兄弟选择器 `.char:hover { filter: url(#wave-max); }` 以及 `.char:hover + .char { filter: url(#wave-mid); }` 实现无 JS 延迟的邻近衰减。\n  - **方法 B (JS 动态映射)**：利用 JS 监听组件容器的 `mouseover`，获取当前 `target` 字符的 `index`，动态为 `index-1`、`index`、`index+1` 动态修改 `–wave-scale` 核心 CSS 变量。\n\n## 4. 示例代码骨架 (CSS 变量 + SVG 局部驱动方案)\n\n```html\n<!-- SVG 共享全局波纹噪声（仅作为源，不直接挂载到大容器上） -->\n<svg style=\"position: absolute; width: 0; height: 0;\">\n  <defs>\n    <!-- 独立的滤镜，扭曲强度由 CSS 变量 --wave-scale 动态控制 -->\n    <filter id=\"proximal-liquid-filter\">\n      <feTurbulence type=\"fractalNoise\" baseFrequency=\"0.03 0.07\" numOctaves=\"1\" result=\"noise\" />\n      <feDisplacementMap in=\"SourceGraphic\" in2=\"noise\" scale=\"0\" xChannelSelector=\"R\" yChannelSelector=\"G\" id=\"svg-disp-map\" />\n    </filter>\n  </defs>\n</svg>\n\n<div class=\"text-container\">\n  <!-- 文字必须被拆解为单字符 -->\n  <span class=\"char\">B</span><span class=\"char\">r</span><span class=\"char\">i</span><span class=\"char\">d</span><span class=\"char\">g</span><span class=\"char\">i</span><span class=\"char\">n</span><span class=\"char\">g</span>\n</div>\n\n<style>\n  /* 基础状态：每个字符独立启用硬件加速，并应用滤镜占位 */\n  .char {\n    display: inline-block;\n    transform: translateZ(0); \n    transition: filter 0.4s cubic-bezier(0.25, 1, 0.5, 1);\n    /* 默认不扭曲 */\n    filter: none;\n  }\n\n  /* 使用 JS 或 CSS 动态为当前及邻近字符挂载带有不同 scale 表现的 class */\n  .char.state-active {\n    /* 可以在 JS 中动态改变 #svg-disp-map 的 scale 属性，或者单独为不同状态定义多个 filter */\n    filter: url(#liquid-filter-heavy); \n  }\n  .char.state-sibling {\n    filter: url(#liquid-filter-light);\n  }\n</style>\n\n## 5. 易错点与禁忌 (Gotchas & Don'ts)\n\n* **避免全文字体模糊**：扭曲的是“位置”（Displacement），而不是加模糊（Blur）。笔画的边缘在扭曲时应当依旧保持锐利。\n* **波纹速度不可过快**：过快的速度会像屏幕花屏或系统报错（Glitch），应当保持一种流水般的优雅阻尼感，单次扫过时间建议在 2s - 3s 之间。\n* **CPU 过载防范**：如果使用 SVG 滤镜，高分辨率大屏幕下可能会掉帧。Agent 在生成代码时，如发现掉帧，应果断降级为 Canvas (WebGL) 渲染文字。\n* Layout 塌陷（Word-break）：字符被拆分为 <span> 并变为 inline-block 后，可能会导致空格丢失或在换行处断开。请确保空格使用 &nbsp; 或利用 CSS white-space: pre; 保持原生句子的排版。\n* 边界裁剪（Overflow）：单个字母因扭曲产生像素位移时，极易在其 <span> 的虚拟边界处被切平。务必给 .char 增加微量的 padding: 0 10px; 和 margin: 0 -10px; 来确保扭曲的边缘自然延伸。\n* 性能优化：由于同一时间只有 3 个字符在运行滤镜，性能远好于全局滤镜。离开后务必将 filter 设为 none，彻底释放 GPU 算力。\n"
     },
     {
       "id": "tiimo-organic-minimalism",
@@ -1270,6 +1402,7 @@
       "SaaS",
       "Youth",
       "个人主页",
+      "个人作品集 (Portfolio)",
       "个人品牌",
       "习惯养成",
       "产品展示",
@@ -1359,11 +1492,15 @@
       "黑白灰"
     ],
     "interactionTypes": [
+      "Hover Feedback",
+      "Scroll-driven",
       "多层视差推离",
       "布局弹性联动",
       "滚动联动",
       "点击切换",
       "视差悬浮",
+      "邻近元素联动 (Proximity)",
+      "鼠标悬停反馈 (Hover)",
       "鼠标跟随"
     ],
     "types": [

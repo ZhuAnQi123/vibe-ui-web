@@ -31,8 +31,8 @@ const CONTENT_SOURCES = {
     repo: "vibe-ui" as const,
     candidates: [
       path.join(ROOT, "content/vibe-ui"),
-      path.join(ROOT, "vibe-ui"),
       path.join(ROOT, "../vibe-ui"),
+      path.join(ROOT, "vibe-ui"),
     ],
     referencesDir: "skills/ui-style-library/references",
     skillPath: "skills/ui-style-library/SKILL.md",
@@ -42,8 +42,8 @@ const CONTENT_SOURCES = {
     repo: "vibe-motion" as const,
     candidates: [
       path.join(ROOT, "content/vibe-motion"),
-      path.join(ROOT, "vibe-motion"),
       path.join(ROOT, "../vibe-motion"),
+      path.join(ROOT, "vibe-motion"),
     ],
     referencesDir: "skills/interaction-library/references",
     skillPath: "skills/interaction-library/SKILL.md",
@@ -78,16 +78,26 @@ function parseFrontmatter(raw: string): {
 
     const yamlBlock = raw.slice(4, end);
     const body = raw.slice(end + 5);
-    return { data: parseYaml(yamlBlock) ?? {}, body };
+    try {
+      return { data: parseYaml(yamlBlock) ?? {}, body };
+    } catch (e) {
+      console.warn("YAML parse error:", e);
+      return { data: {}, body };
+    }
   }
 
   const fencedMatch = raw.match(/^`{3,4}yaml\n([\s\S]*?)\n---\n/);
   if (fencedMatch) {
     const bodyStart = fencedMatch[0].length;
-    return {
-      data: parseYaml(fencedMatch[1]) ?? {},
-      body: raw.slice(bodyStart),
-    };
+    try {
+      return {
+        data: parseYaml(fencedMatch[1]) ?? {},
+        body: raw.slice(bodyStart),
+      };
+    } catch (e) {
+      console.warn("YAML parse error:", e);
+      return { data: {}, body: raw.slice(bodyStart) };
+    }
   }
 
   return { data: {}, body: raw };
@@ -254,6 +264,8 @@ function buildItem(
       if (fs.existsSync(sourceAssetPath)) {
         fs.copyFileSync(sourceAssetPath, targetAssetPath);
         coverVideo = `/content-assets/${filename}`;
+      } else if (type === "motion") {
+        coverVideo = resolveMotionAssetUrl(assetRelativePath);
       }
     }
   }
@@ -300,7 +312,9 @@ function buildItem(
     if (fs.existsSync(path.join(repoRoot, assetPath))) {
       return `/content-assets/${filename}`;
     }
-    return null;
+    return type === "motion" 
+      ? resolveMotionAssetUrl(assetPath)
+      : null;
   }).filter((url): url is string => url !== null);
 
   return {
