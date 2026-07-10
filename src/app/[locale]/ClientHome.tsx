@@ -2,8 +2,8 @@
 
 import React, { useMemo, useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { HeroSearch } from "../../components/HeroSearch";
-import { ElasticFilter } from "../../components/ElasticFilter";
+import { motion, AnimatePresence } from "framer-motion";
+import { HeroSearch } from "../../components/HeroSearch";import { ElasticFilter } from "../../components/ElasticFilter";
 import { StyleGrid } from "../../components/StyleGrid";
 import { LanguageToggle } from "../../components/LanguageToggle";
 import type { CatalogListItem } from "../../lib/get-catalog";
@@ -15,6 +15,13 @@ import {
   buildSearchParamsFromFilterState,
   type FilterState,
 } from "../../lib/filter-utils";
+
+const fluidSpring = {
+  type: "spring" as const,
+  stiffness: 450,
+  damping: 26,
+  mass: 0.8,
+};
 
 export const ClientHome = ({
   initialItems,
@@ -29,6 +36,7 @@ export const ClientHome = ({
 }) => {
   const router = useRouter();
   const pathname = usePathname();
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const [filterState, setFilterState] = useState<FilterState>(() => {
     const params = new URLSearchParams();
@@ -55,6 +63,22 @@ export const ClientHome = ({
     }, 300);
     return () => clearTimeout(timeoutId);
   }, [filterState, pathname, router]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const filterOptions = useMemo(() => buildFilterOptions(initialItems), [initialItems]);
   const filteredItems = useMemo(
@@ -117,6 +141,36 @@ export const ClientHome = ({
         onTypeChange={(type) => setFilterState((prev) => ({ ...prev, type }))}
         typeOptions={filterOptions.types}
       />
+
+      {/* 回到顶部悬浮按钮 */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            transition={fluidSpring}
+            type="button"
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-40 px-5 py-4 rounded-full bg-white/80 backdrop-blur-xl border border-neutral-200/50 text-neutral-800 shadow-[0_4px_16px_rgba(0,0,0,0.08)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.12)] transition-shadow duration-300 cursor-pointer focus:outline-none flex items-center justify-center min-w-[54px] min-h-[54px]"
+            aria-label="Scroll to top"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </motion.button>
+        )}
+      </AnimatePresence>
     </main>
   );
 };
