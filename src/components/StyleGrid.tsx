@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useTranslation } from "../i18n/provider";
 import type { CatalogListItem } from "../lib/get-catalog";
 import { PromptModal } from "./PromptModal";
@@ -40,7 +40,7 @@ function getSecondaryTag(item: CatalogListItem): string {
   return "";
 }
 
-function useInView<T extends HTMLElement>(rootMargin = "80px") {
+function useInView<T extends HTMLElement>(rootMargin = "200px") {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
 
@@ -50,7 +50,7 @@ function useInView<T extends HTMLElement>(rootMargin = "80px") {
 
     const observer = new IntersectionObserver(
       ([entry]) => setInView(entry.isIntersecting),
-      { rootMargin, threshold: 0.15 },
+      { rootMargin, threshold: 0.05 },
     );
 
     observer.observe(node);
@@ -76,69 +76,45 @@ const StyleCard = ({
   setDemoItem,
 }: StyleCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
-  const [translateX, setTranslateX] = useState(0);
-  const [translateY, setTranslateY] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const rafRef = useRef<number | null>(null);
-  const { ref: cardRef, inView } = useInView<HTMLElement>();
+  const { ref: cardRef, inView } = useInView<HTMLElement>("300px");
+
+  // 使用 Framer Motion 的 MotionValue 驱动 3D 倾斜，避免鼠标移动时触发 React State 改变和组件重绘
+  const x = useMotionValue(0.5);
+  const y = useMotionValue(0.5);
+
+  const rotateXSpring = useSpring(useTransform(y, [0, 1], [3, -3]), { stiffness: 300, damping: 30 });
+  const rotateYSpring = useSpring(useTransform(x, [0, 1], [-3, 3]), { stiffness: 300, damping: 30 });
+  const translateXSpring = useSpring(useTransform(x, [0, 1], [-5, 5]), { stiffness: 300, damping: 30 });
+  const translateYSpring = useSpring(useTransform(y, [0, 1], [-5, 5]), { stiffness: 300, damping: 30 });
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    if (inView) {
+    if (inView && isHovered) {
       video.play().catch(() => {});
     } else {
       video.pause();
     }
-  }, [inView]);
+  }, [inView, isHovered]);
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLElement>) => {
-      if (!isHovered) return;
-      if (rafRef.current !== null) return;
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
 
-      const { clientX, clientY } = e;
-      const target = e.currentTarget;
-
-      rafRef.current = window.requestAnimationFrame(() => {
-        rafRef.current = null;
-        const rect = target.getBoundingClientRect();
-        const x = clientX - rect.left;
-        const y = clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        setRotateX(((y - centerY) / centerY) * 3);
-        setRotateY(((x - centerX) / centerX) * -3);
-        setTranslateX(((x - centerX) / centerX) * 5);
-        setTranslateY(((y - centerY) / centerY) * 5);
-      });
-    },
-    [isHovered],
-  );
-
-  const handleMouseLeave = () => {
-    if (rafRef.current !== null) {
-      window.cancelAnimationFrame(rafRef.current);
-      rafRef.current = null;
-    }
-    setIsHovered(false);
-    setRotateX(0);
-    setRotateY(0);
-    setTranslateX(0);
-    setTranslateY(0);
+    x.set(mouseX / width);
+    y.set(mouseY / height);
   };
 
-  useEffect(() => {
-    return () => {
-      if (rafRef.current !== null) {
-        window.cancelAnimationFrame(rafRef.current);
-      }
-    };
-  }, []);
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    x.set(0.5);
+    y.set(0.5);
+  };
 
   return (
     <motion.article
@@ -147,17 +123,18 @@ const StyleCard = ({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 16 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
-      className="group relative flex flex-col gap-4 cursor-pointer"
+      // content-visibility: auto 允许浏览器跳过视口外卡片的渲染树构建，极大地提升长列表的初始化和滚动性能
+      className="group relative flex flex-col gap-4 cursor-pointer contain-intrinsic-size-[400px] [content-visibility:auto]"
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
     >
       <motion.div
         animate={{
-          rotateX: isHovered ? rotateX : 0,
-          rotateY: isHovered ? rotateY : 0,
-          x: isHovered ? translateX : 0,
-          y: isHovered ? translateY : 0,
+          rotateX: isHovered ? rotateXSpring.get() : 0,
+          rotateY: isHovered ? rotateYSpring.get() : 0,
+          x: isHovered ? translateXSpring.get() : 0,
+          y: isHovered ? translateYSpring.get() : 0,
         }}
         transition={{ type: "spring", stiffness: 400, damping: 30, mass: 0.5 }}
         className="w-full aspect-[4/3] rounded-3xl flex items-center justify-center relative overflow-hidden transition-shadow duration-500 group-hover:shadow-2xl"
@@ -167,17 +144,18 @@ const StyleCard = ({
           transformStyle: "preserve-3d",
         }}
       >
-        {item.coverVideo ? (
+        {/* 极致优化：只有在 inView（接近或进入视口）时才挂载 DOM 媒体资源，彻底释放初次加载的网络与硬件带宽 */}
+        {inView && item.coverVideo ? (
           <video
             ref={videoRef}
             src={item.coverVideo}
             loop
             muted
             playsInline
-            preload={inView ? "metadata" : "none"}
+            preload="metadata"
             className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ${isHovered ? "scale-105" : "scale-100"}`}
           />
-        ) : item.coverImage ? (
+        ) : inView && item.coverImage ? (
           <img
             src={item.coverImage}
             alt={item.name}
