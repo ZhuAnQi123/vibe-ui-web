@@ -46,15 +46,24 @@ export const ElasticFilter = ({
     })),
   );
 
+  // 判断是否处于展示全部标签的多行状态
+  const isMultiRow = activeType === "all";
+
   return (
     <LayoutGroup id="domain-filter">
       <div className="flex flex-col items-center w-full min-w-0 select-none">
         {/* 
-          滚动自适应容器：在移动端支持横向惯性滚动，在桌面端保持无感滚动条。
-          这使得 UI 7个标签及 Motion 12个标签均能以优雅、连续且不拥挤的 Slider 呈现在单层级中。
+          容器优化：在单分类（UI 或 Motion）时保持单行横向滚动，
+          在“全部”分类下自适应采用多行网格，将标签优雅地分布在2行中，避免一行过长。
         */}
-        <div className="w-full overflow-x-auto scrollbar-none flex justify-center py-2">
-          <div className="flex bg-white/60 backdrop-blur-xl p-1.5 rounded-full shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)] border border-neutral-200/50 gap-1 relative whitespace-nowrap">
+        <div className="w-full overflow-x-auto scrollbar-none flex justify-center py-3">
+          <div 
+            className={`flex bg-white/60 backdrop-blur-xl p-1.5 shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)] border border-neutral-200/50 gap-1 relative ${
+              isMultiRow 
+                ? "grid grid-rows-2 grid-flow-col auto-cols-max rounded-[1.75rem]" 
+                : "rounded-full whitespace-nowrap"
+            }`}
+          >
             {allTabs.map((tab) => {
                 const isActive =
                   tab.id === "__all__"
@@ -68,7 +77,7 @@ export const ElasticFilter = ({
                     onClick={() =>
                       onDomainChange(tab.id === "__all__" ? null : tab.id)
                     }
-                    className="relative px-4 py-2 rounded-full text-sm font-semibold tracking-tight transition-colors duration-200 cursor-pointer focus:outline-none"
+                    className="relative px-4 py-2 rounded-full text-sm font-semibold tracking-tight transition-colors duration-200 cursor-pointer focus:outline-none whitespace-nowrap"
                     style={{
                       color: isActive ? "#171717" : "rgba(23,23,23,0.5)",
                     }}
