@@ -6,6 +6,7 @@ import { useTranslation } from "../i18n/provider";
 import type { CatalogListItem } from "../lib/get-catalog";
 import { PromptModal } from "./PromptModal";
 import { DemoModal } from "./DemoModal";
+import { ElasticFilter } from "./ElasticFilter";
 
 import type { FilterType } from "../lib/filter-utils";
 
@@ -24,19 +25,19 @@ const fluidSpring = {
 };
 
 function getPrimaryTag(item: CatalogListItem): string {
-  if (item.type === "motion") {
-    return item.components?.[0] ?? item.interactionTypes[0] ?? "Motion";
+  const tags = item.tags || [];
+  if (tags.length > 0) {
+    return tags[0];
   }
-
-  return item.domains[0] ?? "General";
+  return item.type === "motion" ? "Motion" : "Style";
 }
 
 function getSecondaryTag(item: CatalogListItem): string {
-  if (item.type === "motion") {
-    return item.effects?.[0] ?? item.domains[0] ?? "Interaction";
+  const tags = item.tags || [];
+  if (tags.length > 1) {
+    return tags[1];
   }
-
-  return item.aesthetics[0] ?? "Style";
+  return "";
 }
 
 function useInView<T extends HTMLElement>(rootMargin = "80px") {
@@ -236,12 +237,16 @@ const StyleCard = ({
           </p>
         )}
         <div className="flex flex-wrap items-center gap-2 mt-1">
-          <span className="bg-neutral-50 border border-slate-200/50 text-neutral-500 px-2.5 py-1 rounded-md text-xs font-semibold tracking-wider">
-            {t.tags[getPrimaryTag(item)] || getPrimaryTag(item)}
-          </span>
-          <span className="bg-neutral-50 border border-slate-200/50 text-neutral-500 px-2.5 py-1 rounded-md text-xs font-semibold tracking-wider">
-            {t.tags[getSecondaryTag(item)] || getSecondaryTag(item)}
-          </span>
+          {getPrimaryTag(item) && (
+            <span className="bg-neutral-50 border border-slate-200/50 text-neutral-500 px-2.5 py-1 rounded-md text-xs font-semibold tracking-wider">
+              {t.tags[getPrimaryTag(item)] || getPrimaryTag(item)}
+            </span>
+          )}
+          {getSecondaryTag(item) && (
+            <span className="bg-neutral-50 border border-slate-200/50 text-neutral-500 px-2.5 py-1 rounded-md text-xs font-semibold tracking-wider">
+              {t.tags[getSecondaryTag(item)] || getSecondaryTag(item)}
+            </span>
+          )}
         </div>
       </div>
     </motion.article>
@@ -257,10 +262,24 @@ export const StyleGrid = ({
   const { t, locale } = useTranslation();
   const [selectedItem, setSelectedItem] = useState<CatalogListItem | null>(null);
   const [demoItem, setDemoItem] = useState<CatalogListItem | null>(null);
+  const [activeDomain, setActiveDomain] = useState<string | null>(null);
+
+  // 联动过滤卡片列表数据
+  const filteredItems = items.filter((item) => {
+    if (!activeDomain) return true;
+    const tags = item.tags || [];
+    return tags.includes(activeDomain);
+  });
+
+  // 当主大类 Tab (activeType) 改变时，重置当前的标签激活状态
+  useEffect(() => {
+    setActiveDomain(null);
+  }, [activeType]);
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 pb-24 flex flex-col items-center">
-      <div className="flex bg-white/60 backdrop-blur-xl p-1.5 rounded-full shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)] border border-neutral-200/50 gap-1 mb-6">
+      {/* 顶部主分类选择 Tab */}
+      <div className="flex bg-white/60 backdrop-blur-xl p-1.5 rounded-full shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)] border border-neutral-200/50 gap-1 mb-2">
         {typeOptions.map((tab) => {
           const isActive = activeType === tab;
           const label =
@@ -293,14 +312,23 @@ export const StyleGrid = ({
         })}
       </div>
 
-      {items.length === 0 ? (
+      {/* 阶段三核心联动：将扁平化的 7+12 精选滑块引入 StyleGrid 作为子级过滤逻辑 */}
+      <div className="w-full mb-10">
+        <ElasticFilter
+          activeDomain={activeDomain}
+          onDomainChange={setActiveDomain}
+          activeType={activeType}
+        />
+      </div>
+
+      {filteredItems.length === 0 ? (
         <div className="w-full text-center text-neutral-500 py-12">
           {t.grid.empty}
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
           <AnimatePresence mode="sync">
-            {items.map((item) => (
+            {filteredItems.map((item) => (
               <StyleCard
                 key={`${item.type}:${item.id}:${item.source.referencePath}`}
                 item={item}

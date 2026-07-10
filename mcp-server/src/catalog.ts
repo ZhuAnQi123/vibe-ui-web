@@ -115,16 +115,14 @@ export function searchItems(
   options: {
     query?: string;
     type?: CatalogItemType | "all";
-    domain?: string;
-    aesthetic?: string;
+    tag?: string;
     limit?: number;
   },
 ): CatalogListItem[] {
   const {
     query,
     type = "all",
-    domain,
-    aesthetic,
+    tag,
     limit = 20,
   } = options;
 
@@ -135,24 +133,10 @@ export function searchItems(
       return false;
     }
 
-    if (domain) {
-      const normalizedDomain = domain.toLowerCase();
-      if (
-        !item.domains.some((value) =>
-          value.toLowerCase().includes(normalizedDomain),
-        )
-      ) {
-        return false;
-      }
-    }
-
-    if (aesthetic) {
-      const normalizedAesthetic = aesthetic.toLowerCase();
-      if (
-        !item.aesthetics.some((value) =>
-          value.toLowerCase().includes(normalizedAesthetic),
-        )
-      ) {
+    if (tag) {
+      const normalizedTag = tag.toLowerCase();
+      const tags = (item as any).tags || [];
+      if (!tags.some((value: string) => value.toLowerCase().includes(normalizedTag))) {
         return false;
       }
     }
@@ -167,12 +151,8 @@ export function searchItems(
       item.nameZh,
       item.description,
       item.website,
-      ...item.domains,
-      ...item.aesthetics,
       ...item.triggers,
-      ...(item.components ?? []),
-      ...(item.effects ?? []),
-      ...(item.interactionTypes ?? []),
+      ...((item as any).tags ?? []),
     ]
       .filter(Boolean)
       .join(" ")

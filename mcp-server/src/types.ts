@@ -35,12 +35,7 @@ export type CatalogItem = {
 
 export type CatalogListItem = Omit<CatalogItem, "content">;
 
-export type CatalogFilters = {
-  domains: string[];
-  aesthetics: string[];
-  interactionTypes: string[];
-  types: CatalogItemType[];
-};
+
 
 export type CatalogSourceMeta = {
   path: string;
@@ -55,7 +50,6 @@ export type Catalog = {
     vibeMotionMd: CatalogSourceMeta;
   };
   items: CatalogItem[];
-  filters: CatalogFilters;
 };
 
 export type CatalogListResponse = Omit<Catalog, "items"> & {

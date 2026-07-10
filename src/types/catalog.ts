@@ -17,11 +17,7 @@ export type CatalogItem = {
   name: string;
   nameZh?: string;
   description: string;
-  domains: string[];
-  aesthetics: string[];
-  interactionTypes: string[];
-  components?: string[];
-  effects?: string[];
+  tags?: string[];
   colorScheme?: string;
   website?: string;
   preview: CatalogPreview;
@@ -33,12 +29,7 @@ export type CatalogItem = {
   content: string;
 };
 
-export type CatalogFilters = {
-  domains: string[];
-  aesthetics: string[];
-  interactionTypes: string[];
-  types: CatalogItemType[];
-};
+
 
 export type CatalogSourceMeta = {
   path: string;
@@ -53,5 +44,4 @@ export type Catalog = {
     vibeMotionMd: CatalogSourceMeta;
   };
   items: CatalogItem[];
-  filters: CatalogFilters;
 };

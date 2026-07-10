@@ -76,21 +76,16 @@ export function findItem(catalog, id, type) {
     });
 }
 export function searchItems(catalog, options) {
-    const { query, type = "all", domain, aesthetic, limit = 20, } = options;
+    const { query, type = "all", tag, limit = 20, } = options;
     const normalizedQuery = query?.trim().toLowerCase();
     const results = catalog.items.filter((item) => {
         if (type !== "all" && item.type !== type) {
             return false;
         }
-        if (domain) {
-            const normalizedDomain = domain.toLowerCase();
-            if (!item.domains.some((value) => value.toLowerCase().includes(normalizedDomain))) {
-                return false;
-            }
-        }
-        if (aesthetic) {
-            const normalizedAesthetic = aesthetic.toLowerCase();
-            if (!item.aesthetics.some((value) => value.toLowerCase().includes(normalizedAesthetic))) {
+        if (tag) {
+            const normalizedTag = tag.toLowerCase();
+            const tags = item.tags || [];
+            if (!tags.some((value) => value.toLowerCase().includes(normalizedTag))) {
                 return false;
             }
         }
@@ -103,12 +98,8 @@ export function searchItems(catalog, options) {
             item.nameZh,
             item.description,
             item.website,
-            ...item.domains,
-            ...item.aesthetics,
             ...item.triggers,
-            ...(item.components ?? []),
-            ...(item.effects ?? []),
-            ...(item.interactionTypes ?? []),
+            ...(item.tags ?? []),
         ]
             .filter(Boolean)
             .join(" ")

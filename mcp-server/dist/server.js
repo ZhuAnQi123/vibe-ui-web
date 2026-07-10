@@ -63,14 +63,10 @@ export function createVibeMcpServer() {
                 .enum(["ui", "motion", "all"])
                 .optional()
                 .describe("Filter by content type. Defaults to all."),
-            domain: z
+            tag: z
                 .string()
                 .optional()
-                .describe("Filter by domain tag, e.g. SaaS, 金融, 个人主页."),
-            aesthetic: z
-                .string()
-                .optional()
-                .describe("Filter by aesthetic tag, e.g. Neo-Brutalism, 有机极简."),
+                .describe("Filter by standard tag. UI: [Bento, Brutalist, Minimalist, Organic, Terminal, SaaS, Editorial]. Motion: [Elastic, Magnetic, Scroll, Reveal, Hover, Proximity, Curtain, Button, Card, Carousel, Accordion, Click]."),
             limit: z
                 .number()
                 .int()
@@ -79,13 +75,12 @@ export function createVibeMcpServer() {
                 .optional()
                 .describe("Maximum number of results. Defaults to 20."),
         },
-    }, async ({ query, type = "all", domain, aesthetic, limit = 20 }) => {
+    }, async ({ query, type = "all", tag, limit = 20 }) => {
         const catalog = await loadCatalog();
         const results = searchItems(catalog, {
             query,
             type,
-            domain,
-            aesthetic,
+            tag,
             limit,
         });
         return {
@@ -95,8 +90,7 @@ export function createVibeMcpServer() {
                     text: JSON.stringify({
                         query: query ?? null,
                         type,
-                        domain: domain ?? null,
-                        aesthetic: aesthetic ?? null,
+                        tag: tag ?? null,
                         count: results.length,
                         results,
                     }, null, 2),

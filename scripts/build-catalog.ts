@@ -323,11 +323,7 @@ function buildItem(
     name,
     nameZh,
     description,
-    domains: asStringArray(data.domain ?? data.domains),
-    aesthetics: asStringArray(data.aesthetic ?? data.aesthetics),
-    interactionTypes: asStringArray(data.interactionTypes ?? data.interaction_types),
-    components: asStringArray(data.components),
-    effects: asStringArray(data.effects),
+    tags: asStringArray(data.tags),
     colorScheme:
       typeof data.color_scheme === "string" ? data.color_scheme : undefined,
     website: typeof data.website === "string" ? data.website : undefined,
@@ -370,9 +366,7 @@ function buildFilters(items: CatalogItem[]): Catalog["filters"] {
   const uniq = (values: string[]) => [...new Set(values)].sort();
 
   return {
-    domains: uniq(items.flatMap((item) => item.domains)),
-    aesthetics: uniq(items.flatMap((item) => item.aesthetics)),
-    interactionTypes: uniq(items.flatMap((item) => item.interactionTypes)),
+    tags: uniq(items.flatMap((item) => item.tags)),
     types: ["ui", "motion"],
   };
 }

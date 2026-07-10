@@ -1,199 +1,11 @@
-import type { CatalogItemType } from "../types/catalog";
 import type { CatalogListItem } from "./get-catalog";
 
-export type FilterType = "all" | CatalogItemType;
-export type FilterSort = "relevance" | "latest";
+export type FilterType = "all" | "ui" | "motion";
 
 export type FilterState = {
   q: string;
   type: FilterType;
-  domains: string[];
-  aesthetics: string[];
-  interactions: string[];
-  sort: FilterSort;
 };
-
-export type FilterOptions = {
-  types: FilterType[];
-  domains: string[];
-  aesthetics: string[];
-  interactions: string[];
-};
-
-export type InteractionFacetKind = "interaction" | "effect" | "component";
-export type InteractionFacet = {
-  kind: InteractionFacetKind;
-  value: string;
-};
-
-export const DEFAULT_FILTER_STATE: FilterState = {
-  q: "",
-  type: "all",
-  domains: [],
-  aesthetics: [],
-  interactions: [],
-  sort: "relevance",
-};
-
-function normalizeText(value: string): string {
-  return value.trim().toLowerCase();
-}
-
-function stableSort(values: string[]): string[] {
-  return [...values].sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
-}
-
-const INTERACTION_FACET_SEPARATOR = ":";
-const INTERACTION_FACET_ORDER: Record<InteractionFacetKind, number> = {
-  interaction: 0,
-  effect: 1,
-  component: 2,
-};
-
-export function encodeInteractionFacet(facet: InteractionFacet): string {
-  return `${facet.kind}${INTERACTION_FACET_SEPARATOR}${facet.value}`;
-}
-
-export function decodeInteractionFacet(encoded: string): InteractionFacet | null {
-  const separatorIndex = encoded.indexOf(INTERACTION_FACET_SEPARATOR);
-  if (separatorIndex <= 0) {
-    return null;
-  }
-
-  const kind = encoded.slice(0, separatorIndex) as InteractionFacetKind;
-  const value = encoded.slice(separatorIndex + 1).trim();
-
-  if (!value || !["interaction", "effect", "component"].includes(kind)) {
-    return null;
-  }
-
-  return { kind, value };
-}
-
-function getItemInteractionFacets(item: CatalogListItem): string[] {
-  const facets = [
-    ...item.interactionTypes.map((value) =>
-      encodeInteractionFacet({ kind: "interaction", value }),
-    ),
-    ...(item.effects ?? []).map((value) =>
-      encodeInteractionFacet({ kind: "effect", value }),
-    ),
-    ...(item.components ?? []).map((value) =>
-      encodeInteractionFacet({ kind: "component", value }),
-    ),
-  ];
-
-  return [...new Set(facets)].filter(Boolean);
-}
-
-export function buildFilterOptions(items: CatalogListItem[]): FilterOptions {
-  const domains = stableSort(
-    [...new Set(items.flatMap((item) => item.domains))].filter(Boolean),
-  );
-  const aesthetics = stableSort(
-    [...new Set(items.flatMap((item) => item.aesthetics))].filter(Boolean),
-  );
-  const interactions = [...new Set(items.flatMap(getItemInteractionFacets))]
-    .filter(Boolean)
-    .sort((a, b) => {
-      const aFacet = decodeInteractionFacet(a);
-      const bFacet = decodeInteractionFacet(b);
-
-      if (!aFacet || !bFacet) {
-        return a.localeCompare(b);
-      }
-
-      const kindDiff =
-        INTERACTION_FACET_ORDER[aFacet.kind] - INTERACTION_FACET_ORDER[bFacet.kind];
-      if (kindDiff !== 0) {
-        return kindDiff;
-      }
-
-      return aFacet.value.localeCompare(bFacet.value);
-    });
-
-  return {
-    types: ["all", "ui", "motion"],
-    domains,
-    aesthetics,
-    interactions,
-  };
-}
-
-function matchesAny(selectedValues: string[], itemValues: string[]): boolean {
-  if (selectedValues.length === 0) {
-    return true;
-  }
-
-  return selectedValues.some((value) => itemValues.includes(value));
-}
-
-function matchesAnyInteraction(selectedValues: string[], item: CatalogListItem): boolean {
-  if (selectedValues.length === 0) {
-    return true;
-  }
-
-  const encodedFacets = getItemInteractionFacets(item);
-  const rawFacetValues = new Set(
-    encodedFacets.map((facet) => decodeInteractionFacet(facet)?.value ?? facet),
-  );
-
-  return selectedValues.some(
-    (selected) => encodedFacets.includes(selected) || rawFacetValues.has(selected),
-  );
-}
-
-export function applyFilters(
-  items: CatalogListItem[],
-  filterState: FilterState,
-): CatalogListItem[] {
-  const normalizedQuery = normalizeText(filterState.q);
-
-  return items.filter((item) => {
-    if (filterState.type !== "all" && item.type !== filterState.type) {
-      return false;
-    }
-
-    if (!matchesAny(filterState.domains, item.domains)) {
-      return false;
-    }
-
-    if (!matchesAny(filterState.aesthetics, item.aesthetics)) {
-      return false;
-    }
-
-    if (!matchesAnyInteraction(filterState.interactions, item)) {
-      return false;
-    }
-
-    if (!normalizedQuery) {
-      return true;
-    }
-
-    const searchableText = [
-      item.name,
-      item.description,
-      ...item.domains,
-      ...item.aesthetics,
-      ...item.interactionTypes,
-      ...(item.effects ?? []),
-      ...(item.components ?? []),
-      ...item.triggers,
-    ]
-      .join(" ")
-      .toLowerCase();
-
-    return searchableText.includes(normalizedQuery);
-  });
-}
-
-function splitParam(value: string | null): string[] {
-  if (!value) return [];
-  return value
-    .split(",")
-    .map((item) => item.trim())
-    .filter(Boolean);
-}
 
 export function parseFilterStateFromSearchParams(
   params: URLSearchParams,
@@ -202,47 +14,67 @@ export function parseFilterStateFromSearchParams(
   const type: FilterType =
     typeParam === "ui" || typeParam === "motion" ? typeParam : "all";
 
-  const sortParam = params.get("sort");
-  const sort: FilterSort = sortParam === "latest" ? "latest" : "relevance";
-
   return {
     q: params.get("q") ?? "",
     type,
-    domains: splitParam(params.get("domains")),
-    aesthetics: splitParam(params.get("aesthetics")),
-    interactions: splitParam(params.get("interactions")),
-    sort,
   };
 }
 
 export function buildSearchParamsFromFilterState(
-  filterState: FilterState,
+  state: FilterState,
 ): URLSearchParams {
   const params = new URLSearchParams();
 
-  if (filterState.q.trim()) {
-    params.set("q", filterState.q.trim());
+  if (state.q) {
+    params.set("q", state.q);
   }
 
-  if (filterState.type !== "all") {
-    params.set("type", filterState.type);
-  }
-
-  if (filterState.domains.length > 0) {
-    params.set("domains", filterState.domains.join(","));
-  }
-
-  if (filterState.aesthetics.length > 0) {
-    params.set("aesthetics", filterState.aesthetics.join(","));
-  }
-
-  if (filterState.interactions.length > 0) {
-    params.set("interactions", filterState.interactions.join(","));
-  }
-
-  if (filterState.sort !== "relevance") {
-    params.set("sort", filterState.sort);
+  if (state.type !== "all") {
+    params.set("type", state.type);
   }
 
   return params;
+}
+
+export function applyFilters(
+  items: CatalogListItem[],
+  state: FilterState,
+): CatalogListItem[] {
+  return items.filter((item) => {
+    // 1. 类型过滤 (UI / Motion)
+    if (state.type !== "all" && item.type !== state.type) {
+      return false;
+    }
+
+    // 2. 搜索关键词过滤 (基于新 tags)
+    if (state.q) {
+      const query = state.q.toLowerCase();
+      // 兼容 TS 类型，如果还没更新 get-catalog.ts，断言一下
+      const tags = (item as any).tags || []; 
+      
+      const haystack = [
+        item.name,
+        item.nameZh,
+        item.description,
+        ...tags,
+        ...(item.triggers || []),
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+      if (!haystack.includes(query)) {
+        return false;
+      }
+    }
+
+    return true;
+  });
+}
+
+export function buildFilterOptions(items: CatalogListItem[]) {
+  return {
+    // 因为标签已经下放给 StyleGrid.tsx 本地控制，全局过滤器只需保留三大类
+    types: ["all", "ui", "motion"] as FilterType[],
+  };
 }

@@ -62,9 +62,6 @@ export const ClientHome = ({
     [initialItems, filterState],
   );
 
-  const toggleValue = (list: string[], value: string): string[] =>
-    list.includes(value) ? list.filter((item) => item !== value) : [...list, value];
-
   return (
     <main className="min-h-screen bg-vibe-flow font-sans selection:bg-neutral-900 selection:text-white relative">
       <header className="w-full h-20 flex items-center justify-between px-8 max-w-7xl mx-auto gap-4 relative">
@@ -72,39 +69,7 @@ export const ClientHome = ({
           Vibe UI<span className="text-neutral-400">.</span>
         </div>
         <div className="flex items-center gap-4 min-w-0">
-          <ElasticFilter
-            activeDomain={filterState.domains[0] ?? null}
-            onDomainChange={(domain) =>
-              setFilterState((prev) => ({
-                ...prev,
-                domains: domain ? [domain] : [],
-              }))
-            }
-            domainOptions={filterOptions.domains}
-            selectedAesthetics={filterState.aesthetics}
-            selectedInteractions={filterState.interactions}
-            aestheticOptions={filterOptions.aesthetics}
-            interactionOptions={filterOptions.interactions}
-            onToggleAesthetic={(value) =>
-              setFilterState((prev) => ({
-                ...prev,
-                aesthetics: toggleValue(prev.aesthetics, value),
-              }))
-            }
-            onToggleInteraction={(value) =>
-              setFilterState((prev) => ({
-                ...prev,
-                interactions: toggleValue(prev.interactions, value),
-              }))
-            }
-            onClearMoreFilters={() =>
-              setFilterState((prev) => ({
-                ...prev,
-                aesthetics: [],
-                interactions: [],
-              }))
-            }
-          />
+         
           <LanguageToggle />
         </div>
       </header>
