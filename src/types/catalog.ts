@@ -36,6 +36,11 @@ export type CatalogSourceMeta = {
   resolvedFrom: "submodule" | "sibling";
 };
 
+export type CatalogFilters = {
+  tags: string[];
+  types: CatalogItemType[];
+};
+
 export type Catalog = {
   version: string;
   generatedAt: string;
@@ -44,4 +49,5 @@ export type Catalog = {
     vibeMotionMd: CatalogSourceMeta;
   };
   items: CatalogItem[];
+  filters: CatalogFilters;
 };

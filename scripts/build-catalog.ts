@@ -51,9 +51,17 @@ const CONTENT_SOURCES = {
   },
 };
 
-function resolveContentRoot(candidates: string[]) {
+function resolveContentRoot(candidates: string[], requiredPaths: string[]) {
   for (const candidate of candidates) {
-    if (fs.existsSync(candidate)) {
+    if (!fs.existsSync(candidate)) {
+      continue;
+    }
+
+    const hasRequiredPaths = requiredPaths.every((relativePath) =>
+      fs.existsSync(path.join(candidate, relativePath)),
+    );
+
+    if (hasRequiredPaths) {
       const resolvedFrom = candidate.includes(`${path.sep}content${path.sep}`)
         ? "submodule"
         : "sibling";
@@ -62,7 +70,7 @@ function resolveContentRoot(candidates: string[]) {
   }
 
   throw new Error(
-    `Content source not found. Tried:\n${candidates.map((c) => `- ${c}`).join("\n")}`,
+    `Content source not found. Tried:\n${candidates.map((c) => `- ${c}`).join("\n")}\nRequired paths:\n${requiredPaths.map((p) => `- ${p}`).join("\n")}`,
   );
 }
 
@@ -372,9 +380,16 @@ function buildFilters(items: CatalogItem[]): Catalog["filters"] {
 }
 
 function main() {
-  const vibeUi = resolveContentRoot(CONTENT_SOURCES.vibeUi.candidates);
+  const vibeUi = resolveContentRoot(CONTENT_SOURCES.vibeUi.candidates, [
+    CONTENT_SOURCES.vibeUi.referencesDir,
+    CONTENT_SOURCES.vibeUi.skillPath,
+  ]);
   const vibeMotionMd = resolveContentRoot(
     CONTENT_SOURCES.vibeMotionMd.candidates,
+    [
+      CONTENT_SOURCES.vibeMotionMd.referencesDir,
+      CONTENT_SOURCES.vibeMotionMd.skillPath,
+    ],
   );
 
   const uiItems = scanReferences(

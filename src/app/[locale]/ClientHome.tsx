@@ -41,7 +41,7 @@ const pageItemVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.16, 1, 0.3, 1], // 优雅的 Ease-out (Expo)
+      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
     },
   },
 };
