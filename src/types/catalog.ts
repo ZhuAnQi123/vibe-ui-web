@@ -33,7 +33,7 @@ export type CatalogItem = {
 
 export type CatalogSourceMeta = {
   path: string;
-  resolvedFrom: "submodule" | "sibling";
+  resolvedFrom: "submodule" | "sibling" | "cloned";
 };
 
 export type CatalogFilters = {

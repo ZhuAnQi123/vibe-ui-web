@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { parse as parseYaml } from "yaml";
+import { ensureContentSource } from "./content-source";
 import type {
   Catalog,
   CatalogItem,
@@ -29,6 +30,7 @@ function resolveMotionAssetUrl(assetPath: string): string {
 const CONTENT_SOURCES = {
   vibeUi: {
     repo: "vibe-ui" as const,
+    repoUrl: "https://github.com/ZhuAnQi123/vibe-ui.git",
     candidates: [
       path.join(ROOT, "content/vibe-ui"),
       path.join(ROOT, "../vibe-ui"),
@@ -40,6 +42,7 @@ const CONTENT_SOURCES = {
   },
   vibeMotionMd: {
     repo: "vibe-motion" as const,
+    repoUrl: "https://github.com/ZhuAnQi123/vibe-motion.git",
     candidates: [
       path.join(ROOT, "content/vibe-motion"),
       path.join(ROOT, "../vibe-motion"),
@@ -380,17 +383,49 @@ function buildFilters(items: CatalogItem[]): Catalog["filters"] {
 }
 
 function main() {
-  const vibeUi = resolveContentRoot(CONTENT_SOURCES.vibeUi.candidates, [
-    CONTENT_SOURCES.vibeUi.referencesDir,
-    CONTENT_SOURCES.vibeUi.skillPath,
-  ]);
-  const vibeMotionMd = resolveContentRoot(
-    CONTENT_SOURCES.vibeMotionMd.candidates,
-    [
-      CONTENT_SOURCES.vibeMotionMd.referencesDir,
-      CONTENT_SOURCES.vibeMotionMd.skillPath,
-    ],
-  );
+  const vibeUi = (() => {
+    try {
+      return resolveContentRoot(CONTENT_SOURCES.vibeUi.candidates, [
+        CONTENT_SOURCES.vibeUi.referencesDir,
+        CONTENT_SOURCES.vibeUi.skillPath,
+      ]);
+    } catch (error) {
+      console.warn(
+        `Falling back to cloning ${CONTENT_SOURCES.vibeUi.repoUrl} because content source was not found.`,
+      );
+      return ensureContentSource({
+        repoUrl: CONTENT_SOURCES.vibeUi.repoUrl,
+        targetDir: path.join(ROOT, "content", "vibe-ui"),
+        requiredPaths: [
+          CONTENT_SOURCES.vibeUi.referencesDir,
+          CONTENT_SOURCES.vibeUi.skillPath,
+        ],
+      });
+    }
+  })();
+  const vibeMotionMd = (() => {
+    try {
+      return resolveContentRoot(
+        CONTENT_SOURCES.vibeMotionMd.candidates,
+        [
+          CONTENT_SOURCES.vibeMotionMd.referencesDir,
+          CONTENT_SOURCES.vibeMotionMd.skillPath,
+        ],
+      );
+    } catch (error) {
+      console.warn(
+        `Falling back to cloning ${CONTENT_SOURCES.vibeMotionMd.repoUrl} because content source was not found.`,
+      );
+      return ensureContentSource({
+        repoUrl: CONTENT_SOURCES.vibeMotionMd.repoUrl,
+        targetDir: path.join(ROOT, "content", "vibe-motion"),
+        requiredPaths: [
+          CONTENT_SOURCES.vibeMotionMd.referencesDir,
+          CONTENT_SOURCES.vibeMotionMd.skillPath,
+        ],
+      });
+    }
+  })();
 
   const uiItems = scanReferences(
     vibeUi.path,
