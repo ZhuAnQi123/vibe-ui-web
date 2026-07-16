@@ -7,6 +7,7 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import type { CatalogListItem } from "../lib/get-catalog";
 import { fetchCatalogItemContent } from "../app/actions/catalog";
 import { useTranslation } from "../i18n/provider";
+import { DotsLoading } from "./DotsLoading";
 
 type PromptModalProps = {
   item: CatalogListItem | null;
@@ -142,7 +143,9 @@ export const PromptModal = ({ item, onClose }: PromptModalProps) => {
             {/* Content (White with animated code) */}
             <div className="flex-1 overflow-y-auto p-6 bg-[#1E1E1E]">
               {isLoadingContent ? (
-                <p className="text-neutral-400 text-sm font-mono">Loading...</p>
+                <div className="w-full h-full min-h-[200px] flex items-center justify-center">
+                  <DotsLoading className="text-neutral-500" />
+                </div>
               ) : (
                 <SyntaxHighlighter
                   language="markdown"
