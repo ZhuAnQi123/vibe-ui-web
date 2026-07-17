@@ -328,6 +328,24 @@ function buildItem(
       : null;
   }).filter((url): url is string => url !== null);
 
+  // 解析 YAML Frontmatter 中的 assets 和 dependencies 声明 (Phase 3 协同防御核心)
+  let parsedAssetsMeta = undefined;
+  if (data.assets && typeof data.assets === "object") {
+    const rawAssets = data.assets as Record<string, any>;
+    parsedAssetsMeta = {
+      required: !!rawAssets.required,
+      items: Array.isArray(rawAssets.items) 
+        ? rawAssets.items.map((it: any) => ({
+            name: String(it.name || ""),
+            type: String(it.type || ""),
+            description: String(it.description || ""),
+            templateUrl: String(it.template_url || "")
+          }))
+        : [],
+      dependencies: asStringArray(rawAssets.dependencies)
+    };
+  }
+
   return {
     id,
     type,
@@ -346,7 +364,8 @@ function buildItem(
       referencePath,
       skillPath,
     },
-    assets: publicAssetsUrls,
+    assets: publicAssetsUrls, // 保持视频/图片等静态资源路径向下兼容
+    assetsMeta: parsedAssetsMeta, // 注入结构化的前置依赖与素材配置
     triggers: extractTriggers(data.description),
     content: raw,
   };

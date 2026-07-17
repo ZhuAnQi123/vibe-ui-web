@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { HeroSearch } from "../../components/HeroSearch";import { ElasticFilter } from "../../components/ElasticFilter";
 import { StyleGrid } from "../../components/StyleGrid";
 import { LanguageToggle } from "../../components/LanguageToggle";
+import { McpStatusBadge } from "../../components/McpStatusBadge";
 import type { CatalogListItem } from "../../lib/get-catalog";
 import type { Dictionary } from "../../i18n/types";
 import {
@@ -46,6 +47,10 @@ const pageItemVariants = {
   },
 };
 
+// 模块级变量：生命周期跟随当前浏览器标签页。
+// 完美解决路由切换重复触发动画的问题，且完全不需要 localStorage。
+let hasPlayedOpeningAnimation = false;
+
 export const ClientHome = ({
   initialItems,
   locale,
@@ -60,12 +65,18 @@ export const ClientHome = ({
   const router = useRouter();
   const pathname = usePathname();
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [isOpening, setIsOpening] = useState(true);
+  
+  // 初始化时读取模块变量，确保二次路由进入时直接为 false，跳过开场动画
+  const [isOpening, setIsOpening] = useState(!hasPlayedOpeningAnimation);
 
   // 开场动画生命周期控制：1.5s 后触发转场过渡
   useEffect(() => {
+    // 如果已经播放过，直接略过
+    if (hasPlayedOpeningAnimation) return;
+
     const timer = setTimeout(() => {
       setIsOpening(false);
+      hasPlayedOpeningAnimation = true; // 标记已播放
     }, 1500);
     return () => clearTimeout(timer);
   }, []);
@@ -211,6 +222,7 @@ export const ClientHome = ({
           )}
         </div>
         <div className="flex items-center gap-4 min-w-0">
+          <McpStatusBadge />
           <LanguageToggle />
         </div>
       </header>

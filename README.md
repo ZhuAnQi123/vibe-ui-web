@@ -11,6 +11,8 @@ UI Design Systems, Translated for AI.
 - **多维筛选器**：支持按领域 (Domain) 和风格 (Aesthetic) 快速筛选。
 - **丝滑物理动效**：基于 Framer Motion 打造的极具高级感、软糯跟手的交互体验。
 - **一键 Copy to Cursor**：将繁杂的设计规范化繁为简，一键注入设计灵魂。
+- **双栏 AI 提示词工作台**：新增防呆“素材盾 (Asset Shield)”与先决条件检查，避免 AI 瞎编乱造。
+- **MCP 健康度监控**：导航栏内置 MCP 胶囊徽章与状态抽屉，实时追踪本地/远程服务连接状态。
 - **🤖 MCP Server 原生支持**：AI 可通过 MCP 协议直接读取设计系统和动效参数，无需手动拖拽 `.md` 文件。
 
 ## 🛠️ 技术栈
